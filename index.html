@@ -3,139 +3,1162 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mission Control — Neo</title>
+<title>Mission Control — Deal Flow AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0f; color: #e0e0e0; min-height: 100vh; padding: 16px; }
-  h1 { font-size: 1.4rem; font-weight: 700; color: #fff; letter-spacing: 0.05em; text-transform: uppercase; }
-  .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #222; }
-  .timestamp { font-size: 0.75rem; color: #666; }
-  .mission { background: #111; border-left: 3px solid #7c3aed; padding: 12px 16px; border-radius: 4px; margin-bottom: 20px; font-size: 0.85rem; color: #aaa; line-height: 1.5; }
-  .mission strong { color: #c4b5fd; }
-  .section-title { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #555; margin-bottom: 10px; margin-top: 20px; }
-  .card { background: #111; border: 1px solid #1e1e2e; border-radius: 8px; padding: 14px; margin-bottom: 10px; }
-  .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
-  .card-title { font-size: 0.95rem; font-weight: 600; color: #fff; }
-  .badge { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; padding: 3px 8px; border-radius: 99px; letter-spacing: 0.05em; white-space: nowrap; }
-  .badge-active { background: #052e16; color: #4ade80; border: 1px solid #166534; }
-  .badge-waiting { background: #1c1917; color: #fb923c; border: 1px solid #9a3412; }
-  .badge-paused { background: #1a1a2e; color: #818cf8; border: 1px solid #3730a3; }
-  .badge-todo { background: #111827; color: #94a3b8; border: 1px solid #334155; }
-  .card-meta { font-size: 0.78rem; color: #666; margin-bottom: 6px; }
-  .card-desc { font-size: 0.82rem; color: #999; line-height: 1.5; }
-  .milestone { font-size: 0.78rem; color: #f59e0b; margin-top: 6px; }
-  .milestone::before { content: "🎯 "; }
-  .waiting-tag { display: inline-block; background: #1c0a00; border: 1px solid #9a3412; color: #fb923c; font-size: 0.72rem; padding: 2px 8px; border-radius: 4px; margin-top: 6px; }
-  .neo-status { background: #0a0a1a; border: 1px solid #3730a3; border-radius: 8px; padding: 14px; margin-bottom: 20px; }
-  .neo-status .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #555; margin-bottom: 4px; }
-  .neo-status .value { font-size: 0.9rem; color: #c4b5fd; }
-  .divider { border: none; border-top: 1px solid #1e1e2e; margin: 16px 0; }
-  .priority-num { font-size: 0.7rem; color: #444; margin-right: 6px; }
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  @media (max-width: 500px) { .grid-2 { grid-template-columns: 1fr; } }
-  .footer { font-size: 0.7rem; color: #444; text-align: center; margin-top: 24px; padding-top: 12px; border-top: 1px solid #1a1a1a; }
+  /* ============================================================
+     BASE
+  ============================================================ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0e1a;
+    --bg2: #111827;
+    --bg3: #1f2937;
+    --border: #1f2937;
+    --border2: #374151;
+    --text: #f9fafb;
+    --muted: #9ca3af;
+    --faint: #4b5563;
+    --green: #10b981;
+    --green-bg: rgba(16,185,129,0.1);
+    --yellow: #f59e0b;
+    --yellow-bg: rgba(245,158,11,0.1);
+    --red: #ef4444;
+    --red-bg: rgba(239,68,68,0.1);
+    --blue: #3b82f6;
+    --blue-bg: rgba(59,130,246,0.1);
+    --gray: #6b7280;
+    --gray-bg: rgba(107,114,128,0.1);
+    --purple: #8b5cf6;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; font-size: 14px; line-height: 1.5; }
+  a { color: var(--blue); text-decoration: none; }
+  code, .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* ============================================================
+     LAYOUT
+  ============================================================ */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+  .section { padding: 32px 0; border-bottom: 1px solid var(--border); }
+  .section:last-child { border-bottom: none; }
+  .section-title {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--muted); margin-bottom: 20px; display: flex; align-items: center; gap: 8px;
+  }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border2); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+  /* ============================================================
+     CARDS
+  ============================================================ */
+  .card {
+    background: var(--bg2); border: 1px solid var(--border2);
+    border-radius: 10px; padding: 20px;
+  }
+  .card-sm { padding: 14px 16px; }
+  .card-label { font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .card-value { font-size: 1.6rem; font-weight: 800; }
+  .card-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  /* ============================================================
+     BADGES / STATUS PILLS
+  ============================================================ */
+  .badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 99px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .badge-green  { background: var(--green-bg);  color: var(--green);  }
+  .badge-yellow { background: var(--yellow-bg); color: var(--yellow); }
+  .badge-red    { background: var(--red-bg);    color: var(--red);    }
+  .badge-gray   { background: var(--gray-bg);   color: var(--gray);   }
+  .badge-blue   { background: var(--blue-bg);   color: var(--blue);   }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+  /* ============================================================
+     SECTION 1 — MISSION HEADER
+  ============================================================ */
+  .mission-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1a2744 50%, #0f172a 100%);
+    border-bottom: 1px solid var(--border2);
+    padding: 36px 0 28px;
+  }
+  .mission-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
+  .mission-brand { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--blue); margin-bottom: 8px; }
+  .mission-title { font-size: 1.8rem; font-weight: 900; line-height: 1.2; margin-bottom: 8px; }
+  .mission-sub { font-size: 0.9rem; color: var(--muted); max-width: 520px; line-height: 1.6; }
+  .mission-meta { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; align-items: center; }
+
+  .countdown-block { text-align: right; }
+  .countdown-num { font-size: 3.5rem; font-weight: 900; color: var(--blue); line-height: 1; }
+  .countdown-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; margin-top: 4px; }
+  .countdown-date { font-size: 11px; color: var(--faint); margin-top: 4px; }
+
+  .week-summary {
+    margin-top: 20px; padding: 14px 18px;
+    background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2);
+    border-radius: 8px; font-size: 13px; color: var(--muted);
+  }
+  .week-summary strong { color: var(--text); }
+
+  /* ============================================================
+     SECTION 2 — REVENUE TRACKER
+  ============================================================ */
+  .revenue-table { width: 100%; border-collapse: collapse; }
+  .revenue-table th {
+    text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--muted); padding: 8px 12px; border-bottom: 1px solid var(--border2);
+  }
+  .revenue-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .revenue-table tr:last-child td { border-bottom: none; }
+  .revenue-table .total-row td { font-weight: 700; color: var(--green); border-top: 1px solid var(--border2); }
+  .revenue-progress { background: var(--border2); border-radius: 99px; height: 6px; margin-top: 8px; overflow: hidden; }
+  .revenue-progress-bar { height: 100%; border-radius: 99px; background: var(--green); transition: width 0.3s; }
+
+  /* ============================================================
+     SECTION 3 — ORG CHART
+  ============================================================ */
+  .org-tree { display: flex; flex-direction: column; gap: 0; }
+  .org-boss {
+    background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(59,130,246,0.15));
+    border: 1px solid rgba(139,92,246,0.4);
+    border-radius: 10px; padding: 16px 20px; margin-bottom: 0;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+  }
+  .org-boss-name { font-size: 1rem; font-weight: 800; }
+  .org-boss-role { font-size: 12px; color: var(--purple); font-weight: 600; }
+
+  .org-connector { width: 2px; height: 20px; background: var(--border2); margin: 0 30px; }
+  .org-neo {
+    background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(16,185,129,0.08));
+    border: 1px solid rgba(59,130,246,0.35);
+    border-radius: 10px; padding: 16px 20px; margin-bottom: 0;
+  }
+  .org-neo-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; }
+  .org-neo-name { font-size: 1rem; font-weight: 800; color: var(--blue); }
+  .org-neo-role { font-size: 12px; color: var(--muted); }
+  .org-neo-model { font-size: 11px; color: var(--faint); font-family: 'JetBrains Mono', monospace; margin-top: 4px; }
+
+  .org-children { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 0; padding-top: 0; position: relative; }
+  .org-children::before {
+    content: ''; position: absolute; left: 30px; top: -20px;
+    width: 2px; height: 20px; background: var(--border2);
+  }
+  .org-branch-line {
+    height: 20px; display: flex; align-items: flex-start; justify-content: center; margin-bottom: -1px;
+  }
+  .org-agent {
+    background: var(--bg2); border: 1px solid var(--border2);
+    border-radius: 10px; padding: 14px 16px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .org-agent-name { font-size: 13px; font-weight: 700; }
+  .org-agent-role { font-size: 11px; color: var(--muted); }
+  .org-agent-model { font-size: 11px; color: var(--faint); font-family: 'JetBrains Mono', monospace; }
+  .org-agent-project { font-size: 11px; color: var(--blue); margin-top: 4px; }
+  .org-agent-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+
+  .org-lines { display: flex; flex-direction: column; margin-top: 16px; gap: 12px; }
+
+  /* ============================================================
+     SECTION 4 — PROJECTS
+  ============================================================ */
+  .project-card {
+    background: var(--bg2); border: 1px solid var(--border2);
+    border-radius: 12px; padding: 22px; margin-bottom: 16px;
+  }
+  .project-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+  .project-name { font-size: 1rem; font-weight: 800; margin-bottom: 2px; }
+  .project-desc { font-size: 12px; color: var(--muted); }
+  .project-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .project-body { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .project-section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--faint); margin-bottom: 10px; }
+
+  .milestone { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; font-size: 13px; }
+  .milestone-cb { width: 16px; height: 16px; border-radius: 4px; border: 2px solid var(--border2); flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; }
+  .milestone-cb.done { background: var(--green); border-color: var(--green); }
+  .milestone-cb.done::after { content: '✓'; font-size: 10px; color: white; font-weight: 700; }
+  .milestone-text { flex: 1; }
+  .milestone-date { font-size: 11px; color: var(--faint); }
+
+  .kpi { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .kpi:last-child { border-bottom: none; }
+  .kpi-label { color: var(--muted); }
+  .kpi-value { font-weight: 700; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+
+  .project-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 8px; }
+  .blocker { background: var(--red-bg); border: 1px solid rgba(239,68,68,0.3); border-radius: 6px; padding: 8px 12px; font-size: 12px; color: var(--red); margin-top: 12px; }
+  .blocker strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
+
+  /* ============================================================
+     SECTION 5 — DECISION QUEUE
+  ============================================================ */
+  .decision-card {
+    background: var(--bg2); border: 1px solid var(--border2);
+    border-left: 3px solid var(--yellow);
+    border-radius: 8px; padding: 16px 18px; margin-bottom: 12px;
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap;
+  }
+  .decision-card.high { border-left-color: var(--red); }
+  .decision-card.medium { border-left-color: var(--yellow); }
+  .decision-card.low { border-left-color: var(--gray); }
+  .decision-ask { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .decision-blocks { font-size: 12px; color: var(--muted); }
+  .decision-meta { display: flex; gap: 8px; align-items: center; flex-shrink: 0; flex-wrap: wrap; }
+  .decision-waiting { font-size: 11px; color: var(--faint); font-family: 'JetBrains Mono', monospace; }
+  .decision-cta {
+    background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3);
+    color: var(--yellow); font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 6px; text-transform: uppercase; letter-spacing: 0.06em;
+  }
+
+  /* ============================================================
+     SECTION 6 — API COST
+  ============================================================ */
+  .cost-table { width: 100%; border-collapse: collapse; }
+  .cost-table th {
+    text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--muted); padding: 8px 12px; border-bottom: 1px solid var(--border2);
+  }
+  .cost-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 13px; font-family: 'JetBrains Mono', monospace; }
+  .cost-table tr:last-child td { border-bottom: none; }
+  .cost-table .total-row td { font-weight: 700; color: var(--green); border-top: 1px solid var(--border2); }
+  .cost-summary { display: flex; gap: 16px; margin-top: 20px; flex-wrap: wrap; }
+
+  /* ============================================================
+     SECTION 7 — ACTIVITY LOG
+  ============================================================ */
+  .log-entry {
+    display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .log-entry:last-child { border-bottom: none; }
+  .log-time { font-size: 11px; color: var(--faint); font-family: 'JetBrains Mono', monospace; white-space: nowrap; min-width: 130px; padding-top: 2px; }
+  .log-agent { font-size: 11px; font-weight: 700; color: var(--blue); white-space: nowrap; min-width: 80px; padding-top: 2px; }
+  .log-action { font-size: 13px; flex: 1; }
+
+  /* ============================================================
+     SECTION 8 — SYSTEM HEALTH
+  ============================================================ */
+  .health-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .health-item {
+    background: var(--bg2); border: 1px solid var(--border2);
+    border-radius: 8px; padding: 14px 16px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .health-label { font-size: 12px; color: var(--muted); font-weight: 500; }
+  .health-val { font-size: 12px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+  .health-up { color: var(--green); }
+  .health-down { color: var(--red); }
+  .health-unknown { color: var(--faint); }
+  .api-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+  .api-table th {
+    text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--muted); padding: 8px 12px; border-bottom: 1px solid var(--border2);
+  }
+  .api-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 12px; }
+  .api-table tr:last-child td { border-bottom: none; }
+
+  /* ============================================================
+     SECTION 9 — PAUSED PROJECTS
+  ============================================================ */
+  details { border: 1px solid var(--border2); border-radius: 8px; margin-bottom: 8px; overflow: hidden; }
+  details summary {
+    padding: 14px 16px; cursor: pointer; font-size: 13px; font-weight: 600;
+    display: flex; justify-content: space-between; align-items: center;
+    list-style: none; background: var(--bg2);
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::after { content: '+'; font-size: 16px; color: var(--faint); }
+  details[open] summary::after { content: '−'; }
+  details .detail-body { padding: 14px 16px; border-top: 1px solid var(--border2); font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  /* ============================================================
+     NAV BAR
+  ============================================================ */
+  .topnav {
+    background: rgba(10,14,26,0.95); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border2);
+    position: sticky; top: 0; z-index: 100;
+    padding: 10px 0;
+  }
+  .topnav-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .topnav-brand { font-size: 13px; font-weight: 800; color: var(--blue); letter-spacing: 0.02em; }
+  .topnav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+  .topnav-links a {
+    font-size: 11px; font-weight: 600; color: var(--muted); padding: 5px 10px;
+    border-radius: 6px; text-decoration: none; transition: all 0.15s; text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .topnav-links a:hover { background: var(--bg3); color: var(--text); }
+  .topnav-updated { font-size: 11px; color: var(--faint); font-family: 'JetBrains Mono', monospace; }
+
+  /* ============================================================
+     RESPONSIVE
+  ============================================================ */
+  @media (max-width: 768px) {
+    .grid2, .grid3, .grid4 { grid-template-columns: 1fr; }
+    .project-body { grid-template-columns: 1fr; }
+    .mission-top { flex-direction: column; }
+    .countdown-block { text-align: left; }
+    .topnav-links { display: none; }
+    .org-children { grid-template-columns: 1fr 1fr; }
+    .log-time { min-width: 80px; }
+    .log-agent { min-width: 60px; }
+  }
+  @media (max-width: 480px) {
+    .org-children { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <h1>⚡ Mission Control</h1>
-  <span class="timestamp">Updated: 2026-03-10</span>
-</div>
-
-<div class="mission">
-  <strong>Mission:</strong> Build a self-sustaining org generating passive + semi-passive income within <strong>90 days</strong> to stabilize family finances and fund the worldschooling transition.
-</div>
-
-<!-- NEO STATUS -->
-<div class="section-title">Neo Status</div>
-<div class="neo-status">
-  <div class="label">Currently Working On</div>
-  <div class="value">Project 1 — Apex ebook & course buildout · Subagent spawned</div>
-  <hr style="border-color:#1e1e2e; margin: 10px 0;">
-  <div class="label">Model</div>
-  <div class="value">Claude Sonnet 4.6 (Anthropic API)</div>
-</div>
-
-<!-- WAITING FOR BOSS -->
-<div class="section-title">⏳ Waiting for Your Input</div>
-<div class="card">
-  <div class="card-header">
-    <div class="card-title">Project 1: Apex</div>
-    <span class="badge badge-waiting">Needs Input</span>
-  </div>
-  <div class="card-desc">Subagent is ready. Need from you: existing ebook/course content, outlines, target audience notes, and GHL API access confirmation.</div>
-  <div class="waiting-tag">🟠 Awaiting your assets + details</div>
-</div>
-
-<hr class="divider">
-
-<!-- ACTIVE PROJECTS -->
-<div class="section-title">Active Projects</div>
-
-<div class="card">
-  <div class="card-header">
-    <div class="card-title"><span class="priority-num">#1</span>Apex — AI for Real Estate Pros</div>
-    <span class="badge badge-active">In Progress</span>
-  </div>
-  <div class="card-meta">Subagent: Apex Agent · Model: TBD (OpenRouter)</div>
-  <div class="card-desc">Build ebook, course, and community. Foundation for GPT/GHL licensing with coaching client.</div>
-  <div class="milestone">Digital product ready to sell — 30 days (by Apr 9)</div>
-</div>
-
-<div class="card">
-  <div class="card-header">
-    <div class="card-title"><span class="priority-num">#2</span>This Curious Life Content</div>
-    <span class="badge badge-todo">Not Started</span>
-  </div>
-  <div class="card-meta">Channels: Anthropology · Health · Travel · Biohacking</div>
-  <div class="card-desc">Migrate from Twin.so. Spin up content pipeline subagent. Boss approves all content before posting.</div>
-  <div class="milestone">Consistent posting schedule — starts after Project 1 launch</div>
-</div>
-
-<div class="card">
-  <div class="card-header">
-    <div class="card-title"><span class="priority-num">#3</span>Real Estate Business Revival</div>
-    <span class="badge badge-todo">Not Started</span>
-  </div>
-  <div class="card-meta">Tools: Podio CRM · AI call/text/email agent</div>
-  <div class="card-desc">Clean up Podio. Build AI lead management. Automate VA web scraping. Get husband out of call role.</div>
-  <div class="milestone">Consistent deal flow — timeline TBD</div>
-</div>
-
-<div class="grid-2">
-  <div class="card">
-    <div class="card-header">
-      <div class="card-title"><span class="priority-num">#4</span>Publish Books</div>
-      <span class="badge badge-todo">Not Started</span>
+<!-- ============================================================
+     TOP NAV
+============================================================ -->
+<nav class="topnav">
+  <div class="container">
+    <div class="topnav-inner">
+      <div class="topnav-brand">⚡ MISSION CONTROL</div>
+      <div class="topnav-links">
+        <a href="#revenue">Revenue</a>
+        <a href="#org">Org</a>
+        <a href="#projects">Projects</a>
+        <a href="#decisions">Decisions</a>
+        <a href="#cost">API Cost</a>
+        <a href="#activity">Activity</a>
+        <a href="#health">Health</a>
+      </div>
+      <div class="topnav-updated">Updated: <span id="last-updated">2026-03-11</span></div>
     </div>
-    <div class="card-desc">3 books on Amazon KDP: "Price of Being Good", "Nervous System Fix", husband's AI ebook.</div>
-    <div class="milestone">All live in 2-3 weeks</div>
   </div>
+</nav>
 
-  <div class="card">
-    <div class="card-header">
-      <div class="card-title"><span class="priority-num">#5</span>Romance Novel Series</div>
-      <span class="badge badge-todo">Not Started</span>
+<!-- ============================================================
+     SECTION 1: MISSION HEADER
+============================================================ -->
+<header class="mission-header">
+  <div class="container">
+    <div class="mission-top">
+      <div>
+        <div class="mission-brand">Deal Flow AI — Command Center</div>
+        <div class="mission-title">90-Day Worldschooling Mission</div>
+        <div class="mission-sub">Build a self-sustaining organization generating enough passive and semi-passive income to stabilize family finances and fund the transition to worldschooling — while Neo handles execution so Boss can be present with her kids.</div>
+        <div class="mission-meta">
+          <!-- UPDATE: Change badge as mission status changes -->
+          <span class="badge badge-yellow"><span class="dot"></span> AT RISK — BUILDING</span>
+          <span class="badge badge-blue">Day <span id="day-num">2</span> of 90</span>
+          <span class="badge badge-gray">Start: Mar 10, 2026</span>
+          <span class="badge badge-gray">Deadline: Jun 7, 2026</span>
+        </div>
+      </div>
+      <div class="countdown-block">
+        <div class="countdown-num" id="countdown-days">--</div>
+        <div class="countdown-label">Days Remaining</div>
+        <div class="countdown-date">Target: June 7, 2026</div>
+      </div>
     </div>
-    <div class="card-desc">Expand existing draft. Plan 3-5 book series. Covers + KDP launch.</div>
-    <div class="milestone">Book 1 in 45 days · Book 2 in 60 days</div>
+
+    <!-- UPDATE: Edit this line each week with what was accomplished -->
+    <div class="week-summary">
+      <strong>This week:</strong> GHL funnel structure built (3 steps), ebook finalized, Mission Control v2 launched, org stack wired (Claude + GPT-5.4 + MiniMax confirmed), PayPal under review, Stripe setup in progress, dealflowaiconsulting.com live.
+    </div>
   </div>
-</div>
+</header>
 
-<hr class="divider">
+<!-- ============================================================
+     SECTION 2: REVENUE TRACKER
+============================================================ -->
+<section class="section" id="revenue">
+  <div class="container">
+    <div class="section-title">💰 Revenue Tracker</div>
 
-<!-- PAUSED -->
-<div class="section-title">Paused (until revenue flows)</div>
-<div class="card">
-  <div class="card-header">
-    <div class="card-title">7 Paused Projects</div>
-    <span class="badge badge-paused">Paused</span>
+    <!-- UPDATE: Edit target and current values below -->
+    <div class="grid4" style="margin-bottom: 24px;">
+      <div class="card card-sm">
+        <div class="card-label">Monthly Target</div>
+        <!-- UPDATE: Set your monthly revenue target -->
+        <div class="card-value" style="color: var(--blue);">$_____</div>
+        <div class="card-sub">Worldschooling threshold</div>
+      </div>
+      <div class="card card-sm">
+        <div class="card-label">Current MRR</div>
+        <!-- UPDATE: Update as revenue comes in -->
+        <div class="card-value" style="color: var(--green);">$0</div>
+        <div class="card-sub">This billing period</div>
+      </div>
+      <div class="card card-sm">
+        <div class="card-label">Total Revenue</div>
+        <!-- UPDATE: Cumulative revenue since mission start -->
+        <div class="card-value">$0</div>
+        <div class="card-sub">Since Mar 10, 2026</div>
+      </div>
+      <div class="card card-sm">
+        <div class="card-label">Progress to Target</div>
+        <!-- UPDATE: Calculate % of monthly target hit -->
+        <div class="card-value" style="color: var(--yellow);">0%</div>
+        <div class="card-sub">Of monthly goal</div>
+      </div>
+    </div>
+
+    <table class="revenue-table">
+      <thead>
+        <tr>
+          <th>Vertical</th>
+          <th>Product</th>
+          <th>Units Sold</th>
+          <th>Revenue</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- UPDATE: Edit revenue figures below as sales come in -->
+        <tr>
+          <td><strong>Apex / Deal Flow AI</strong></td>
+          <td>Ebook ($47) + Prompt Swipe File ($27)</td>
+          <td class="mono">0</td>
+          <td class="mono">$0</td>
+          <td><span class="badge badge-yellow">Pre-Launch</span></td>
+        </tr>
+        <tr>
+          <td><strong>Apex / Deal Flow AI</strong></td>
+          <td>Full Course ($197)</td>
+          <td class="mono">0</td>
+          <td class="mono">$0</td>
+          <td><span class="badge badge-gray">Not Ready</span></td>
+        </tr>
+        <tr>
+          <td><strong>Real Estate</strong></td>
+          <td>Deals / Lead Gen</td>
+          <td class="mono">—</td>
+          <td class="mono">$0</td>
+          <td><span class="badge badge-gray">Rebuilding</span></td>
+        </tr>
+        <tr>
+          <td><strong>KDP Books</strong></td>
+          <td>Price of Being Good + Nervous System Fix</td>
+          <td class="mono">0</td>
+          <td class="mono">$0</td>
+          <td><span class="badge badge-gray">Not Published</span></td>
+        </tr>
+        <tr>
+          <td><strong>Romance Series</strong></td>
+          <td>Book 1 (Title TBD)</td>
+          <td class="mono">0</td>
+          <td class="mono">$0</td>
+          <td><span class="badge badge-gray">Drafting</span></td>
+        </tr>
+        <tr>
+          <td><strong>Other</strong></td>
+          <td>Affiliate / POD / Misc</td>
+          <td class="mono">—</td>
+          <td class="mono">$0</td>
+          <td><span class="badge badge-gray">Paused</span></td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="3"><strong>TOTAL</strong></td>
+          <td class="mono"><strong>$0</strong></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div class="card-desc">Reprogrammed Life · Inner Union POD · Homeschool App · Infinite Edge YouTube · Suno Music · AI Transition Foundation · Anthropology Book</div>
-</div>
+</section>
 
-<div class="footer">⚡ Neo — Chief of Staff · Mission Control v1.0</div>
+<!-- ============================================================
+     SECTION 3: ORG STRUCTURE
+============================================================ -->
+<section class="section" id="org">
+  <div class="container">
+    <div class="section-title">🏗️ Organization Structure</div>
+
+    <!-- BOSS -->
+    <div class="org-boss">
+      <div>
+        <div style="font-size:11px;color:var(--purple);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">Principal</div>
+        <div style="font-size:1.1rem;font-weight:900;">👩‍💼 Marlena Dates — BOSS</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px;">Founder & Final Decision-Maker · All approvals flow through Boss</div>
+      </div>
+      <span class="badge badge-green"><span class="dot"></span> Active</span>
+    </div>
+
+    <div class="org-connector" style="margin-left: 40px;"></div>
+
+    <!-- NEO -->
+    <div class="org-neo">
+      <div class="org-neo-header">
+        <div>
+          <div style="font-size:11px;color:var(--blue);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">Chief of Staff · AI CEO</div>
+          <div class="org-neo-name">⚡ Neo</div>
+          <div class="org-neo-role">Strategy, prioritization, mission alignment, subagent direction, Boss interface</div>
+          <div class="org-neo-model">anthropic/claude-sonnet-4-6 · Anthropic API (fixed)</div>
+        </div>
+        <span class="badge badge-green"><span class="dot"></span> Active</span>
+      </div>
+    </div>
+
+    <div class="org-connector" style="margin-left: 40px;"></div>
+
+    <!-- SUBAGENTS -->
+    <!-- UPDATE: Change status badges as agents are deployed -->
+    <div class="org-children">
+      <div class="org-agent" style="border-color: rgba(245,158,11,0.3);">
+        <div style="font-size:10px;color:var(--yellow);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;">QC Manager</div>
+        <div class="org-agent-name">🔍 ChatGPT Manager</div>
+        <div class="org-agent-role">Quality control, editing, output review before delivery to Boss</div>
+        <div class="org-agent-model">openai-codex/gpt-5.4 · OAuth</div>
+        <div class="org-agent-footer">
+          <div class="org-agent-project">All projects (QC layer)</div>
+          <!-- UPDATE: Change to badge-green when consistently used -->
+          <span class="badge badge-yellow"><span class="dot"></span> Wired</span>
+        </div>
+      </div>
+
+      <div class="org-agent">
+        <div style="font-size:10px;color:var(--blue);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;">Worker</div>
+        <div class="org-agent-name">📚 Apex Agent</div>
+        <div class="org-agent-role">Ebook, course content, sales copy, Deal Flow AI assets</div>
+        <div class="org-agent-model">openrouter/minimax/minimax-m2.5</div>
+        <div class="org-agent-footer">
+          <div class="org-agent-project">Project 1: Deal Flow AI</div>
+          <!-- UPDATE: Change status as agent is deployed/used -->
+          <span class="badge badge-yellow"><span class="dot"></span> Standby</span>
+        </div>
+      </div>
+
+      <div class="org-agent">
+        <div style="font-size:10px;color:var(--blue);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;">Worker</div>
+        <div class="org-agent-name">✍️ Content Agent</div>
+        <div class="org-agent-role">This Curious Life content pipeline, social media, blog</div>
+        <div class="org-agent-model">google/gemini-2.5-flash</div>
+        <div class="org-agent-footer">
+          <div class="org-agent-project">Project 2: This Curious Life</div>
+          <span class="badge badge-gray"><span class="dot"></span> Not Deployed</span>
+        </div>
+      </div>
+
+      <div class="org-agent">
+        <div style="font-size:10px;color:var(--blue);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;">Worker</div>
+        <div class="org-agent-name">🏠 RE Agent</div>
+        <div class="org-agent-role">Lead gen, CRM, outbound automation, deal flow</div>
+        <div class="org-agent-model">openrouter/minimax/minimax-m2.5</div>
+        <div class="org-agent-footer">
+          <div class="org-agent-project">Project 3: Real Estate</div>
+          <span class="badge badge-gray"><span class="dot"></span> Not Deployed</span>
+        </div>
+      </div>
+
+      <div class="org-agent">
+        <div style="font-size:10px;color:var(--blue);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;">Worker</div>
+        <div class="org-agent-name">📖 Publishing Agent</div>
+        <div class="org-agent-role">KDP books, romance novel series, manuscript polish, listings</div>
+        <div class="org-agent-model">deepseek/deepseek-chat-v3-0324</div>
+        <div class="org-agent-footer">
+          <div class="org-agent-project">Projects 4 & 5</div>
+          <span class="badge badge-gray"><span class="dot"></span> Not Deployed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 4: ACTIVE PROJECTS
+============================================================ -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-title">🚀 Active Projects</div>
+
+    <!-- ── PROJECT 1: DEAL FLOW AI ── -->
+    <div class="project-card" style="border-left: 3px solid var(--blue);">
+      <div class="project-header">
+        <div>
+          <div class="project-name">⭐ Project 1 — Deal Flow AI Playbook</div>
+          <div class="project-desc">Ebook + order bump + course funnel. Primary revenue vehicle. 30-day launch target.</div>
+        </div>
+        <div class="project-meta">
+          <span class="badge badge-yellow"><span class="dot"></span> In Progress</span>
+          <!-- UPDATE: Change days remaining as deadline approaches -->
+          <span style="font-size:12px;color:var(--muted);" id="p1-deadline">~28 days to deadline</span>
+        </div>
+      </div>
+
+      <div class="project-body">
+        <div>
+          <div class="project-section-label">Milestones</div>
+          <!-- UPDATE: Change milestone-cb class to "done" when completed -->
+          <div class="milestone">
+            <div class="milestone-cb done"></div>
+            <div class="milestone-text">Ebook written & finalized <div class="milestone-date">Complete ✓</div></div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-cb done"></div>
+            <div class="milestone-text">GHL funnel structure created (3 steps) <div class="milestone-date">Complete ✓</div></div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-cb"></div>
+            <div class="milestone-text">Payment processor connected <div class="milestone-date">Target: Mar 13</div></div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-cb"></div>
+            <div class="milestone-text">Products created + order form configured <div class="milestone-date">Target: Mar 14</div></div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-cb"></div>
+            <div class="milestone-text">Sales page + order form designed <div class="milestone-date">Target: Mar 16</div></div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-cb"></div>
+            <div class="milestone-text">Post-purchase automation built <div class="milestone-date">Target: Mar 18</div></div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-cb"></div>
+            <div class="milestone-text">Funnel tested end-to-end + launched <div class="milestone-date">Target: Apr 10</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="project-section-label">KPIs</div>
+          <!-- UPDATE: Fill in actual values as they change -->
+          <div class="kpi"><span class="kpi-label">Ebook word count</span><span class="kpi-value">~9,700 / 9,000 ✓</span></div>
+          <div class="kpi"><span class="kpi-label">Funnel steps built</span><span class="kpi-value">3 / 3 ✓</span></div>
+          <div class="kpi"><span class="kpi-label">Payment processor</span><span class="kpi-value">0 / 1</span></div>
+          <div class="kpi"><span class="kpi-label">Email list size</span><span class="kpi-value">0</span></div>
+          <div class="kpi"><span class="kpi-label">Units sold (ebook)</span><span class="kpi-value">0</span></div>
+          <div class="kpi"><span class="kpi-label">Revenue generated</span><span class="kpi-value">$0</span></div>
+        </div>
+      </div>
+
+      <div class="blocker">
+        <strong>🔴 Current Blocker</strong>
+        <!-- UPDATE: Remove or update when blocker is resolved -->
+        PayPal under business review (1-3 days). Stripe setup needs dealflowaiconsulting.com to go live. DNS propagated — WordPress being built now. Stripe is next.
+      </div>
+
+      <div class="project-footer">
+        <div style="font-size:12px;color:var(--muted);">Assigned: <strong>Neo + Apex Agent</strong></div>
+        <span class="badge badge-blue">Deadline: Apr 10, 2026</span>
+      </div>
+    </div>
+
+    <!-- ── PROJECT 2: THIS CURIOUS LIFE ── -->
+    <div class="project-card" style="border-left: 3px solid var(--gray);">
+      <div class="project-header">
+        <div>
+          <div class="project-name">Project 2 — This Curious Life Content</div>
+          <div class="project-desc">Migrate content pipeline from Twin.so to OpenClaw. Build consistent posting schedule → affiliate monetization.</div>
+        </div>
+        <div class="project-meta">
+          <span class="badge badge-gray"><span class="dot"></span> Not Started</span>
+          <span style="font-size:12px;color:var(--muted);">Starts after P1 launch</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <div>
+          <div class="project-section-label">Milestones</div>
+          <div class="milestone"><div class="milestone-cb"></div><div class="milestone-text">Audit existing Twin.so content + accounts<div class="milestone-date">TBD</div></div></div>
+          <div class="milestone"><div class="milestone-cb"></div><div class="milestone-text">Spin up Content Agent subagent<div class="milestone-date">TBD</div></div></div>
+          <div class="milestone"><div class="milestone-cb"></div><div class="milestone-text">30-day content calendar built<div class="milestone-date">TBD</div></div></div>
+          <div class="milestone"><div class="milestone-cb"></div><div class="milestone-text">First affiliate deals live<div class="milestone-date">TBD</div></div></div>
+        </div>
+        <div>
+          <div class="project-section-label">KPIs</div>
+          <div class="kpi"><span class="kpi-label">Posts scheduled</span><span class="kpi-value">0</span></div>
+          <div class="kpi"><span class="kpi-label">Posts published</span><span class="kpi-value">0</span></div>
+          <div class="kpi"><span class="kpi-label">Follower count</span><span class="kpi-value">—</span></div>
+          <div class="kpi"><span class="kpi-label">Affiliate revenue</span><span class="kpi-value">$0</span></div>
+        </div>
+      </div>
+      <div class="project-footer">
+        <div style="font-size:12px;color:var(--muted);">Assigned: <strong>Content Agent</strong> (not yet deployed)</div>
+        <span class="badge badge-gray">Deadline: TBD</span>
+      </div>
+    </div>
+
+    <!-- ── PROJECT 3: REAL ESTATE ── -->
+    <div class="project-card" style="border-left: 3px solid var(--gray);">
+      <div class="project-header">
+        <div>
+          <div class="project-name">Project 3 — Real Estate Business Revival</div>
+          <div class="project-desc">Clean up Podio CRM, build AI call/text/email agent, automate VA web scraping tasks.</div>
+        </div>
+        <div class="project-meta">
+          <span class="badge badge-gray"><span class="dot"></span> Not Started</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <div>
+          <div class="project-section-label">Milestones</div>
+          <div class="milestone"><div class="milestone-cb"></div><div class="milestone-text">Podio CRM audit + cleanup<div class="milestone-date">TBD</div></div></div>
+          <div class="milestone"><div class="milestone-cb"></div><div class="milestone-text">AI call/text agent built (Twilio + OpenAI Realtime)<div class="milestone-date">TBD</div></div></div>
+          <div class="milestone"><div class="milestone-cb"></div><div class="milestone-text">Web scraping automation (replace 2 VAs)<div class="milestone-date">TBD</div></div></div>
+          <div class="milestone"><div class="milestone-cb"></div><div class="milestone-text">First automated deal closed<div class="milestone-date">TBD</div></div></div>
+        </div>
+        <div>
+          <div class="project-section-label">KPIs</div>
+          <div class="kpi"><span class="kpi-label">Leads in pipeline</span><span class="kpi-value">—</span></div>
+          <div class="kpi"><span class="kpi-label">Contact rate</span><span class="kpi-value">—</span></div>
+          <div class="kpi"><span class="kpi-label">Appointments set</span><span class="kpi-value">—</span></div>
+          <div class="kpi"><span class="kpi-label">Deals closed</span><span class="kpi-value">0</span></div>
+        </div>
+      </div>
+      <div class="project-footer">
+        <div style="font-size:12px;color:var(--muted);">Assigned: <strong>RE Agent</strong> (not yet deployed)</div>
+        <span class="badge badge-gray">Deadline: TBD</span>
+      </div>
+    </div>
+
+    <!-- ── PROJECT 4: KDP BOOKS ── -->
+    <div class="project-card" style="border-left: 3px solid var(--gray);">
+      <div class="project-header">
+        <div>
+          <div class="project-name">Project 4 — Publish Existing Books (KDP)</div>
+          <div class="project-desc">"The Price of Being Good" + "The Nervous System Fix" + husband's AI education ebook. All three live in 2-3 weeks.</div>
+        </div>
+        <div class="project-meta">
+          <span class="badge badge-gray"><span class="dot"></span> Not Started</span>
+          <span style="font-size:12px;color:var(--muted);">Target: ~2-3 weeks</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <div>
+          <div class="project-section-label">Milestones</div>
+          <div class="milestone"><div class="milestone-cb"></div><div class="milestone-text">Final manuscript review — Price of Being Good<div class="milestone-date">TBD</div></div></div>
+          <div class="milestone"><div class="milestone-cb"></div><div class="milestone-text">Final manuscript review — Nervous System Fix<div class="milestone-date">TBD</div></div></div>
+          <div class="milestone"><div class="milestone-cb"></div><div class="milestone-text">KDP listings created (covers, blurbs, keywords)<div class="milestone-date">TBD</div></div></div>
+          <div class="milestone"><div class="milestone-cb"></div><div class="milestone-text">All 3 books live on Amazon<div class="milestone-date">Target: Apr 1</div></div></div>
+        </div>
+        <div>
+          <div class="project-section-label">KPIs</div>
+          <div class="kpi"><span class="kpi-label">Manuscripts complete</span><span class="kpi-value">0 / 3</span></div>
+          <div class="kpi"><span class="kpi-label">KDP listings live</span><span class="kpi-value">0 / 3</span></div>
+          <div class="kpi"><span class="kpi-label">Units sold</span><span class="kpi-value">0</span></div>
+          <div class="kpi"><span class="kpi-label">KDP revenue</span><span class="kpi-value">$0</span></div>
+        </div>
+      </div>
+      <div class="project-footer">
+        <div style="font-size:12px;color:var(--muted);">Assigned: <strong>Publishing Agent</strong> (not yet deployed)</div>
+        <span class="badge badge-gray">Deadline: Apr 1, 2026</span>
+      </div>
+    </div>
+
+    <!-- ── PROJECT 5: ROMANCE NOVEL ── -->
+    <div class="project-card" style="border-left: 3px solid var(--gray);">
+      <div class="project-header">
+        <div>
+          <div class="project-name">Project 5 — Romance Novel Series</div>
+          <div class="project-desc">Expand existing draft into full novel. Plan 3-5 book series. Covers, formatting, KDP launch.</div>
+        </div>
+        <div class="project-meta">
+          <span class="badge badge-gray"><span class="dot"></span> Not Started</span>
+          <span style="font-size:12px;color:var(--muted);">Book 1 target: 45 days</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <div>
+          <div class="project-section-label">Milestones</div>
+          <div class="milestone"><div class="milestone-cb"></div><div class="milestone-text">Outline Book 1 + series arc<div class="milestone-date">TBD</div></div></div>
+          <div class="milestone"><div class="milestone-cb"></div><div class="milestone-text">Draft Book 1 complete<div class="milestone-date">Target: Apr 24</div></div></div>
+          <div class="milestone"><div class="milestone-cb"></div><div class="milestone-text">Cover design + formatting done<div class="milestone-date">TBD</div></div></div>
+          <div class="milestone"><div class="milestone-cb"></div><div class="milestone-text">Book 1 live on KDP<div class="milestone-date">Target: Apr 24</div></div></div>
+        </div>
+        <div>
+          <div class="project-section-label">KPIs</div>
+          <div class="kpi"><span class="kpi-label">Chapters drafted</span><span class="kpi-value">— / —</span></div>
+          <!-- UPDATE: Set word count target when outline is done -->
+          <div class="kpi"><span class="kpi-label">Book 1 word count</span><span class="kpi-value">— / 80,000</span></div>
+          <div class="kpi"><span class="kpi-label">Cover status</span><span class="kpi-value">Not started</span></div>
+          <div class="kpi"><span class="kpi-label">Books published</span><span class="kpi-value">0</span></div>
+        </div>
+      </div>
+      <div class="project-footer">
+        <div style="font-size:12px;color:var(--muted);">Assigned: <strong>Publishing Agent</strong> (not yet deployed)</div>
+        <span class="badge badge-gray">Deadline: Apr 24, 2026</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 5: DECISION QUEUE
+============================================================ -->
+<section class="section" id="decisions">
+  <div class="container">
+    <div class="section-title">🔴 Decision Queue</div>
+
+    <!-- UPDATE: Add/remove decision cards as needed. Sort: HIGH first, then by days waiting. -->
+    <!-- Date added format: YYYY-MM-DD — days waiting is auto-calculated -->
+
+    <div class="decision-card high" data-added="2026-03-11">
+      <div>
+        <div class="decision-ask">Set your monthly revenue target (the worldschooling threshold)</div>
+        <div class="decision-blocks">Blocks: Revenue Tracker display · Project prioritization</div>
+      </div>
+      <div class="decision-meta">
+        <span class="badge badge-red">HIGH</span>
+        <span class="decision-waiting" id="d1-wait">Day 1</span>
+        <span class="decision-cta">Decision Needed</span>
+      </div>
+    </div>
+
+    <div class="decision-card high" data-added="2026-03-11">
+      <div>
+        <div class="decision-ask">Complete Stripe signup so payment processor can be connected to GHL</div>
+        <div class="decision-blocks">Blocks: Project 1 — Products cannot be created until payment is live</div>
+      </div>
+      <div class="decision-meta">
+        <span class="badge badge-red">HIGH</span>
+        <span class="decision-waiting" id="d2-wait">Day 1</span>
+        <span class="decision-cta">Decision Needed</span>
+      </div>
+    </div>
+
+    <div class="decision-card medium" data-added="2026-03-11">
+      <div>
+        <div class="decision-ask">Approve dashboard email setup: forward hello@ and info@ to dealflowaiconsulting@gmail.com for Neo management</div>
+        <div class="decision-blocks">Blocks: Email automation · Customer communication pipeline</div>
+      </div>
+      <div class="decision-meta">
+        <span class="badge badge-yellow">MEDIUM</span>
+        <span class="decision-waiting">Day 1</span>
+        <span class="decision-cta">Decision Needed</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 6: API USAGE & COST
+============================================================ -->
+<section class="section" id="cost">
+  <div class="container">
+    <div class="section-title">💳 API Usage & Cost Tracking</div>
+
+    <div class="grid3" style="margin-bottom:24px;">
+      <div class="card card-sm">
+        <div class="card-label">Total Spend (Period)</div>
+        <!-- UPDATE: Update as API costs accumulate -->
+        <div class="card-value" style="color:var(--yellow);">$0.00</div>
+        <div class="card-sub">March 2026 billing period</div>
+      </div>
+      <div class="card card-sm">
+        <div class="card-label">Budget Cap</div>
+        <!-- UPDATE: Set a monthly API budget cap -->
+        <div class="card-value">$_____</div>
+        <div class="card-sub">Monthly limit (set with Boss)</div>
+      </div>
+      <div class="card card-sm">
+        <div class="card-label">Remaining Budget</div>
+        <!-- UPDATE: Budget cap minus total spend -->
+        <div class="card-value" style="color:var(--green);">—</div>
+        <div class="card-sub">Before cap is hit</div>
+      </div>
+    </div>
+
+    <!-- UPDATE: Fill in token counts and costs from API logs -->
+    <table class="cost-table">
+      <thead>
+        <tr>
+          <th>Project / Use</th>
+          <th>Model</th>
+          <th>Input Tokens</th>
+          <th>Output Tokens</th>
+          <th>Est. Cost</th>
+          <th>Last Run</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Neo (overhead)</td>
+          <td class="mono">sonnet-4-6</td>
+          <td class="mono">—</td>
+          <td class="mono">—</td>
+          <td class="mono">$0.00</td>
+          <td class="mono">2026-03-11</td>
+        </tr>
+        <tr>
+          <td>ChatGPT Manager (QC)</td>
+          <td class="mono">gpt-5.4</td>
+          <td class="mono">—</td>
+          <td class="mono">—</td>
+          <td class="mono">$0.00</td>
+          <td class="mono">—</td>
+        </tr>
+        <tr>
+          <td>Apex Agent</td>
+          <td class="mono">minimax-m2.5</td>
+          <td class="mono">12,000</td>
+          <td class="mono">361</td>
+          <td class="mono">~$0.00</td>
+          <td class="mono">2026-03-11</td>
+        </tr>
+        <tr>
+          <td>Content Agent</td>
+          <td class="mono">gemini-2.5-flash</td>
+          <td class="mono">—</td>
+          <td class="mono">—</td>
+          <td class="mono">$0.00</td>
+          <td class="mono">—</td>
+        </tr>
+        <tr>
+          <td>RE Agent</td>
+          <td class="mono">minimax-m2.5</td>
+          <td class="mono">—</td>
+          <td class="mono">—</td>
+          <td class="mono">$0.00</td>
+          <td class="mono">—</td>
+        </tr>
+        <tr>
+          <td>Publishing Agent</td>
+          <td class="mono">deepseek-v3</td>
+          <td class="mono">—</td>
+          <td class="mono">—</td>
+          <td class="mono">$0.00</td>
+          <td class="mono">—</td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="4"><strong>TOTAL</strong></td>
+          <td class="mono"><strong>~$0.00</strong></td>
+          <td class="mono">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 7: SUBAGENT ACTIVITY LOG
+============================================================ -->
+<section class="section" id="activity">
+  <div class="container">
+    <div class="section-title">📋 Subagent Activity Log</div>
+
+    <!-- UPDATE: Add new entries at TOP (reverse chronological). Keep last 20. -->
+    <div>
+      <div class="log-entry">
+        <div class="log-time">2026-03-11 17:08</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          Spawned MiniMax M2.5 subagent — test paragraph on AI in wholesale real estate. Confirmed pipeline working.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
+      <div class="log-entry">
+        <div class="log-time">2026-03-11 17:44</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          Deployed Mission Control dashboard to GitHub Pages (mdates-cmd.github.io/mission-control). Live.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
+      <div class="log-entry">
+        <div class="log-time">2026-03-11 16:54</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          Built WordPress landing page (index.html + theme zip) for dealflowaiconsulting.com — needed to unblock Stripe setup.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
+      <div class="log-entry">
+        <div class="log-time">2026-03-11 15:17</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          PayPal business review triggered during GHL integration. Pivoting to Stripe as primary payment processor.
+          <span class="badge badge-yellow" style="margin-left:8px;">In Progress</span>
+        </div>
+      </div>
+      <div class="log-entry">
+        <div class="log-time">2026-03-11 04:48</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          Diagnosed PayPal OAuth issue — GHL partner flow routing to new account creation. Guided Boss to complete business upgrade on existing account.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
+      <div class="log-entry">
+        <div class="log-time">2026-03-10 —</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          GHL funnel created: "Deal Flow AI Playbook - Sales Funnel" with 3 steps (Sales Page, Order Form, Thank You). Location ID confirmed.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
+      <div class="log-entry">
+        <div class="log-time">2026-03-10 —</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          Ebook finalized at ~9,700 words. Fact-checked stats, rewrote Chapter 4 opening, added chapter bridges, fixed conclusion (community invite replaces free prompts offer).
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 8: SYSTEM HEALTH
+============================================================ -->
+<section class="section" id="health">
+  <div class="container">
+    <div class="section-title">🖥️ System Health</div>
+
+    <div class="health-grid" style="margin-bottom:20px;">
+      <!-- UPDATE: Check server status and update these manually or via Neo -->
+      <div class="health-item">
+        <span class="health-label">Hetzner VPS</span>
+        <span class="health-val health-up">● UP</span>
+      </div>
+      <div class="health-item">
+        <span class="health-label">OpenClaw Gateway</span>
+        <span class="health-val health-up">● RUNNING</span>
+      </div>
+      <div class="health-item">
+        <span class="health-label">Tailscale</span>
+        <!-- UPDATE: Change to health-up CONNECTED when confirmed -->
+        <span class="health-val health-unknown">○ UNKNOWN</span>
+      </div>
+      <div class="health-item">
+        <span class="health-label">Last Neo Response</span>
+        <span class="health-val health-up mono">2026-03-11</span>
+      </div>
+      <div class="health-item">
+        <span class="health-label">Last Subagent Task</span>
+        <span class="health-val mono">2026-03-11 17:08</span>
+      </div>
+      <div class="health-item">
+        <span class="health-label">Errors (24h)</span>
+        <span class="health-val health-up">0</span>
+      </div>
+    </div>
+
+    <table class="api-table">
+      <thead>
+        <tr>
+          <th>API / Service</th>
+          <th>Status</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- UPDATE: Update statuses and expiry dates -->
+        <tr>
+          <td>Anthropic API (Neo)</td>
+          <td><span class="badge badge-green">Valid</span></td>
+          <td class="mono">sk-ant-a...IHVqSgAA · No expiry</td>
+        </tr>
+        <tr>
+          <td>OpenAI Codex (ChatGPT Manager)</td>
+          <td><span class="badge badge-green">Valid</span></td>
+          <td class="mono">OAuth · Expires in ~10 days</td>
+        </tr>
+        <tr>
+          <td>OpenRouter (Subagents)</td>
+          <td><span class="badge badge-green">Valid</span></td>
+          <td class="mono">sk-or-v1...a5673a7c · Balance: $—</td>
+        </tr>
+        <tr>
+          <td>GitHub Pages (Dashboard)</td>
+          <td><span class="badge badge-green">Live</span></td>
+          <td class="mono">mdates-cmd.github.io/mission-control</td>
+        </tr>
+        <tr>
+          <td>GHL Account</td>
+          <td><span class="badge badge-green">Active</span></td>
+          <td class="mono">nJBTL0pKOllLF6RnuDKo · marlenadates+apex@gmail.com</td>
+        </tr>
+        <tr>
+          <td>PayPal (reiliveorlando@gmail.com)</td>
+          <td><span class="badge badge-yellow">Under Review</span></td>
+          <td class="mono">Business verification pending (1-3 days)</td>
+        </tr>
+        <tr>
+          <td>Stripe</td>
+          <td><span class="badge badge-red">Not Connected</span></td>
+          <td class="mono">Blocked on website URL requirement</td>
+        </tr>
+        <tr>
+          <td>dealflowaiconsulting.com</td>
+          <td><span class="badge badge-yellow">In Progress</span></td>
+          <td class="mono">WordPress being set up · DNS propagated ✓</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 9: PAUSED PROJECTS
+============================================================ -->
+<section class="section" id="paused">
+  <div class="container">
+    <div class="section-title">⏸️ Paused Projects</div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Paused until revenue is flowing. Will be re-evaluated after Project 1 launch.</p>
+
+    <details>
+      <summary>The Reprogrammed Life Community <span class="badge badge-gray" style="margin-left:auto;margin-right:16px;">Paused</span></summary>
+      <div class="detail-body">Community platform paused until core revenue is established. Will revisit once Deal Flow AI funnel is generating consistent income.</div>
+    </details>
+    <details>
+      <summary>Inner Union / Warrior / Temple (Print-on-Demand) <span class="badge badge-gray" style="margin-left:auto;margin-right:16px;">Paused</span></summary>
+      <div class="detail-body">T-shirts, mugs, and related POD products under Inner Union brand. Paused — low urgency relative to other revenue sources.</div>
+    </details>
+    <details>
+      <summary>Homeschool Learning Path App <span class="badge badge-gray" style="margin-left:auto;margin-right:16px;">Paused</span></summary>
+      <div class="detail-body">App concept for homeschool/worldschool learning paths. Requires significant dev investment. Paused until income is stable.</div>
+    </details>
+    <details>
+      <summary>The Infinite Edge YouTube Channel <span class="badge badge-gray" style="margin-left:auto;margin-right:16px;">Paused</span></summary>
+      <div class="detail-body">YouTube channel concept. Paused — content pipeline for This Curious Life takes priority.</div>
+    </details>
+    <details>
+      <summary>Suno Music Albums <span class="badge badge-gray" style="margin-left:auto;margin-right:16px;">Paused</span></summary>
+      <div class="detail-body">AI-generated music albums via Suno. Fun project, low ROI priority. Revisit later.</div>
+    </details>
+    <details>
+      <summary>Foundation for AI Transition Support <span class="badge badge-gray" style="margin-left:auto;margin-right:16px;">Paused</span></summary>
+      <div class="detail-body">Non-profit / foundation concept for supporting people in AI career transitions. Long-term vision, not near-term priority.</div>
+    </details>
+    <details>
+      <summary>Anthropology Book <span class="badge badge-gray" style="margin-left:auto;margin-right:16px;">Paused</span></summary>
+      <div class="detail-body">Non-fiction book project. Paused until KDP pipeline is established with existing manuscripts.</div>
+    </details>
+    <details>
+      <summary>AI Influencer Development <span class="badge badge-gray" style="margin-left:auto;margin-right:16px;">Exploratory</span></summary>
+      <div class="detail-body">Synthetic AI influencer personas using voice/image/video cloning. Not based on Boss directly. Exploratory — no active work.</div>
+    </details>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:var(--bg2);border-top:1px solid var(--border2);padding:24px;text-align:center;">
+  <div style="font-size:11px;color:var(--faint);">Deal Flow AI Mission Control · Built by Neo · <span class="mono">v2.0 · 2026-03-11</span></div>
+  <div style="font-size:11px;color:var(--faint);margin-top:4px;">⚠️ Internal use only — not for public sharing</div>
+</footer>
+
+<script>
+  // ── COUNTDOWN ──
+  (function() {
+    const deadline = new Date('2026-06-07T00:00:00Z');
+    const start    = new Date('2026-03-10T00:00:00Z');
+    const now      = new Date();
+    const msDay    = 86400000;
+    const remaining = Math.max(0, Math.ceil((deadline - now) / msDay));
+    const elapsed   = Math.max(1, Math.ceil((now - start) / msDay));
+    document.getElementById('countdown-days').textContent = remaining;
+    document.getElementById('day-num').textContent = elapsed;
+  })();
+
+  // ── DAYS WAITING on decision cards ──
+  document.querySelectorAll('.decision-card[data-added]').forEach(function(card) {
+    const added = new Date(card.getAttribute('data-added') + 'T00:00:00Z');
+    const days  = Math.max(1, Math.ceil((new Date() - added) / 86400000));
+    const span  = card.querySelector('.decision-waiting');
+    if (span) span.textContent = days === 1 ? 'Day 1' : days + ' days';
+  });
+</script>
 
 </body>
 </html>
