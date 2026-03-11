@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission Control — Neo</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0f; color: #e0e0e0; min-height: 100vh; padding: 16px; }
+  h1 { font-size: 1.4rem; font-weight: 700; color: #fff; letter-spacing: 0.05em; text-transform: uppercase; }
+  .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #222; }
+  .timestamp { font-size: 0.75rem; color: #666; }
+  .mission { background: #111; border-left: 3px solid #7c3aed; padding: 12px 16px; border-radius: 4px; margin-bottom: 20px; font-size: 0.85rem; color: #aaa; line-height: 1.5; }
+  .mission strong { color: #c4b5fd; }
+  .section-title { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #555; margin-bottom: 10px; margin-top: 20px; }
+  .card { background: #111; border: 1px solid #1e1e2e; border-radius: 8px; padding: 14px; margin-bottom: 10px; }
+  .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+  .card-title { font-size: 0.95rem; font-weight: 600; color: #fff; }
+  .badge { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; padding: 3px 8px; border-radius: 99px; letter-spacing: 0.05em; white-space: nowrap; }
+  .badge-active { background: #052e16; color: #4ade80; border: 1px solid #166534; }
+  .badge-waiting { background: #1c1917; color: #fb923c; border: 1px solid #9a3412; }
+  .badge-paused { background: #1a1a2e; color: #818cf8; border: 1px solid #3730a3; }
+  .badge-todo { background: #111827; color: #94a3b8; border: 1px solid #334155; }
+  .card-meta { font-size: 0.78rem; color: #666; margin-bottom: 6px; }
+  .card-desc { font-size: 0.82rem; color: #999; line-height: 1.5; }
+  .milestone { font-size: 0.78rem; color: #f59e0b; margin-top: 6px; }
+  .milestone::before { content: "🎯 "; }
+  .waiting-tag { display: inline-block; background: #1c0a00; border: 1px solid #9a3412; color: #fb923c; font-size: 0.72rem; padding: 2px 8px; border-radius: 4px; margin-top: 6px; }
+  .neo-status { background: #0a0a1a; border: 1px solid #3730a3; border-radius: 8px; padding: 14px; margin-bottom: 20px; }
+  .neo-status .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #555; margin-bottom: 4px; }
+  .neo-status .value { font-size: 0.9rem; color: #c4b5fd; }
+  .divider { border: none; border-top: 1px solid #1e1e2e; margin: 16px 0; }
+  .priority-num { font-size: 0.7rem; color: #444; margin-right: 6px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 500px) { .grid-2 { grid-template-columns: 1fr; } }
+  .footer { font-size: 0.7rem; color: #444; text-align: center; margin-top: 24px; padding-top: 12px; border-top: 1px solid #1a1a1a; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>⚡ Mission Control</h1>
+  <span class="timestamp">Updated: 2026-03-10</span>
+</div>
+
+<div class="mission">
+  <strong>Mission:</strong> Build a self-sustaining org generating passive + semi-passive income within <strong>90 days</strong> to stabilize family finances and fund the worldschooling transition.
+</div>
+
+<!-- NEO STATUS -->
+<div class="section-title">Neo Status</div>
+<div class="neo-status">
+  <div class="label">Currently Working On</div>
+  <div class="value">Project 1 — Apex ebook & course buildout · Subagent spawned</div>
+  <hr style="border-color:#1e1e2e; margin: 10px 0;">
+  <div class="label">Model</div>
+  <div class="value">Claude Sonnet 4.6 (Anthropic API)</div>
+</div>
+
+<!-- WAITING FOR BOSS -->
+<div class="section-title">⏳ Waiting for Your Input</div>
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">Project 1: Apex</div>
+    <span class="badge badge-waiting">Needs Input</span>
+  </div>
+  <div class="card-desc">Subagent is ready. Need from you: existing ebook/course content, outlines, target audience notes, and GHL API access confirmation.</div>
+  <div class="waiting-tag">🟠 Awaiting your assets + details</div>
+</div>
+
+<hr class="divider">
+
+<!-- ACTIVE PROJECTS -->
+<div class="section-title">Active Projects</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-title"><span class="priority-num">#1</span>Apex — AI for Real Estate Pros</div>
+    <span class="badge badge-active">In Progress</span>
+  </div>
+  <div class="card-meta">Subagent: Apex Agent · Model: TBD (OpenRouter)</div>
+  <div class="card-desc">Build ebook, course, and community. Foundation for GPT/GHL licensing with coaching client.</div>
+  <div class="milestone">Digital product ready to sell — 30 days (by Apr 9)</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-title"><span class="priority-num">#2</span>This Curious Life Content</div>
+    <span class="badge badge-todo">Not Started</span>
+  </div>
+  <div class="card-meta">Channels: Anthropology · Health · Travel · Biohacking</div>
+  <div class="card-desc">Migrate from Twin.so. Spin up content pipeline subagent. Boss approves all content before posting.</div>
+  <div class="milestone">Consistent posting schedule — starts after Project 1 launch</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-title"><span class="priority-num">#3</span>Real Estate Business Revival</div>
+    <span class="badge badge-todo">Not Started</span>
+  </div>
+  <div class="card-meta">Tools: Podio CRM · AI call/text/email agent</div>
+  <div class="card-desc">Clean up Podio. Build AI lead management. Automate VA web scraping. Get husband out of call role.</div>
+  <div class="milestone">Consistent deal flow — timeline TBD</div>
+</div>
+
+<div class="grid-2">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="priority-num">#4</span>Publish Books</div>
+      <span class="badge badge-todo">Not Started</span>
+    </div>
+    <div class="card-desc">3 books on Amazon KDP: "Price of Being Good", "Nervous System Fix", husband's AI ebook.</div>
+    <div class="milestone">All live in 2-3 weeks</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="priority-num">#5</span>Romance Novel Series</div>
+      <span class="badge badge-todo">Not Started</span>
+    </div>
+    <div class="card-desc">Expand existing draft. Plan 3-5 book series. Covers + KDP launch.</div>
+    <div class="milestone">Book 1 in 45 days · Book 2 in 60 days</div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- PAUSED -->
+<div class="section-title">Paused (until revenue flows)</div>
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">7 Paused Projects</div>
+    <span class="badge badge-paused">Paused</span>
+  </div>
+  <div class="card-desc">Reprogrammed Life · Inner Union POD · Homeschool App · Infinite Edge YouTube · Suno Music · AI Transition Foundation · Anthropology Book</div>
+</div>
+
+<div class="footer">⚡ Neo — Chief of Staff · Mission Control v1.0</div>
+
+</body>
+</html>
