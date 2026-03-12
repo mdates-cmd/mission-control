@@ -1,0 +1,846 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Deal Flow AI — Preview</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></head><body style="margin:0;padding:0;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deal Flow AI - Real Estate AI Training Course</title>
+    <style>
+        .dfa-course {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #0f172a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        .dfa-course *, .dfa-course *::before, .dfa-course *::after {
+            box-sizing: border-box;
+        }
+        
+        .dfa-course a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        
+        .dfa-course a:hover {
+            color: #60a5fa;
+        }
+        
+        /* Sticky Topbar */
+        .dfa-course .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            border-bottom: 1px solid #3b82f6;
+            padding: 12px 20px;
+            text-align: center;
+            z-index: 1000;
+            font-weight: 600;
+        }
+        
+        .dfa-course .topbar span {
+            color: #f59e0b;
+        }
+        
+        /* Hero Section */
+        .dfa-course .hero {
+            padding: 160px 20px 100px;
+            text-align: center;
+            background: linear-gradient(180deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dfa-course .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center top, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .dfa-course .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin: 0 0 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .dfa-course .hero .subheadline {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: #94a3b8;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .dfa-course .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #0f172a;
+            font-size: 1.25rem;
+            font-weight: 700;
+            padding: 18px 50px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+        }
+        
+        .dfa-course .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.5);
+        }
+        
+        .dfa-course .price-tag {
+            margin-top: 30px;
+            font-size: 1.1rem;
+            color: #94a3b8;
+        }
+        
+        .dfa-course .price-tag .current {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f59e0b;
+        }
+        
+        .dfa-course .price-tag .original {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+        
+        /* Section Styling */
+        .dfa-course .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .dfa-course .section-title {
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin: 0 0 50px;
+            color: #ffffff;
+        }
+        
+        .dfa-course .section-title span {
+            color: #3b82f6;
+        }
+        
+        /* Audience Cards */
+        .dfa-course .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .dfa-course .card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .dfa-course .card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-5px);
+        }
+        
+        .dfa-course .card h3 {
+            color: #3b82f6;
+            margin: 0 0 15px;
+            font-size: 1.3rem;
+        }
+        
+        .dfa-course .card p {
+            color: #94a3b8;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        
+        /* Pain Cards - Red Border */
+        .dfa-course .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        
+        .dfa-course .pain-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 2px solid #dc2626;
+            border-radius: 12px;
+            padding: 30px;
+        }
+        
+        .dfa-course .pain-card h3 {
+            color: #ef4444;
+            margin: 0 0 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .dfa-course .pain-card h3::before {
+            content: '✕';
+            color: #dc2626;
+            font-weight: bold;
+        }
+        
+        .dfa-course .pain-card p {
+            color: #cbd5e1;
+            margin: 0;
+        }
+        
+        /* Promise Cards - Green Border */
+        .dfa-course .promise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        
+        .dfa-course .promise-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 30px;
+        }
+        
+        .dfa-course .promise-card h3 {
+            color: #10b981;
+            margin: 0 0 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .dfa-course .promise-card h3::before {
+            content: '&#10003;';
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .dfa-course .promise-card p {
+            color: #cbd5e1;
+            margin: 0;
+        }
+        
+        /* Curriculum Section */
+        .dfa-course .curriculum-section {
+            background: #0f172a;
+            padding: 80px 0;
+        }
+        
+        .dfa-course .curriculum-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .dfa-course .module {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .dfa-course .module-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .dfa-course .module-number {
+            background: #3b82f6;
+            color: #ffffff;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .dfa-course .module-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+        }
+        
+        .dfa-course .module-desc {
+            color: #94a3b8;
+            margin: 0;
+            padding-left: 60px;
+        }
+        
+        .dfa-course .bonus-section {
+            margin-top: 40px;
+        }
+        
+        .dfa-course .bonus-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #f59e0b;
+            margin: 0 0 30px;
+        }
+        
+        .dfa-course .bonus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        
+        .dfa-course .bonus-item {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .dfa-course .bonus-item h4 {
+            color: #f59e0b;
+            margin: 0 0 10px;
+            font-size: 1.1rem;
+        }
+        
+        .dfa-course .bonus-item p {
+            color: #94a3b8;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Full Width Breakout */
+        .dfa-course .full-width-breakout {
+            position: relative;
+            left: 50%;
+            margin-left: -50vw;
+            width: 100vw;
+            margin-top: -20px;
+            background: linear-gradient(90deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+            padding: 80px 20px;
+        }
+        
+        .dfa-course .full-width-breakout .inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        /* Offer Table */
+        .dfa-course .offer-table {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background: #1e293b;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .dfa-course .offer-table th,
+        .dfa-course .offer-table td {
+            padding: 20px 25px;
+            text-align: left;
+            border-bottom: 1px solid #334155;
+        }
+        
+        .dfa-course .offer-table th {
+            background: #0f172a;
+            color: #94a3b8;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .dfa-course .offer-table td {
+            color: #cbd5e1;
+        }
+        
+        .dfa-course .offer-table td.check {
+            color: #10b981;
+            font-size: 1.3rem;
+        }
+        
+        .dfa-course .offer-table .price-row {
+            background: #0f172a;
+        }
+        
+        .dfa-course .offer-table .price-row td {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        
+        .dfa-course .offer-table .price-row .final-price {
+            color: #f59e0b;
+            font-size: 2rem;
+        }
+        
+        .dfa-course .offer-table .price-row .old-price {
+            color: #64748b;
+            text-decoration: line-through;
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+        
+        /* Credibility Box */
+        .dfa-course .credibility {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .dfa-course .credibility h3 {
+            color: #3b82f6;
+            margin: 0 0 20px;
+            font-size: 1.5rem;
+        }
+        
+        .dfa-course .credibility p {
+            color: #94a3b8;
+            margin: 0;
+        }
+        
+        /* Guarantee */
+        .dfa-course .guarantee {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, #0f172a 0%, #1e3a5f 100%);
+        }
+        
+        .dfa-course .guarantee-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            padding: 20px 40px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .dfa-course .guarantee p {
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* FAQ */
+        .dfa-course .faq-grid {
+            display: grid;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .dfa-course .faq-item {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 25px;
+        }
+        
+        .dfa-course .faq-question {
+            color: #ffffff;
+            font-weight: 600;
+            margin: 0 0 15px;
+            font-size: 1.1rem;
+        }
+        
+        .dfa-course .faq-answer {
+            color: #94a3b8;
+            margin: 0;
+        }
+        
+        /* Final CTA */
+        .dfa-course .final-cta {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+        }
+        
+        .dfa-course .final-cta h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin: 0 0 20px;
+        }
+        
+        .dfa-course .final-cta p {
+            color: #94a3b8;
+            margin: 0 0 30px;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        .dfa-course .footer {
+            background: #0f172a;
+            border-top: 1px solid #334155;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .dfa-course .footer p {
+            color: #64748b;
+            margin: 0 0 20px;
+        }
+        
+        .dfa-course .footer .footer-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #0f172a;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 15px 40px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .dfa-course .footer .footer-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .dfa-course .hero {
+                padding: 140px 20px 80px;
+            }
+            
+            .dfa-course .module-desc {
+                padding-left: 0;
+            }
+            
+            .dfa-course .offer-table th,
+            .dfa-course .offer-table td {
+                padding: 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dfa-course">
+        <!-- Sticky Topbar -->
+        <div class="topbar">
+            Founding Member Price: <span>$197</span> &mdash; Closes When We Hit 100 Students
+        </div>
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Master AI for Real Estate &amp; Close More Deals</h1>
+            <p class="subheadline">The complete training program that transforms how you generate leads, analyze deals, and automate operations &mdash; without learning to code</p>
+            <a href="https://go.dealflowaiconsulting.com/course-order" class="cta-button">Get Instant Access</a>
+            <div class="price-tag">
+                <span class="current">$197</span> <span class="original">$297</span> &mdash; Limited Time Founding Price
+            </div>
+        </section>
+        
+        <!-- Who This Is For -->
+        <section class="section">
+            <h2 class="section-title">Who This Is <span>For</span></h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>Real Estate Agents</h3>
+                    <p>Generate listing descriptions in seconds, automate follow-up sequences, and focus on selling instead of admin work.</p>
+                </div>
+                <div class="card">
+                    <h3>Real Estate Investors</h3>
+                    <p>Analyze deals faster with AI-powered comps, calculators, and negotiation preparation in minutes, not hours.</p>
+                </div>
+                <div class="card">
+                    <h3>Wholesalers</h3>
+                    <p>Scale your outreach with automated cold calling, SMS sequences, and intelligent lead scoring.</p>
+                </div>
+                <div class="card">
+                    <h3>Title &amp; Escrow Pros</h3>
+                    <p>Streamline document processing and transaction coordination with AI-powered automation.</p>
+                </div>
+                <div class="card">
+                    <h3>Property Managers</h3>
+                    <p>Automate tenant communication, maintenance requests, and lease management with AI assistants.</p>
+                </div>
+                <div class="card">
+                    <h3>Mortgage Brokers</h3>
+                    <p>Enrich leads with automated pre-qualification, follow-up sequences, and CRM management.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Pain Section -->
+        <section class="section">
+            <h2 class="section-title">The <span>Pain</span> We're Solving</h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <h3>Leads Falling Through the Cracks</h3>
+                    <p>You&apos;re losing deals because you can&apos;t follow up with every lead instantly. Our AI never sleeps, so every lead gets immediate attention.</p>
+                </div>
+                <div class="pain-card">
+                    <h3>Admin Work Killing Your Time</h3>
+                    <p>Spending hours on listing descriptions, marketing copy, and paperwork instead of closing deals. Let AI handle the busywork.</p>
+                </div>
+                <div class="pain-card">
+                    <h3>Marketing That Doesn&apos;t Scale</h3>
+                    <p>Posting to social media and sending emails manually takes all day. Build systems that create 30 days of content in 2 hours.</p>
+                </div>
+                <div class="pain-card">
+                    <h3>Deal Analysis Takes Forever</h3>
+                    <p>Running comps, calculators, and negotiation prep for each deal eats your entire day. AI delivers analysis in minutes.</p>
+                </div>
+                <div class="pain-card">
+                    <h3>No Systems, No Leverage</h3>
+                    <p>You&apos;re the bottleneck in your own business. Build AI systems that work while you sleep or take time off.</p>
+                </div>
+                <div class="pain-card">
+                    <h3>Overwhelmed by New AI Tools</h3>
+                    <p>There are hundreds of AI tools and you don&apos;t know which ones actually work. We tested them all so you don&apos;t have to.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Promise Section -->
+        <section class="section">
+            <h2 class="section-title">What You&apos;ll <span>Gain</span></h2>
+            <div class="promise-grid">
+                <div class="promise-card">
+                    <h3>Lead Generation on Autopilot</h3>
+                    <p>30 days of social media content, cold outreach sequences, and listing descriptions generated in hours, not weeks.</p>
+                </div>
+                <div class="promise-card">
+                    <h3>AI-Powered Follow-Up System</h3>
+                    <p>Intelligent call agents, automated email sequences, and voicemail drops that nurture leads 24/7.</p>
+                </div>
+                <div class="promise-card">
+                    <h3>Deal Analysis in Minutes</h3>
+                    <p>Instant comps, investment calculators, negotiation prep, and inspection summaries at your fingertips.</p>
+                </div>
+                <div class="promise-card">
+                    <h3>Operations Automation</h3>
+                    <p>Document processing, transaction coordination, and VA SOPs that run while you focus on closing.</p>
+                </div>
+                <div class="promise-card">
+                    <h3>Your Personal AI System</h3>
+                    <p>Custom workflows, Zapier/Make integrations, and CRM setup that fits your specific business needs.</p>
+                </div>
+                <div class="promise-card">
+                    <h3>50+ Ready-to-Use Prompts</h3>
+                    <p>Copy-paste prompt library for every real estate task &mdash; no prompt engineering degree required.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Full Width Breakout - Curriculum -->
+        <div class="full-width-breakout">
+            <div class="inner">
+                <section class="curriculum-section">
+                    <div class="curriculum-container">
+                        <h2 class="section-title">Complete <span>Curriculum</span></h2>
+                        
+                        <div class="module">
+                            <div class="module-header">
+                                <div class="module-number">0</div>
+                                <h3 class="module-title">Quick Start &mdash; First Win in 60 Minutes</h3>
+                            </div>
+                            <p class="module-desc">Get your AI tools set up and generate your first piece of content or lead outreach in under an hour. No tech experience needed.</p>
+                        </div>
+                        
+                        <div class="module">
+                            <div class="module-header">
+                                <div class="module-number">1</div>
+                                <h3 class="module-title">AI Foundations &mdash; 5 Tools, Stack Setup, Prompting</h3>
+                            </div>
+                            <p class="module-desc">Master the essential AI tools every real estate professional needs. Learn prompt engineering basics that get results, not generic outputs.</p>
+                        </div>
+                        
+                        <div class="module">
+                            <div class="module-header">
+                                <div class="module-number">2</div>
+                                <h3 class="module-title">Lead Gen &amp; Marketing at Scale</h3>
+                            </div>
+                            <p class="module-desc">Create 30 days of social media content in 2 hours. Generate compelling listing descriptions instantly. Build cold outreach campaigns that convert.</p>
+                        </div>
+                        
+                        <div class="module">
+                            <div class="module-header">
+                                <div class="module-number">3</div>
+                                <h3 class="module-title">Lead Follow-Up That Never Sleeps</h3>
+                            </div>
+                            <p class="module-desc">Deploy AI call agents that answer questions, pre-qualify leads, and schedule appointments. Build email/SMS sequences with voicemail drops that nurture leads automatically. CRM enrichment and lead scoring that prioritizes your day.</p>
+                        </div>
+                        
+                        <div class="module">
+                            <div class="module-header">
+                                <div class="module-number">4</div>
+                                <h3 class="module-title">Deal Analysis in Minutes</h3>
+                            </div>
+                            <p class="module-desc">Run accurate comps instantly. Use investment calculators for quick decisions. Prepare for negotiations with AI-generated deal summaries. Summarize inspection reports in minutes.</p>
+                        </div>
+                        
+                        <div class="module">
+                            <div class="module-header">
+                                <div class="module-number">5</div>
+                                <h3 class="module-title">Operations &amp; Admin Automated</h3>
+                            </div>
+                            <p class="module-desc">Process documents automatically. Coordinate transactions with AI assistance. Build VA SOPs that scale your administrative capacity.</p>
+                        </div>
+                        
+                        <div class="module">
+                            <div class="module-header">
+                                <div class="module-number">6</div>
+                                <h3 class="module-title">Building Your Personal AI System</h3>
+                            </div>
+                            <p class="module-desc">Map your complete workflow. Connect tools with Zapier/Make. Integrate everything into your CRM for a seamless operation.</p>
+                        </div>
+                        
+                        <div class="bonus-section">
+                            <h3 class="bonus-title">Bonus Tracks</h3>
+                            <div class="bonus-grid">
+                                <div class="bonus-item">
+                                    <h4>Title &amp; Escrow</h4>
+                                    <p>AI document processing and communication automation for title professionals</p>
+                                </div>
+                                <div class="bonus-item">
+                                    <h4>Property Managers</h4>
+                                    <p>Tenant communication, maintenance, and lease management automation</p>
+                                </div>
+                                <div class="bonus-item">
+                                    <h4>Wholesalers</h4>
+                                    <p>Outbound prospecting, contract processing, and buyer matching systems</p>
+                                </div>
+                                <div class="bonus-item">
+                                    <h4>Inspectors</h4>
+                                    <p>Report generation, client communication, and scheduling automation</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <!-- Offer Table -->
+        <section class="section">
+            <h2 class="section-title">The <span>Offer</span></h2>
+            <table class="offer-table">
+                <thead>
+                    <tr>
+                        <th>What You Get</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Complete 7-Module Training Program</td>
+                        <td class="check">&#10003;</td>
+                    </tr>
+                    <tr>
+                        <td>50+ Prompt Library (Copy &amp; Paste Ready)</td>
+                        <td class="check">&#10003;</td>
+                    </tr>
+                    <tr>
+                        <td>Private Community Access</td>
+                        <td class="check">&#10003;</td>
+                    </tr>
+                    <tr>
+                        <td>4 Bonus Industry Tracks</td>
+                        <td class="check">&#10003;</td>
+                    </tr>
+                    <tr>
+                        <td>Future Updates Included</td>
+                        <td class="check">&#10003;</td>
+                    </tr>
+                    <tr class="price-row">
+                        <td>Total Value: <span class="old-price">$594</span></td>
+                        <td class="final-price">$197</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://go.dealflowaiconsulting.com/course-order" class="cta-button">Get Instant Access for $197</a>
+            </div>
+        </section>
+        
+        <!-- Credibility Box -->
+        <section class="section">
+            <div class="credibility">
+                <h3>Built by The Deal Flow AI Team</h3>
+                <p>This system wasn&apos;t built in a conference room. We built it inside a real wholesale real estate investing operation, using it daily to generate leads, analyze deals, and close transactions. Everything in this course is battle-tested and working right now.</p>
+            </div>
+        </section>
+        
+        <!-- 30-Day Guarantee -->
+        <section class="guarantee">
+            <div class="guarantee-badge">30-Day Money-Back Guarantee</div>
+            <p>If you complete the course and don&apos;t see immediate results, we&apos;ll refund every penny. No questions asked. You&apos;re protected either way.</p>
+        </section>
+        
+        <!-- FAQ -->
+        <section class="section">
+            <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <p class="faq-question">Do I need technical experience?</p>
+                    <p class="faq-answer">No. If you can use email and social media, you can use these AI tools. We walk you through setup step by step.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">How long do I have access?</p>
+                    <p class="faq-answer">Forever. Once you purchase, you have lifetime access to all course materials and future updates.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">Which AI tools are included?</p>
+                    <p class="faq-answer">We cover the 5 essential tools we use daily &mdash; all with free tiers or affordable pricing. No expensive subscriptions required.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">Is there a community?</p>
+                    <p class="faq-answer">Yes. Get access to our private community of real estate professionals implementing AI together.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">Can this work for any real estate niche?</p>
+                    <p class="faq-answer">Absolutely. Agents, investors, wholesalers, property managers, title pros, mortgage brokers &mdash; the AI adapts to your specific business.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">What if I&apos;m not satisfied?</p>
+                    <p class="faq-answer">30-day guarantee. Complete the course, implement the strategies, and if you&apos;re not impressed, email us for a full refund.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Final CTA -->
+        <section class="final-cta">
+            <h2>Ready to Transform Your Real Estate Business?</h2>
+            <p>Join the founding cohort and lock in your $197 price before we hit 100 students</p>
+            <a href="https://go.dealflowaiconsulting.com/course-order" class="cta-button">Get Instant Access Now</a>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Deal Flow AI. All rights reserved.</p>
+            <a href="https://go.dealflowaiconsulting.com/course-order" class="footer-cta">Secure Your Spot for $197</a>
+        </footer>
+    </div>
+</body>
+</html>
+</body></html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Deal Flow AI — Preview</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></head><body style="margin:0;padding:0;">
+<!-- DEAL FLOW AI: DONE FOR YOU — Sales Page | Paste into GHL Custom HTML element -->
+<style>
+  .dfa-dfy * { box-sizing: border-box; margin: 0; padding: 0; }
+  .dfa-dfy { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1e293b; line-height: 1.6; position: relative; left: 50%; margin-left: -50vw; width: 100vw; margin-top: -20px; }
+  .dfa-dfy a { text-decoration: none; }
+  .dfa-dfy-container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+  /* TOPBAR */
+  .dfa-dfy-topbar { background: #7c3aed; color: #fff; text-align: center; padding: 11px 24px; font-size: 13px; font-weight: 600; }
+  .dfa-dfy-topbar span { color: #fbbf24; font-weight: 800; }
+  /* HERO */
+  .dfa-dfy-hero { background: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%); color: #fff; padding: 72px 24px 60px; text-align: center; }
+  .dfa-dfy-eyebrow { display: inline-block; background: rgba(167,139,250,0.15); border: 1px solid rgba(167,139,250,0.35); color: #a78bfa; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; padding: 6px 16px; border-radius: 99px; margin-bottom: 24px; }
+  .dfa-dfy-hero h1 { font-size: clamp(1.9rem, 4.5vw, 3rem); font-weight: 900; line-height: 1.13; max-width: 780px; margin: 0 auto 18px; }
+  .dfa-dfy-hero h1 em { color: #fbbf24; font-style: normal; display: block; }
+  .dfa-dfy-hero-sub { font-size: 1.1rem; color: #94a3b8; max-width: 620px; margin: 0 auto 32px; line-height: 1.75; }
+  .dfa-dfy-btn-gold { display: inline-block; background: linear-gradient(135deg, #f59e0b, #d97706); color: #000; font-size: 1.1rem; font-weight: 800; padding: 19px 48px; border-radius: 9px; box-shadow: 0 4px 20px rgba(245,158,11,0.3); cursor: pointer; }
+  .dfa-dfy-btn-purple { display: inline-block; background: linear-gradient(135deg, #7c3aed, #6d28d9); color: #fff; font-size: 1.1rem; font-weight: 800; padding: 19px 48px; border-radius: 9px; box-shadow: 0 4px 20px rgba(124,58,237,0.3); cursor: pointer; }
+  .dfa-dfy-hero-trust { margin-top: 16px; font-size: 13px; color: #cbd5e1; font-weight: 500; }
+  .dfa-dfy-hero-trust strong { color: #4ade80; }
+  /* PROOF BAR */
+  .dfa-dfy-proof { background: #f1f5f9; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; padding: 16px 24px; text-align: center; font-size: 12.5px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+  /* SECTIONS */
+  .dfa-dfy-section { padding: 64px 24px; }
+  .dfa-dfy-section-gray { background: #f8fafc; }
+  .dfa-dfy-section-dark { background: #0f172a; color: #fff; }
+  .dfa-dfy-section-purple { background: linear-gradient(135deg, #1e1b4b, #0f172a); color: #fff; }
+  .dfa-dfy-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.13em; color: #7c3aed; margin-bottom: 10px; }
+  .dfa-dfy-label-lt { color: #a78bfa; }
+  .dfa-dfy-section-title { font-size: clamp(1.5rem, 3.2vw, 2.2rem); font-weight: 900; line-height: 1.2; margin-bottom: 12px; }
+  .dfa-dfy-section-sub { font-size: 1rem; color: #64748b; max-width: 560px; margin-bottom: 36px; line-height: 1.7; }
+  /* FOR YOU IF */
+  .dfa-dfy-fyi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .dfa-dfy-fyi-card { background: #fff; border: 1px solid #e9d5ff; border-left: 4px solid #7c3aed; border-radius: 10px; padding: 18px 20px; }
+  .dfa-dfy-fyi-card h3 { font-size: 0.9rem; font-weight: 700; color: #6d28d9; margin-bottom: 5px; }
+  .dfa-dfy-fyi-card p { font-size: 0.85rem; color: #64748b; line-height: 1.6; }
+  /* NOT FOR */
+  .dfa-dfy-nfy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; }
+  .dfa-dfy-nfy-card { background: #fef2f2; border: 1px solid #fecaca; border-left: 4px solid #ef4444; border-radius: 10px; padding: 18px 20px; }
+  .dfa-dfy-nfy-card h3 { font-size: 0.9rem; font-weight: 700; color: #dc2626; margin-bottom: 5px; }
+  .dfa-dfy-nfy-card p { font-size: 0.85rem; color: #64748b; line-height: 1.6; }
+  /* DELIVERABLES */
+  .dfa-dfy-del-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .dfa-dfy-del-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 22px 24px; }
+  .dfa-dfy-del-num { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #fbbf24; margin-bottom: 8px; }
+  .dfa-dfy-del-card h3 { font-size: 0.95rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
+  .dfa-dfy-del-card p { font-size: 13px; color: #94a3b8; line-height: 1.6; }
+  /* HOW IT WORKS */
+  .dfa-dfy-steps { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .dfa-dfy-step { text-align: center; padding: 28px 20px; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; }
+  .dfa-dfy-step-num { width: 48px; height: 48px; background: linear-gradient(135deg, #7c3aed, #6d28d9); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 900; margin: 0 auto 14px; }
+  .dfa-dfy-step h3 { font-size: 0.95rem; font-weight: 800; margin-bottom: 8px; }
+  .dfa-dfy-step p { font-size: 13px; color: #64748b; line-height: 1.6; }
+  .dfa-dfy-step-arrow { display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #cbd5e1; padding-top: 24px; }
+  /* COMPARISON */
+  .dfa-dfy-compare { width: 100%; border-collapse: collapse; margin-top: 16px; }
+  .dfa-dfy-compare th { padding: 14px 18px; font-size: 13px; font-weight: 700; text-align: left; background: #1e293b; color: #fff; }
+  .dfa-dfy-compare th:last-child { background: #7c3aed; text-align: center; }
+  .dfa-dfy-compare td { padding: 13px 18px; border-bottom: 1px solid #e2e8f0; font-size: 13.5px; background: #fff; }
+  .dfa-dfy-compare td:last-child { text-align: center; font-weight: 700; background: #faf5ff; }
+  .dfa-dfy-compare tr:last-child td { border-bottom: none; }
+  .dfa-dfy-compare .check { color: #059669; font-weight: 800; }
+  .dfa-dfy-compare .cross { color: #dc2626; }
+  /* CREDIBILITY */
+  .dfa-dfy-cred-box { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 36px 40px; }
+  .dfa-dfy-cred-box p { color: #94a3b8; line-height: 1.85; margin-bottom: 14px; font-size: 0.975rem; }
+  .dfa-dfy-cred-box p:last-child { margin-bottom: 0; }
+  .dfa-dfy-cred-box strong { color: #fff; }
+  .dfa-dfy-cred-sig { color: #fbbf24 !important; font-weight: 700 !important; margin-top: 20px !important; }
+  /* PRICING */
+  .dfa-dfy-price-box { background: #fff; border: 2px solid #7c3aed; border-radius: 16px; padding: 40px; max-width: 560px; margin: 0 auto; text-align: center; }
+  .dfa-dfy-price-tag { display: inline-block; background: #f5f3ff; color: #7c3aed; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 5px 14px; border-radius: 99px; margin-bottom: 16px; }
+  .dfa-dfy-price-box h3 { font-size: 1.3rem; font-weight: 900; margin-bottom: 8px; }
+  .dfa-dfy-price-box p { font-size: 14px; color: #64748b; margin-bottom: 24px; }
+  .dfa-dfy-price-big { font-size: 3rem; font-weight: 900; color: #7c3aed; line-height: 1; margin-bottom: 4px; }
+  .dfa-dfy-price-sub { font-size: 13px; color: #94a3b8; margin-bottom: 28px; }
+  .dfa-dfy-price-list { text-align: left; margin-bottom: 28px; }
+  .dfa-dfy-price-item { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; color: #1e293b; margin-bottom: 10px; }
+  .dfa-dfy-price-item-check { color: #059669; font-weight: 800; flex-shrink: 0; }
+  /* GUARANTEE */
+  .dfa-dfy-guarantee-box { background: #f0fdf4; border: 2px solid #86efac; border-radius: 14px; padding: 32px 36px; display: flex; gap: 24px; align-items: flex-start; }
+  .dfa-dfy-guarantee-icon { font-size: 2.5rem; flex-shrink: 0; color: #15803d; font-weight: 900; }
+  .dfa-dfy-guarantee-title { font-size: 1.1rem; font-weight: 800; color: #15803d; margin-bottom: 8px; }
+  .dfa-dfy-guarantee-text { font-size: 0.9rem; color: #1e293b; line-height: 1.75; }
+  /* FAQ */
+  .dfa-dfy-faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .dfa-dfy-faq-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px 22px; }
+  .dfa-dfy-faq-q { font-size: 0.92rem; font-weight: 700; margin-bottom: 8px; }
+  .dfa-dfy-faq-a { font-size: 0.855rem; color: #64748b; line-height: 1.65; }
+  /* FINAL CTA */
+  .dfa-dfy-final { background: linear-gradient(160deg, #1e1b4b, #0f172a); padding: 80px 24px; text-align: center; }
+  .dfa-dfy-final h2 { font-size: clamp(1.5rem, 3.2vw, 2.3rem); font-weight: 900; color: #fff; max-width: 660px; margin: 0 auto 16px; line-height: 1.2; }
+  .dfa-dfy-final p { font-size: 1rem; color: #94a3b8; max-width: 480px; margin: 0 auto 32px; }
+  /* FOOTER */
+  .dfa-dfy-footer { background: #0f172a; color: #475569; text-align: center; padding: 32px 24px; font-size: 12px; }
+  .dfa-dfy-footer a { color: #64748b; text-decoration: none; margin: 0 10px; }
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .dfa-dfy-fyi-grid, .dfa-dfy-nfy-grid, .dfa-dfy-del-grid, .dfa-dfy-faq-grid { grid-template-columns: 1fr; }
+    .dfa-dfy-steps { grid-template-columns: 1fr; }
+    .dfa-dfy-cred-box, .dfa-dfy-price-box { padding: 24px 20px; }
+    .dfa-dfy-guarantee-box { flex-direction: column; gap: 16px; padding: 24px; }
+  }
+</style>
+
+<div class="dfa-dfy">
+
+<div class="dfa-dfy-topbar">Limited to <span>10 Installs Per Month</span> &mdash; Application Required &mdash; <span>5-Day Turnaround</span></div>
+
+<div class="dfa-dfy-hero">
+  <div class="dfa-dfy-container">
+    <div class="dfa-dfy-eyebrow">Done For You &mdash; AI System Install</div>
+    <h1>We Install the Complete AI System Into Your Business.
+      <em>You Just Show Up to Close Deals.</em>
+    </h1>
+    <p class="dfa-dfy-hero-sub">The exact AI system we built for our own wholesale operation &mdash; pre-built automations, follow-up sequences, lead scoring, content templates &mdash; installed directly into your GHL account in 5 business days.</p>
+    <a href="https://go.dealflowaiconsulting.com/dfy-apply" class="dfa-dfy-btn-purple">Apply for a DFY Install &rarr;</a>
+    <p class="dfa-dfy-hero-trust"><strong>&#10003; Application-Only</strong> &nbsp;&middot;&nbsp; 10 Spots Per Month &nbsp;&middot;&nbsp; 5-Day Install &nbsp;&middot;&nbsp; 30-Day Guarantee</p>
+  </div>
+</div>
+
+<div class="dfa-dfy-proof">Built Inside a Real Wholesale Operation &middot; Pre-Built &middot; Battle-Tested &middot; Ready to Install</div>
+
+<div class="dfa-dfy-section dfa-dfy-section-gray">
+  <div class="dfa-dfy-container">
+    <div class="dfa-dfy-label">This Is For You If&hellip;</div>
+    <h2 class="dfa-dfy-section-title">You Know AI is the Answer. You Just Don&rsquo;t Want to Build It Yourself.</h2>
+    <p class="dfa-dfy-section-sub">This is for operators who are ready to run a modern AI-powered real estate business &mdash; without spending weeks figuring out how to set it up.</p>
+    <div class="dfa-dfy-fyi-grid">
+      <div class="dfa-dfy-fyi-card"><h3>You&rsquo;ve already read the Playbook</h3><p>You know what&rsquo;s possible. Now you want someone to install it for you, not teach you how to do it yourself.</p></div>
+      <div class="dfa-dfy-fyi-card"><h3>Your time is worth more than setup time</h3><p>Every hour you spend building automations is an hour you&rsquo;re not on calls, closing deals, or generating revenue.</p></div>
+      <div class="dfa-dfy-fyi-card"><h3>You already have GHL (or are ready to get it)</h3><p>The system lives inside GHL. If you&rsquo;re already using it, we can start immediately. If not, we&rsquo;ll help you get set up.</p></div>
+      <div class="dfa-dfy-fyi-card"><h3>You&rsquo;re tired of half-finished systems</h3><p>You&rsquo;ve tried setting things up before. You&rsquo;ve got half-built automations sitting unused. This ends that pattern permanently.</p></div>
+      <div class="dfa-dfy-fyi-card"><h3>You want a running start, not a course</h3><p>You learn by doing &mdash; and &ldquo;doing&rdquo; means having a working system in front of you, not watching videos about one.</p></div>
+      <div class="dfa-dfy-fyi-card"><h3>You&rsquo;re ready to scale now</h3><p>You have deals in the pipeline and leads coming in. The bottleneck isn&rsquo;t motivation &mdash; it&rsquo;s systems. Let&rsquo;s fix that.</p></div>
+    </div>
+    <div style="margin-top:28px;">
+      <div class="dfa-dfy-label" style="color:#ef4444;">This Is NOT For You If&hellip;</div>
+      <div class="dfa-dfy-nfy-grid">
+        <div class="dfa-dfy-nfy-card"><h3>You want a custom build</h3><p>This is a pre-built system install, not a bespoke development project. We don&rsquo;t build custom automations on request.</p></div>
+        <div class="dfa-dfy-nfy-card"><h3>You&rsquo;re not using GHL</h3><p>This system is built for GoHighLevel. If you&rsquo;re on a different CRM, this install won&rsquo;t work for you without migration.</p></div>
+        <div class="dfa-dfy-nfy-card"><h3>You&rsquo;re not in real estate</h3><p>Every automation, sequence, and template in this system is built specifically for real estate operators. It won&rsquo;t translate to other industries.</p></div>
+        <div class="dfa-dfy-nfy-card"><h3>You want someone to run it for you</h3><p>We install and configure. You operate. This is a one-time setup, not an ongoing management retainer.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dfa-dfy-section dfa-dfy-section-dark">
+  <div class="dfa-dfy-container">
+    <div class="dfa-dfy-label dfa-dfy-label-lt">What You Get</div>
+    <h2 class="dfa-dfy-section-title" style="color:#fff;margin-bottom:10px;">8 Deliverables. Installed and Running in 5 Business Days.</h2>
+    <p style="color:#64748b;margin-bottom:32px;font-size:1rem;">Not templates to fill in. Not instructions to follow. Installed, configured, and live in your account.</p>
+    <div class="dfa-dfy-del-grid">
+      <div class="dfa-dfy-del-card">
+        <div class="dfa-dfy-del-num">01 &mdash; Foundation</div>
+        <h3>Full GHL Account Audit &amp; Setup</h3>
+        <p>We review your existing account, clean up anything that will conflict, and configure your GHL sub-account to be ready for the system install. Fresh start or existing account &mdash; we handle it.</p>
+      </div>
+      <div class="dfa-dfy-del-card">
+        <div class="dfa-dfy-del-num">02 &mdash; Follow-Up</div>
+        <h3>Pre-Built Follow-Up Sequences Installed</h3>
+        <p>Text, email, and voicemail drop sequences for every lead stage &mdash; new inquiry, no contact, warm lead, motivated seller, and post-offer follow-up. Proven copy, ready to go.</p>
+      </div>
+      <div class="dfa-dfy-del-card">
+        <div class="dfa-dfy-del-num">03 &mdash; Intelligence</div>
+        <h3>Lead Scoring Workflow Configured</h3>
+        <p>Your leads automatically scored and sorted by motivation level. Highest-priority sellers rise to the top. You work the hot list first, every time, without manual sorting.</p>
+      </div>
+      <div class="dfa-dfy-del-card">
+        <div class="dfa-dfy-del-num">04 &mdash; Content</div>
+        <h3>AI Content Templates Library Loaded</h3>
+        <p>50+ AI content templates loaded into your account &mdash; listing descriptions, seller emails, social posts, offer cover letters, and negotiation scripts. One click to generate.</p>
+      </div>
+      <div class="dfa-dfy-del-card">
+        <div class="dfa-dfy-del-num">05 &mdash; Automation</div>
+        <h3>3 Core Automation Workflows Activated</h3>
+        <p>Lead capture &rarr; instant notification and follow-up trigger. Motivated seller identified &rarr; priority alert. Deal analysis request &rarr; auto-populated analysis template. All running automatically.</p>
+      </div>
+      <div class="dfa-dfy-del-card">
+        <div class="dfa-dfy-del-num">06 &mdash; Onboarding</div>
+        <h3>30-Minute Onboarding Call</h3>
+        <p>We walk you through everything we installed, show you how to use each piece, and answer your questions. You leave the call knowing exactly how your new system works.</p>
+      </div>
+      <div class="dfa-dfy-del-card">
+        <div class="dfa-dfy-del-num">07 &mdash; Support</div>
+        <h3>30 Days of Post-Install Email Support</h3>
+        <p>Questions after the call? Something not working the way you expected? Our team is on email for 30 days post-install to make sure everything is running smoothly.</p>
+      </div>
+      <div class="dfa-dfy-del-card">
+        <div class="dfa-dfy-del-num">08 &mdash; Updates</div>
+        <h3>Lifetime Access to System Updates</h3>
+        <p>When we improve the system &mdash; new sequences, new templates, new automations &mdash; you get them. One install, permanent access to everything we build going forward.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dfa-dfy-section">
+  <div class="dfa-dfy-container">
+    <div class="dfa-dfy-label">The Process</div>
+    <h2 class="dfa-dfy-section-title">Three Steps. Five Days. Done.</h2>
+    <p class="dfa-dfy-section-sub">No lengthy onboarding. No back-and-forth. We move fast because the system is already built.</p>
+    <div class="dfa-dfy-steps">
+      <div class="dfa-dfy-step">
+        <div class="dfa-dfy-step-num">1</div>
+        <h3>Apply</h3>
+        <p>Fill out the short application (5 minutes). We review within 24 hours and let you know if you&rsquo;re a fit. If approved, you&rsquo;ll receive a payment link and onboarding form.</p>
+      </div>
+      <div class="dfa-dfy-step">
+        <div class="dfa-dfy-step-num">2</div>
+        <h3>Get Approved &amp; Onboard</h3>
+        <p>Complete your onboarding form, share GHL access, and we schedule your install. We confirm everything before touching a single setting in your account.</p>
+      </div>
+      <div class="dfa-dfy-step">
+        <div class="dfa-dfy-step-num">3</div>
+        <h3>Go Live in 5 Days</h3>
+        <p>Your system is installed, configured, and tested. We walk you through it on your 30-minute onboarding call. Your AI system is live and running before the week is out.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dfa-dfy-section dfa-dfy-section-gray">
+  <div class="dfa-dfy-container">
+    <div class="dfa-dfy-label">DIY vs. DFY</div>
+    <h2 class="dfa-dfy-section-title" style="margin-bottom:24px;">What Does &ldquo;Done For You&rdquo; Actually Buy You?</h2>
+    <table class="dfa-dfy-compare">
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>DIY (After the Course)</th>
+          <th>DFY Install</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>GHL setup and configuration</td><td>2&ndash;4 hours of trial and error</td><td class="check">&#10003; Done for you</td></tr>
+        <tr><td>Follow-up sequence copy</td><td>Write and test each one yourself</td><td class="check">&#10003; Pre-built and installed</td></tr>
+        <tr><td>Lead scoring logic</td><td>Figure out the workflow builder</td><td class="check">&#10003; Configured and active</td></tr>
+        <tr><td>Content template library</td><td>Build and organize 50+ prompts</td><td class="check">&#10003; Loaded into your account</td></tr>
+        <tr><td>Automation workflows (3 core)</td><td>Build each trigger and action manually</td><td class="check">&#10003; All three running on day 1</td></tr>
+        <tr><td>Testing and debugging</td><td>Every mistake is your time</td><td class="check">&#10003; We test before handoff</td></tr>
+        <tr><td>Knowing it&rsquo;s set up correctly</td><td>Uncertain &mdash; did I do this right?</td><td class="check">&#10003; Guaranteed or we fix it</td></tr>
+        <tr><td>Time to first lead working the system</td><td>1&ndash;3 weeks (optimistically)</td><td class="check">&#10003; 5 business days</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="dfa-dfy-section dfa-dfy-section-dark">
+  <div class="dfa-dfy-container">
+    <div class="dfa-dfy-label dfa-dfy-label-lt">Why Trust This</div>
+    <h2 class="dfa-dfy-section-title" style="color:#fff;margin-bottom:28px;">We Built This for Ourselves First</h2>
+    <div class="dfa-dfy-cred-box">
+      <p>This is not a system that was designed to be sold. It was built inside a real wholesale real estate operation to solve real problems &mdash; slow follow-up, manual lead sorting, hours lost to repetitive content creation.</p>
+      <p>We ran it on our own leads, our own sellers, our own pipeline. When it cut our team&rsquo;s workload in half and improved our contact rate, we started thinking about who else could use it.</p>
+      <p><strong>The DFY install is exactly what we built for ourselves &mdash; not a watered-down version, not a demo. The same system, installed into your account.</strong></p>
+      <p>We limit installs to 10 per month because quality matters more than volume. Every install is reviewed by the same team that runs it in their own business.</p>
+      <p class="dfa-dfy-cred-sig">&mdash; The Deal Flow AI Team</p>
+    </div>
+  </div>
+</div>
+
+<div class="dfa-dfy-section">
+  <div class="dfa-dfy-container" style="text-align:center;">
+    <div class="dfa-dfy-label" style="text-align:center;">Investment</div>
+    <h2 class="dfa-dfy-section-title" style="margin-bottom:32px;text-align:center;">One Investment. Your Entire AI System Running in 5 Days.</h2>
+    <div class="dfa-dfy-price-box">
+      <div class="dfa-dfy-price-tag">DFY Install &mdash; Application Required</div>
+      <h3>Deal Flow AI: Done For You</h3>
+      <p>Complete AI system install into your GHL account</p>
+      <div class="dfa-dfy-price-big">$997</div>
+      <div class="dfa-dfy-price-sub">One-time investment &middot; 10 spots per month &middot; 5-day turnaround</div>
+      <div class="dfa-dfy-price-list">
+        <div class="dfa-dfy-price-item"><span class="dfa-dfy-price-item-check">&#10003;</span><span>Full GHL audit &amp; setup</span></div>
+        <div class="dfa-dfy-price-item"><span class="dfa-dfy-price-item-check">&#10003;</span><span>Pre-built follow-up sequences (text, email, voicemail drops)</span></div>
+        <div class="dfa-dfy-price-item"><span class="dfa-dfy-price-item-check">&#10003;</span><span>Lead scoring workflow configured</span></div>
+        <div class="dfa-dfy-price-item"><span class="dfa-dfy-price-item-check">&#10003;</span><span>50+ AI content templates loaded</span></div>
+        <div class="dfa-dfy-price-item"><span class="dfa-dfy-price-item-check">&#10003;</span><span>3 core automation workflows activated</span></div>
+        <div class="dfa-dfy-price-item"><span class="dfa-dfy-price-item-check">&#10003;</span><span>30-minute onboarding call</span></div>
+        <div class="dfa-dfy-price-item"><span class="dfa-dfy-price-item-check">&#10003;</span><span>30 days post-install email support</span></div>
+        <div class="dfa-dfy-price-item"><span class="dfa-dfy-price-item-check">&#10003;</span><span>Lifetime access to all future system updates</span></div>
+      </div>
+      <a href="https://go.dealflowaiconsulting.com/dfy-apply" class="dfa-dfy-btn-purple" style="display:block;text-align:center;">Apply for Your DFY Install &rarr;</a>
+      <p style="margin-top:12px;font-size:12px;color:#94a3b8;">Applications reviewed within 24 hours &middot; Spots limited to 10 per month</p>
+    </div>
+  </div>
+</div>
+
+<div class="dfa-dfy-section dfa-dfy-section-gray">
+  <div class="dfa-dfy-container">
+    <div style="max-width:640px;margin:0 auto;">
+      <div class="dfa-dfy-guarantee-box">
+        <div class="dfa-dfy-guarantee-icon">&#10003;</div>
+        <div>
+          <div class="dfa-dfy-guarantee-title">30-Day Satisfaction Guarantee</div>
+          <p class="dfa-dfy-guarantee-text">If your system isn&rsquo;t installed correctly and running within 5 business days of your approved onboarding form, we either fix it immediately or refund your investment in full. No fine print, no arguments. We stand behind every install we do.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dfa-dfy-section">
+  <div class="dfa-dfy-container">
+    <div class="dfa-dfy-label">Questions</div>
+    <h2 class="dfa-dfy-section-title" style="margin-bottom:28px;">Frequently Asked Questions</h2>
+    <div class="dfa-dfy-faq-grid">
+      <div class="dfa-dfy-faq-card"><div class="dfa-dfy-faq-q">Do I need to own the Playbook or Course first?</div><div class="dfa-dfy-faq-a">No requirement, but we recommend the Playbook at minimum so you understand what we&rsquo;re installing and can use it effectively once it&rsquo;s live.</div></div>
+      <div class="dfa-dfy-faq-card"><div class="dfa-dfy-faq-q">I&rsquo;m new to GHL. Can you still install it?</div><div class="dfa-dfy-faq-a">Yes. We handle the setup from scratch. You&rsquo;ll need an active GHL account (we&rsquo;ll help you set one up if you don&rsquo;t have one) and we do the rest.</div></div>
+      <div class="dfa-dfy-faq-card"><div class="dfa-dfy-faq-q">What if I already have automations set up in GHL?</div><div class="dfa-dfy-faq-a">Our audit step is designed for exactly this. We review what you have, identify anything that conflicts, and install the system in a way that complements or replaces what&rsquo;s there.</div></div>
+      <div class="dfa-dfy-faq-card"><div class="dfa-dfy-faq-q">Is this really only 10 spots per month?</div><div class="dfa-dfy-faq-a">Yes. Each install is reviewed by our core team and we won&rsquo;t sacrifice quality for volume. When spots fill, the application form closes until the following month.</div></div>
+      <div class="dfa-dfy-faq-card"><div class="dfa-dfy-faq-q">What happens after the 30-day support period?</div><div class="dfa-dfy-faq-a">You keep the system, the templates, and access to all future updates. You can also upgrade to ongoing support or a white-label license if you want to offer this to your own clients.</div></div>
+      <div class="dfa-dfy-faq-card"><div class="dfa-dfy-faq-q">Can I white-label this for my own clients?</div><div class="dfa-dfy-faq-a">Yes &mdash; white-label licensing is available separately for brokers, coaches, and team leaders who want to offer this system under their own brand. Contact us to discuss.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="dfa-dfy-final">
+  <div class="dfa-dfy-container">
+    <h2>Stop Building. Start Closing.</h2>
+    <p>Every week your AI system isn&rsquo;t running is a week of leads going cold, hours lost to manual work, and deals slipping through the gaps. Apply today &mdash; spots fill fast.</p>
+    <a href="https://go.dealflowaiconsulting.com/dfy-apply" class="dfa-dfy-btn-purple">Apply for Your DFY Install &rarr;</a>
+    <p style="margin-top:14px;font-size:12px;color:#334155;">Application reviewed within 24 hours &middot; 10 spots per month &middot; 5-day install</p>
+  </div>
+</div>
+
+<div class="dfa-dfy-footer">
+  <p style="margin-bottom:8px;color:#64748b;font-weight:600;">Deal Flow AI &mdash; AI Tools &amp; Systems for Real Estate Professionals</p>
+  <p><a href="#">Privacy Policy</a><a href="#">Terms</a><a href="#">Refund Policy</a></p>
+  <p style="margin-top:12px;">&copy; 2026 Deal Flow AI Consulting. All rights reserved.</p>
+</div>
+
+</div>
+</body></html>
