@@ -934,62 +934,160 @@
 
     <!-- UPDATE: Add new entries at TOP (reverse chronological). Keep last 20. -->
     <div>
+
       <div class="log-entry">
-        <div class="log-time">2026-03-11 17:08</div>
+        <div class="log-time">2026-03-12 01:40</div>
         <div class="log-agent">NEO</div>
         <div class="log-action">
-          Spawned MiniMax M2.5 subagent — test paragraph on AI in wholesale real estate. Confirmed pipeline working.
+          Dashboard updated: decision queue cleared (revenue target $30k confirmed, email forwarding live, OAuth configured). Countdown JS fixed (was pointing to Jun 7 instead of Apr 10).
           <span class="badge badge-green" style="margin-left:8px;">Completed</span>
         </div>
       </div>
+
+      <div class="log-entry">
+        <div class="log-time">2026-03-12 01:17</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          Fixed www.dealflowaiconsulting.com 404 — updated CNAME from sites.ludicrous.cloud to root domain via Cloudflare API. Identified http:// not redirecting to https:// — Boss to enable "Always Use HTTPS" in Cloudflare Edge Certificates.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-time">2026-03-12 01:03</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          Built order form header HTML for GHL Order Form page (order-form-header-ghl.html) — "Step 2 of 2" header, order summary, trust badges. To be placed above native GHL Order Form element.
+          <span class="badge badge-yellow" style="margin-left:8px;">Pending Install</span>
+        </div>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-time">2026-03-12 00:30</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          Rebuilt sales page HTML from scratch (sales-page-ghl.html) — all emojis removed, replaced with HTML entities to fix GHL UTF-8 encoding failure. Fixed bottom CTA subtext contrast (dark text on dark bg). Confirmed live in GHL.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-time">2026-03-11 23:03</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          Diagnosed WordPress showing /sales as homepage. Identified static page redirect in WP Settings → Reading. Enabled Cloudflare proxy on A record to fix SSL "Not Secure" on main domain.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-time">2026-03-11 21:00</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          Bonus track subagent respawned (MiniMax M2.5) — original timed out after 10min. Writing 4 specialty tracks: Wholesalers, Title &amp; Escrow, Property Managers, Buy &amp; Hold Investors (400–500 words each).
+          <span class="badge badge-yellow" style="margin-left:8px;">In Progress</span>
+        </div>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-time">2026-03-11 20:15</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          GHL sales page HTML deployed (sales-page-ghl.html) — full-width CSS breakout, hero, pain/promise grid, modules, offer table, guarantee, FAQ, final CTA. All buy buttons pointing to go.dealflowaiconsulting.com/order. Confirmed live.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-time">2026-03-11 19:30</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          DNS updated via Cloudflare API: A record → 66.96.147.106 (WordPress/iPage), go CNAME → sites.ludicrous.cloud (GHL), checkout CNAME added. Boss manually added go.dealflowaiconsulting.com to GHL domains.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-time">2026-03-11 19:00</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          GHL Private Integration API key added and confirmed. Products created in GHL Payments: Deal Flow AI Playbook ($47) and AI Prompt Swipe File ($27). Order bump enabled on Order Form step. Order Form published.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-time">2026-03-11 18:30</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          Stripe account created and connected to GHL as primary payment processor. PayPal under business review — Stripe unblocks checkout immediately.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
+
       <div class="log-entry">
         <div class="log-time">2026-03-11 17:44</div>
         <div class="log-agent">NEO</div>
         <div class="log-action">
-          Deployed Mission Control dashboard to GitHub Pages (mdates-cmd.github.io/mission-control). Live.
+          Deployed Mission Control v2 dashboard to GitHub Pages (mdates-cmd.github.io/mission-control). 9 sections: mission header, revenue tracker, org chart, projects, decisions, API costs, activity log, system health, paused projects.
           <span class="badge badge-green" style="margin-left:8px;">Completed</span>
         </div>
       </div>
+
+      <div class="log-entry">
+        <div class="log-time">2026-03-11 17:08</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          Spawned MiniMax M2.5 subagent — test paragraph on AI in wholesale real estate. Confirmed subagent pipeline working.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
+
       <div class="log-entry">
         <div class="log-time">2026-03-11 16:54</div>
         <div class="log-agent">NEO</div>
         <div class="log-action">
-          Built WordPress landing page (index.html + theme zip) for dealflowaiconsulting.com — needed to unblock Stripe setup.
+          Built WordPress theme (deal-flow-ai-theme.zip) for dealflowaiconsulting.com — custom homepage, nav CTA "Get the Playbook", proof bar, hero section. Uploaded to iPage. Site live.
           <span class="badge badge-green" style="margin-left:8px;">Completed</span>
         </div>
       </div>
+
       <div class="log-entry">
         <div class="log-time">2026-03-11 15:17</div>
         <div class="log-agent">NEO</div>
         <div class="log-action">
-          PayPal business review triggered during GHL integration. Pivoting to Stripe as primary payment processor.
-          <span class="badge badge-yellow" style="margin-left:8px;">In Progress</span>
+          PayPal business review triggered during GHL integration — pivoting to Stripe as primary processor. hello@ and info@dealflowaiconsulting.com created; forwarding configured to Gmail.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
         </div>
       </div>
+
       <div class="log-entry">
         <div class="log-time">2026-03-11 04:48</div>
         <div class="log-agent">NEO</div>
         <div class="log-action">
-          Diagnosed PayPal OAuth issue — GHL partner flow routing to new account creation. Guided Boss to complete business upgrade on existing account.
+          Diagnosed PayPal OAuth issue — GHL partner flow routing to new account. Guided Boss through business upgrade on existing PayPal account.
           <span class="badge badge-green" style="margin-left:8px;">Completed</span>
         </div>
       </div>
+
       <div class="log-entry">
         <div class="log-time">2026-03-10 —</div>
         <div class="log-agent">NEO</div>
         <div class="log-action">
-          GHL funnel created: "Deal Flow AI Playbook - Sales Funnel" with 3 steps (Sales Page, Order Form, Thank You). Location ID confirmed.
+          GHL account authenticated. Funnel created: "Deal Flow AI Playbook - Sales Funnel" — 3 steps (Sales Page, Order Form, Thank You). Cloudflare set up for dealflowaiconsulting.com. Brand file, credentials file, project structure initialized.
           <span class="badge badge-green" style="margin-left:8px;">Completed</span>
         </div>
       </div>
+
       <div class="log-entry">
         <div class="log-time">2026-03-10 —</div>
         <div class="log-agent">NEO</div>
         <div class="log-action">
-          Ebook finalized at ~9,700 words. Fact-checked stats, rewrote Chapter 4 opening, added chapter bridges, fixed conclusion (community invite replaces free prompts offer).
+          Mission start. Identity established. SOUL.md written. MEMORY.md initialized. Projects 1–5 scoped. Ebook draft v1 written and finalized at ~9,700 words — scrubbed of location identifiers, bonus tracks added, EBOOK-FINAL.md locked.
           <span class="badge badge-green" style="margin-left:8px;">Completed</span>
         </div>
       </div>
+
     </div>
   </div>
 </section>
