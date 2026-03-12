@@ -1,218 +1,580 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Deal Flow AI — Lead Magnet Preview</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></head><body style="margin:0;padding:0;">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Deal Flow AI — Lead Magnet C Preview</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></head><body style="margin:0;padding:0;"><style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-.dfa-lmC {
+.dfa-lmC-wrap,
+.dfa-lmC-wrap * {
+  box-sizing: border-box;
+}
+
+.dfa-lmC-wrap {
   position: relative;
   left: 50%;
   margin-left: -50vw;
   width: 100vw;
-  margin-top: -20px;
+  margin-top: 0;
+  background: #ffffff;
+  color: #0f172a;
   font-family: 'Inter', Arial, sans-serif;
-  background: linear-gradient(180deg, #eff6ff 0%, #ffffff 26%, #f8fafc 100%);
+}
+
+.dfa-lmC-section {
+  padding: 72px 24px;
+}
+
+.dfa-lmC-container {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.dfa-lmC-topbar {
+  background: #f59e0b;
+  color: #0f172a;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 14px 20px;
+}
+
+.dfa-lmC-hero {
+  background: linear-gradient(180deg, #f8fafc 0%, #eff6ff 100%);
+  padding-top: 84px;
+  padding-bottom: 84px;
+}
+
+.dfa-lmC-heroGrid {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dfa-lmC-badge {
+  display: inline-block;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.24);
+  color: #3b82f6;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.dfa-lmC-title {
+  margin: 0 0 20px;
+  font-size: clamp(38px, 6vw, 64px);
+  line-height: 1.02;
+  font-weight: 900;
+  letter-spacing: -0.04em;
   color: #0f172a;
 }
-.dfa-lmC * { box-sizing: border-box; }
-.dfa-lmC .dfa-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-.dfa-lmC .dfa-topbar { background: #0f172a; color: #fff; text-align: center; padding: 12px 20px; font-size: 14px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
-.dfa-lmC .dfa-hero {
-  padding: 84px 0 54px;
-  background: radial-gradient(circle at top right, rgba(59,130,246,.20), transparent 25%), radial-gradient(circle at left center, rgba(245,158,11,.16), transparent 22%), linear-gradient(135deg, #0f172a 0%, #172554 45%, #1e40af 100%);
-  color: #fff;
+
+.dfa-lmC-subtitle {
+  margin: 0 auto 30px;
+  max-width: 760px;
+  font-size: 20px;
+  line-height: 1.65;
+  color: #334155;
 }
-.dfa-lmC .dfa-hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 34px; align-items: center; }
-.dfa-lmC .dfa-kicker {
-  display: inline-block; margin-bottom: 18px; padding: 8px 14px; border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.08); color: #bfdbfe;
-  font-size: 13px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+
+.dfa-lmC-note {
+  margin: 0 auto 34px;
+  max-width: 680px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #475569;
 }
-.dfa-lmC h1 { font-size: clamp(38px, 5vw, 60px); line-height: 1.04; margin: 0 0 18px; font-weight: 800; letter-spacing: -.03em; }
-.dfa-lmC .dfa-subheadline { font-size: 19px; line-height: 1.7; color: #dbeafe; margin: 0 0 28px; max-width: 680px; }
-.dfa-lmC .dfa-cta {
-  display: inline-block; text-decoration: none; background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%); color: #0f172a;
-  padding: 16px 28px; border-radius: 14px; font-size: 17px; font-weight: 800; box-shadow: 0 18px 40px rgba(245,158,11,.24);
+
+.dfa-lmC-button {
+  display: inline-block;
+  background: #f59e0b;
+  color: #0f172a;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 800;
+  padding: 18px 30px;
+  border-radius: 14px;
+  box-shadow: 0 14px 30px rgba(245, 158, 11, 0.28);
 }
-.dfa-lmC .dfa-hero-note {
-  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 24px; padding: 28px; backdrop-filter: blur(8px);
+
+.dfa-lmC-button:hover {
+  background: #fbbf24;
 }
-.dfa-lmC .dfa-hero-note h3 { margin: 0 0 14px; font-size: 24px; }
-.dfa-lmC .dfa-hero-note p { margin: 0; color: #dbeafe; line-height: 1.7; }
-.dfa-lmC .dfa-section { padding: 72px 0; }
-.dfa-lmC .dfa-heading { font-size: 34px; line-height: 1.15; margin: 0 0 12px; font-weight: 800; text-align: center; }
-.dfa-lmC .dfa-intro { max-width: 760px; margin: 0 auto 36px; text-align: center; font-size: 18px; line-height: 1.7; color: #475569; }
-.dfa-lmC .dfa-blueprint-shell {
-  padding: 34px; border-radius: 30px; background: linear-gradient(180deg, #0f172a 0%, #172554 100%); color: #fff; box-shadow: 0 28px 60px rgba(15,23,42,.16);
+
+.dfa-lmC-dark {
+  background: #0f172a;
+  color: #e2e8f0;
 }
-.dfa-lmC .dfa-flow-top {
-  text-align: center; margin-bottom: 24px;
+
+.dfa-lmC-sectionTitle {
+  margin: 0 0 18px;
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1.12;
+  font-weight: 800;
+  letter-spacing: -0.03em;
 }
-.dfa-lmC .dfa-start {
-  display: inline-block; padding: 18px 26px; border-radius: 18px; background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%); color: #0f172a; font-size: 22px; font-weight: 800; box-shadow: 0 18px 36px rgba(245,158,11,.24);
+
+.dfa-lmC-sectionIntro {
+  margin: 0 auto 42px;
+  max-width: 760px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #cbd5e1;
+  text-align: center;
 }
-.dfa-lmC .dfa-flow-arrow { text-align: center; font-size: 34px; color: #93c5fd; margin: 10px 0 18px; }
-.dfa-lmC .dfa-branch-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
-.dfa-lmC .dfa-branch {
-  position: relative; padding: 26px; border-radius: 22px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.10); overflow: hidden;
+
+.dfa-lmC-center {
+  text-align: center;
 }
-.dfa-lmC .dfa-branch:before {
-  content: ''; position: absolute; inset: 0; opacity: .9;
+
+.dfa-lmC-showGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
 }
-.dfa-lmC .dfa-branch.sms:before { background: linear-gradient(135deg, rgba(59,130,246,.18), transparent 55%); }
-.dfa-lmC .dfa-branch.phone:before { background: linear-gradient(135deg, rgba(245,158,11,.18), transparent 55%); }
-.dfa-lmC .dfa-branch.web:before { background: linear-gradient(135deg, rgba(16,185,129,.18), transparent 55%); }
-.dfa-lmC .dfa-branch.social:before { background: linear-gradient(135deg, rgba(168,85,247,.18), transparent 55%); }
-.dfa-lmC .dfa-branch > * { position: relative; }
-.dfa-lmC .dfa-branch h3 { margin: 0 0 12px; font-size: 24px; }
-.dfa-lmC .dfa-branch p { margin: 0 0 16px; color: #dbeafe; line-height: 1.7; }
-.dfa-lmC .dfa-pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
-.dfa-lmC .dfa-pill {
-  display: inline-flex; align-items: center; padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.12); color: #fff; font-size: 13px; font-weight: 700;
+
+.dfa-lmC-showCard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 20px;
+  padding: 24px;
+  min-height: 180px;
 }
-.dfa-lmC .dfa-next {
-  margin-top: 12px; padding: 16px; border-radius: 16px; background: rgba(255,255,255,.08); color: #e2e8f0; font-size: 15px; line-height: 1.6;
+
+.dfa-lmC-showIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(59, 130, 246, 0.14);
+  color: #93c5fd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 18px;
 }
-.dfa-lmC .dfa-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.dfa-lmC .dfa-stat-card { background: #fff; border: 1px solid #dbeafe; border-radius: 22px; padding: 28px; box-shadow: 0 16px 40px rgba(15,23,42,.06); }
-.dfa-lmC .dfa-stat-card strong { display: block; font-size: 40px; color: #2563eb; line-height: 1; margin-bottom: 12px; }
-.dfa-lmC .dfa-stat-card p { margin: 0; font-size: 16px; line-height: 1.7; color: #475569; }
-.dfa-lmC .dfa-outcomes { max-width: 900px; margin: 0 auto; display: grid; gap: 14px; }
-.dfa-lmC .dfa-outcomes div {
-  background: #fff; border: 1px solid #dbeafe; border-radius: 18px; padding: 18px 20px; font-size: 17px; font-weight: 600; color: #0f172a; box-shadow: 0 12px 30px rgba(15,23,42,.05);
+
+.dfa-lmC-showTitle {
+  margin: 0 0 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #f8fafc;
 }
-.dfa-lmC .dfa-outcomes span { color: #2563eb; margin-right: 10px; font-weight: 800; }
-.dfa-lmC .dfa-form-shell {
-  max-width: 840px; margin: 0 auto; background: #fff; border: 1px solid #dbeafe; border-radius: 28px; padding: 34px; box-shadow: 0 24px 50px rgba(15,23,42,.08); text-align: center;
+
+.dfa-lmC-showText {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #cbd5e1;
 }
-.dfa-lmC .dfa-form-shell h3 { margin: 0 0 10px; font-size: 28px; }
-.dfa-lmC .dfa-form-shell p { margin: 0 0 20px; color: #475569; font-size: 17px; line-height: 1.7; }
-.dfa-lmC .dfa-form-placeholder { border: 2px dashed #93c5fd; border-radius: 18px; padding: 34px 20px; background: #eff6ff; color: #1e3a8a; font-weight: 700; }
-.dfa-lmC .dfa-footer { padding: 28px 0 48px; text-align: center; color: #64748b; font-size: 14px; }
-.dfa-lmC .dfa-footer strong { color: #0f172a; }
+
+.dfa-lmC-stats {
+  background: #ffffff;
+}
+
+.dfa-lmC-statGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.dfa-lmC-statCard {
+  background: #ffffff;
+  border: 1px solid #dbeafe;
+  border-radius: 22px;
+  padding: 30px 26px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+}
+
+.dfa-lmC-statNumber {
+  margin: 0 0 14px;
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 900;
+  color: #3b82f6;
+}
+
+.dfa-lmC-statText {
+  margin: 0 0 16px;
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.dfa-lmC-source {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #64748b;
+}
+
+.dfa-lmC-audienceGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.dfa-lmC-audienceCard {
+  border: 1px solid #e2e8f0;
+  border-radius: 22px;
+  padding: 30px 26px;
+  background: #ffffff;
+}
+
+.dfa-lmC-audienceCard h3 {
+  margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.dfa-lmC-audienceCard p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #475569;
+}
+
+.dfa-lmC-flowWrap {
+  position: relative;
+  overflow: hidden;
+  margin-top: 14px;
+  padding: 34px 24px 110px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.92) 0%, rgba(15, 23, 42, 1) 100%);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.dfa-lmC-flowStart {
+  max-width: 260px;
+  margin: 0 auto 26px;
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 18px;
+  padding: 16px 20px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 800;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.2);
+}
+
+.dfa-lmC-flowArrowMain {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 28px;
+  margin-bottom: 18px;
+}
+
+.dfa-lmC-flowGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.dfa-lmC-branch {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 22px;
+  padding: 22px 18px;
+}
+
+.dfa-lmC-branchLabel {
+  text-align: center;
+  color: #f8fafc;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.dfa-lmC-branchArrow {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 22px;
+  margin: 8px 0;
+}
+
+.dfa-lmC-box {
+  border-radius: 16px;
+  padding: 16px 14px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.dfa-lmC-boxTool {
+  background: #3b82f6;
+  color: #eff6ff;
+}
+
+.dfa-lmC-boxOutcome {
+  background: #22c55e;
+  color: #052e16;
+}
+
+.dfa-lmC-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 72px 24px 26px;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0.8) 30%, rgba(15, 23, 42, 0.97) 100%);
+  backdrop-filter: blur(6px);
+}
+
+.dfa-lmC-overlayText {
+  display: inline-block;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  color: #f8fafc;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 16px 20px;
+  border-radius: 999px;
+}
+
+.dfa-lmC-captureBox {
+  max-width: 760px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 28px;
+  padding: 42px 28px;
+  text-align: center;
+}
+
+.dfa-lmC-captureText {
+  margin: 0 auto 28px;
+  max-width: 620px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #cbd5e1;
+}
+
+.dfa-lmC-formPlaceholder {
+  min-height: 120px;
+  border: 2px dashed rgba(245, 158, 11, 0.45);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #f8fafc;
+  background: rgba(15, 23, 42, 0.55);
+}
+
+.dfa-lmC-footer {
+  background: #0b1120;
+  color: #94a3b8;
+  text-align: center;
+  padding: 28px 24px 34px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
 @media (max-width: 980px) {
-  .dfa-lmC .dfa-hero-grid, .dfa-lmC .dfa-grid-3, .dfa-lmC .dfa-branch-grid { grid-template-columns: 1fr; }
+  .dfa-lmC-showGrid,
+  .dfa-lmC-statGrid,
+  .dfa-lmC-audienceGrid,
+  .dfa-lmC-flowGrid {
+    grid-template-columns: 1fr;
+  }
 }
-@media (max-width: 720px) {
-  .dfa-lmC .dfa-wrap { padding: 0 18px; }
-  .dfa-lmC .dfa-hero { padding: 64px 0 40px; }
-  .dfa-lmC h1 { font-size: 38px; }
-  .dfa-lmC .dfa-heading { font-size: 28px; }
-  .dfa-lmC .dfa-blueprint-shell { padding: 22px; }
+
+@media (max-width: 640px) {
+  .dfa-lmC-section {
+    padding: 56px 18px;
+  }
+
+  .dfa-lmC-hero {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .dfa-lmC-title {
+    font-size: 38px;
+  }
+
+  .dfa-lmC-subtitle,
+  .dfa-lmC-note,
+  .dfa-lmC-sectionIntro,
+  .dfa-lmC-captureText,
+  .dfa-lmC-audienceCard p,
+  .dfa-lmC-showText {
+    font-size: 16px;
+  }
+
+  .dfa-lmC-flowWrap {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 118px;
+  }
+
+  .dfa-lmC-overlayText {
+    font-size: 16px;
+    line-height: 1.5;
+    border-radius: 18px;
+  }
 }
 </style>
 
-<div class="dfa-lmC">
-  <div class="dfa-topbar">Free Download &mdash; The Blueprint Top Agents Are Using</div>
+<div class="dfa-lmC-wrap">
+  <div class="dfa-lmC-topbar">Free Download &mdash; Instant Access &mdash; No Credit Card</div>
 
-  <section class="dfa-hero">
-    <div class="dfa-wrap">
-      <div class="dfa-hero-grid">
-        <div>
-          <div class="dfa-kicker">Speed-to-Lead Blueprint</div>
-          <h1>Respond to Every Lead in 60 Seconds or Less &mdash; Even While You Sleep</h1>
-          <p class="dfa-subheadline">See the exact AI-powered response architecture modern real estate operators are using to capture, qualify, and route leads faster without relying on manual follow-up.</p>
-          <a class="dfa-cta" href="#dfa-lmC-form">Get the Free Blueprint</a>
-        </div>
-        <div class="dfa-hero-note">
-          <h3>What this one-pager shows</h3>
-          <p>A simple visual framework for instant response across text, calls, web forms, and social messages so fewer leads slip through the cracks and more conversations turn into appointments.</p>
-        </div>
+  <section class="dfa-lmC-section dfa-lmC-hero">
+    <div class="dfa-lmC-container">
+      <div class="dfa-lmC-heroGrid">
+        <div class="dfa-lmC-badge">FREE RESOURCE</div>
+        <h1 class="dfa-lmC-title">The 60-Second Lead Response Blueprint</h1>
+        <p class="dfa-lmC-subtitle">A free one-page visual guide showing exactly how top investors and agents structure their AI lead response system &mdash; so no lead goes unanswered, even at 2am.</p>
+        <p class="dfa-lmC-note">This is a downloadable PDF reference document from The Deal Flow AI Team. It is not software. It is a practical one-pager you can use to map out a faster lead response system before you build it.</p>
+        <a class="dfa-lmC-button" href="#dfa-lmC-form">Download the Free Blueprint</a>
       </div>
     </div>
   </section>
 
-  <section class="dfa-section">
-    <div class="dfa-wrap">
-      <h2 class="dfa-heading">Blueprint preview</h2>
-      <p class="dfa-intro">This visual maps what happens the moment a lead comes in, which AI layer responds, how fast it moves, and what happens next.</p>
-      <div class="dfa-blueprint-shell">
-        <div class="dfa-flow-top">
-          <div class="dfa-start">Lead Comes In</div>
+  <section class="dfa-lmC-section dfa-lmC-dark">
+    <div class="dfa-lmC-container">
+      <div class="dfa-lmC-center">
+        <h2 class="dfa-lmC-sectionTitle">What&rsquo;s on the blueprint</h2>
+        <p class="dfa-lmC-sectionIntro">A clear one-page flowchart that shows how to structure your lead response process so speed does not depend on who happens to be available.</p>
+      </div>
+      <div class="dfa-lmC-showGrid">
+        <div class="dfa-lmC-showCard">
+          <div class="dfa-lmC-showIcon">01</div>
+          <h3 class="dfa-lmC-showTitle">Lead source triggers</h3>
+          <p class="dfa-lmC-showText">The 4 lead sources and how each one triggers a different response path, so text, call, form, and social leads do not all get treated the same way.</p>
         </div>
-        <div class="dfa-flow-arrow">&darr;</div>
-        <div class="dfa-branch-grid">
-          <div class="dfa-branch sms">
-            <h3>SMS / Text Lead</h3>
-            <p>Instant AI text responder acknowledges the inquiry, asks the right qualifying question, and keeps the lead engaged 24/7.</p>
-            <div class="dfa-pill-row">
-              <div class="dfa-pill">Tool Used: AI Text Responder</div>
-              <div class="dfa-pill">Time: Under 10 seconds</div>
-            </div>
-            <div class="dfa-next"><strong>What happens next:</strong> Lead gets immediate confirmation, qualification begins, and hot responses can trigger a handoff or booking workflow.</div>
-          </div>
-          <div class="dfa-branch phone">
-            <h3>Phone Call</h3>
-            <p>An AI voice agent answers missed or live-routed calls, captures intent, qualifies the prospect, and helps book the next step.</p>
-            <div class="dfa-pill-row">
-              <div class="dfa-pill">Tool Used: AI Voice Agent</div>
-              <div class="dfa-pill">Time: Instant answer or callback</div>
-            </div>
-            <div class="dfa-next"><strong>What happens next:</strong> Caller is screened, the conversation is summarized, and the appointment or follow-up task is created automatically.</div>
-          </div>
-          <div class="dfa-branch web">
-            <h3>Web Form</h3>
-            <p>Form submissions trigger a combined email and text sequence so the lead hears back immediately without waiting for manual review.</p>
-            <div class="dfa-pill-row">
-              <div class="dfa-pill">Tool Used: Automated Email + Text Sequence</div>
-              <div class="dfa-pill">Time: 15&ndash;30 seconds</div>
-            </div>
-            <div class="dfa-next"><strong>What happens next:</strong> Contact is tagged, the first follow-up is sent, and the lead enters a nurture or routing sequence based on source and urgency.</div>
-          </div>
-          <div class="dfa-branch social">
-            <h3>Social Message</h3>
-            <p>AI drafts a context-aware response template so DMs from Facebook, Instagram, or other channels get a fast and usable reply.</p>
-            <div class="dfa-pill-row">
-              <div class="dfa-pill">Tool Used: AI-Drafted Response Template</div>
-              <div class="dfa-pill">Time: Under 60 seconds</div>
-            </div>
-            <div class="dfa-next"><strong>What happens next:</strong> The prospect gets a polished response, the conversation moves off-platform when appropriate, and follow-up can be tracked centrally.</div>
-          </div>
+        <div class="dfa-lmC-showCard">
+          <div class="dfa-lmC-showIcon">02</div>
+          <h3 class="dfa-lmC-showTitle">Channel-by-channel AI roles</h3>
+          <p class="dfa-lmC-showText">Which AI tool handles each channel &mdash; text, call, form, and social &mdash; so you can see where automation fits and where it does not.</p>
+        </div>
+        <div class="dfa-lmC-showCard">
+          <div class="dfa-lmC-showIcon">03</div>
+          <h3 class="dfa-lmC-showTitle">Human handoff point</h3>
+          <p class="dfa-lmC-showText">The exact handoff point from AI to human, so conversations move to your team at the right moment instead of getting stuck in automation.</p>
+        </div>
+        <div class="dfa-lmC-showCard">
+          <div class="dfa-lmC-showIcon">04</div>
+          <h3 class="dfa-lmC-showTitle">Sub-60-second response design</h3>
+          <p class="dfa-lmC-showText">How to set response time under 60 seconds for every lead type, with a structure that keeps speed consistent across your whole intake process.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="dfa-section" style="background:#ffffff;">
-    <div class="dfa-wrap">
-      <h2 class="dfa-heading">Why speed-to-lead matters</h2>
-      <p class="dfa-intro">The first response window is where interest is highest and drop-off is lowest. Delay costs pipeline.</p>
-      <div class="dfa-grid-3">
-        <div class="dfa-stat-card"><strong>21x</strong><p>Companies that respond within five minutes can be dramatically more likely to qualify leads than teams that wait 30 minutes or longer.</p></div>
-        <div class="dfa-stat-card"><strong>78%</strong><p>A large share of buyers and sellers work with the first professional who responds in a useful and timely way.</p></div>
-        <div class="dfa-stat-card"><strong>60 sec</strong><p>An automated first-touch system can preserve momentum while your team focuses on live conversations and closing work.</p></div>
+  <section class="dfa-lmC-section dfa-lmC-stats">
+    <div class="dfa-lmC-container">
+      <div class="dfa-lmC-center">
+        <h2 class="dfa-lmC-sectionTitle">Why it matters</h2>
+      </div>
+      <div class="dfa-lmC-statGrid">
+        <div class="dfa-lmC-statCard">
+          <div class="dfa-lmC-statNumber">78%</div>
+          <p class="dfa-lmC-statText">of buyers choose the vendor who responds first.</p>
+          <div class="dfa-lmC-source">Source: LeadResponseManagement.org</div>
+        </div>
+        <div class="dfa-lmC-statCard">
+          <div class="dfa-lmC-statNumber">21x</div>
+          <p class="dfa-lmC-statText">The odds of qualifying a lead drop 21x after 5 minutes.</p>
+          <div class="dfa-lmC-source">Source: Harvard Business Review</div>
+        </div>
+        <div class="dfa-lmC-statCard">
+          <div class="dfa-lmC-statNumber">7+ hrs</div>
+          <p class="dfa-lmC-statText">Most agents respond in 7+ hours &mdash; or not at all.</p>
+          <div class="dfa-lmC-source">Source: NAR 2023</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="dfa-section" style="background:#f8fafc;">
-    <div class="dfa-wrap">
-      <h2 class="dfa-heading">What you'll be able to do after</h2>
-      <div class="dfa-outcomes">
-        <div><span>&#10003;</span>Map the right response path for text, calls, web forms, and social inquiries</div>
-        <div><span>&#10003;</span>Reduce manual delays that let warm leads cool off before your team engages</div>
-        <div><span>&#10003;</span>Understand which AI layer handles the first touch and when a human should step in</div>
-        <div><span>&#10003;</span>Build a faster, cleaner handoff from lead capture to qualification to appointment</div>
+  <section class="dfa-lmC-section">
+    <div class="dfa-lmC-container">
+      <div class="dfa-lmC-center">
+        <h2 class="dfa-lmC-sectionTitle">Who this is for</h2>
+      </div>
+      <div class="dfa-lmC-audienceGrid">
+        <div class="dfa-lmC-audienceCard">
+          <h3>Investors &amp; Wholesalers</h3>
+          <p>When inbound seller leads sit untouched for even a few minutes, your follow-up window narrows and your acquisition pipeline gets weaker.</p>
+        </div>
+        <div class="dfa-lmC-audienceCard">
+          <h3>Real Estate Agents</h3>
+          <p>Fast response wins appointments, and a documented intake flow helps you stay competitive when new leads come in after hours.</p>
+        </div>
+        <div class="dfa-lmC-audienceCard">
+          <h3>Property Managers &amp; Brokers</h3>
+          <p>Leasing and inquiry volume moves quickly, so response speed directly affects occupancy, client service, and lead conversion.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="dfa-section" id="dfa-lmC-form">
-    <div class="dfa-wrap">
-      <div class="dfa-form-shell">
-        <h3>Get the one-page blueprint</h3>
-        <p>Enter your email below and get the downloadable speed-to-lead blueprint delivered straight to your inbox.</p>
-        <div class="dfa-form-placeholder">
+  <section class="dfa-lmC-section dfa-lmC-dark">
+    <div class="dfa-lmC-container">
+      <div class="dfa-lmC-center">
+        <h2 class="dfa-lmC-sectionTitle">Here&rsquo;s a preview of what you&rsquo;ll get</h2>
+        <p class="dfa-lmC-sectionIntro">The full PDF shows the complete decision path. Below is a simplified preview so you can see how the system is structured.</p>
+      </div>
+      <div class="dfa-lmC-flowWrap">
+        <div class="dfa-lmC-flowStart">New Lead Arrives</div>
+        <div class="dfa-lmC-flowArrowMain">&darr;</div>
+        <div class="dfa-lmC-flowGrid">
+          <div class="dfa-lmC-branch">
+            <div class="dfa-lmC-branchLabel">SMS/Text</div>
+            <div class="dfa-lmC-branchArrow">&darr;</div>
+            <div class="dfa-lmC-box dfa-lmC-boxTool">AI Text Responder (GHL)</div>
+            <div class="dfa-lmC-branchArrow">&darr;</div>
+            <div class="dfa-lmC-box dfa-lmC-boxOutcome">Reply in &lt;60 sec</div>
+          </div>
+          <div class="dfa-lmC-branch">
+            <div class="dfa-lmC-branchLabel">Phone Call</div>
+            <div class="dfa-lmC-branchArrow">&darr;</div>
+            <div class="dfa-lmC-box dfa-lmC-boxTool">AI Voice Agent (VAPI)</div>
+            <div class="dfa-lmC-branchArrow">&darr;</div>
+            <div class="dfa-lmC-box dfa-lmC-boxOutcome">Answer 24/7</div>
+          </div>
+          <div class="dfa-lmC-branch">
+            <div class="dfa-lmC-branchLabel">Web Form</div>
+            <div class="dfa-lmC-branchArrow">&darr;</div>
+            <div class="dfa-lmC-box dfa-lmC-boxTool">Email + Text Sequence</div>
+            <div class="dfa-lmC-branchArrow">&darr;</div>
+            <div class="dfa-lmC-box dfa-lmC-boxOutcome">Auto-triggered instantly</div>
+          </div>
+          <div class="dfa-lmC-branch">
+            <div class="dfa-lmC-branchLabel">Social Message</div>
+            <div class="dfa-lmC-branchArrow">&darr;</div>
+            <div class="dfa-lmC-box dfa-lmC-boxTool">Drafted Response Template</div>
+            <div class="dfa-lmC-branchArrow">&darr;</div>
+            <div class="dfa-lmC-box dfa-lmC-boxOutcome">Ready in seconds</div>
+          </div>
+        </div>
+        <div class="dfa-lmC-overlay">
+          <div class="dfa-lmC-overlayText">Download the full blueprint to see the complete system</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dfa-lmC-section dfa-lmC-dark" id="dfa-lmC-form">
+    <div class="dfa-lmC-container">
+      <div class="dfa-lmC-captureBox">
+        <h2 class="dfa-lmC-sectionTitle">Get the free blueprint</h2>
+        <p class="dfa-lmC-captureText">Enter your email and we&rsquo;ll send it straight to your inbox.</p>
+        <div class="dfa-lmC-formPlaceholder">
           <!-- GHL Form Element Goes Here -->
-          GHL form placeholder
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="dfa-footer">
-    <div class="dfa-wrap">
-      <strong>Deal Flow AI</strong> &middot; Response systems built for real estate growth<br>
-      Blueprint by The Deal Flow AI Team
-    </div>
-  </footer>
+  <footer class="dfa-lmC-footer">Deal Flow AI &middot; Practical AI systems for modern real estate teams &middot; &copy; 2026 The Deal Flow AI Team</footer>
 </div>
 </body></html>
