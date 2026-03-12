@@ -1,0 +1,365 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Deal Flow AI — Lead Magnet Preview</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></head><body style="margin:0;padding:0;">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+.dfa-lmB {
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  width: 100vw;
+  margin-top: -20px;
+  font-family: 'Inter', Arial, sans-serif;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 30%, #eff6ff 100%);
+  color: #0f172a;
+}
+.dfa-lmB * { box-sizing: border-box; }
+.dfa-lmB .dfa-wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+.dfa-lmB .dfa-topbar { background: #0f172a; color: #fff; text-align: center; padding: 12px 20px; font-size: 14px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.dfa-lmB .dfa-hero {
+  padding: 84px 0 54px;
+  background: radial-gradient(circle at top left, rgba(245,158,11,0.18), transparent 24%), linear-gradient(135deg, #0f172a 0%, #172554 45%, #1e40af 100%);
+  color: #fff;
+}
+.dfa-lmB .dfa-hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 34px; align-items: center; }
+.dfa-lmB .dfa-kicker {
+  display: inline-block; margin-bottom: 18px; padding: 8px 14px; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.08); color: #fde68a;
+  font-size: 13px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+}
+.dfa-lmB h1 { font-size: clamp(38px, 5vw, 62px); line-height: 1.04; margin: 0 0 18px; font-weight: 800; letter-spacing: -.03em; }
+.dfa-lmB .dfa-subheadline { font-size: 19px; line-height: 1.7; color: #dbeafe; margin: 0 0 28px; max-width: 680px; }
+.dfa-lmB .dfa-cta {
+  display: inline-block; text-decoration: none; background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%); color: #0f172a;
+  padding: 16px 28px; border-radius: 14px; font-size: 17px; font-weight: 800; box-shadow: 0 18px 40px rgba(245,158,11,.24);
+}
+.dfa-lmB .dfa-side-card {
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 24px; padding: 28px; backdrop-filter: blur(8px);
+}
+.dfa-lmB .dfa-side-card h3 { margin: 0 0 14px; font-size: 24px; }
+.dfa-lmB .dfa-mini-list { display: grid; gap: 12px; margin-top: 18px; }
+.dfa-lmB .dfa-mini-list div { padding: 14px 16px; border-radius: 14px; background: rgba(255,255,255,.08); color: #e2e8f0; font-weight: 600; }
+.dfa-lmB .dfa-section { padding: 72px 0; }
+.dfa-lmB .dfa-heading { font-size: 34px; line-height: 1.15; margin: 0 0 12px; font-weight: 800; text-align: center; }
+.dfa-lmB .dfa-intro { max-width: 760px; margin: 0 auto 36px; text-align: center; font-size: 18px; line-height: 1.7; color: #475569; }
+.dfa-lmB .dfa-grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+.dfa-lmB .dfa-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.dfa-lmB .dfa-card { background: #fff; border: 1px solid #dbeafe; border-radius: 22px; padding: 24px; box-shadow: 0 16px 40px rgba(15,23,42,.06); }
+.dfa-lmB .dfa-card h3 { margin: 0 0 10px; font-size: 20px; }
+.dfa-lmB .dfa-card p { margin: 0; font-size: 16px; line-height: 1.7; color: #475569; }
+.dfa-lmB .dfa-time-card {
+  padding: 26px; border-radius: 22px; background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 100%); color: #fff; box-shadow: 0 18px 42px rgba(15,23,42,.14);
+}
+.dfa-lmB .dfa-time-card strong { display: block; font-size: 28px; color: #fbbf24; margin-bottom: 10px; }
+.dfa-lmB .dfa-time-card span { display: block; font-size: 16px; line-height: 1.7; color: #dbeafe; }
+.dfa-lmB .dfa-audience {
+  max-width: 860px; margin: 0 auto; text-align: center; background: #fff; border: 1px solid #dbeafe; border-radius: 24px; padding: 30px; box-shadow: 0 16px 40px rgba(15,23,42,.06);
+}
+.dfa-lmB .dfa-proof {
+  max-width: 860px; margin: 0 auto; text-align: center; padding: 28px 24px; border-radius: 22px; background: linear-gradient(90deg, #0f172a 0%, #2563eb 100%); color: #fff; font-size: 22px; font-weight: 800;
+}
+.dfa-lmB .dfa-proof small { display: block; margin-top: 10px; font-size: 15px; color: #dbeafe; font-weight: 500; }
+.dfa-lmB .dfa-form-shell {
+  max-width: 840px; margin: 0 auto; background: #fff; border: 1px solid #dbeafe; border-radius: 28px; padding: 34px; box-shadow: 0 24px 50px rgba(15,23,42,.08); text-align: center;
+}
+.dfa-lmB .dfa-form-shell h3 { margin: 0 0 10px; font-size: 28px; }
+.dfa-lmB .dfa-form-shell p { margin: 0 0 20px; color: #475569; font-size: 17px; line-height: 1.7; }
+.dfa-lmB .dfa-form-placeholder { border: 2px dashed #93c5fd; border-radius: 18px; padding: 34px 20px; background: #eff6ff; color: #1e3a8a; font-weight: 700; }
+.dfa-lmB .dfa-footer { padding: 28px 0 48px; text-align: center; color: #64748b; font-size: 14px; }
+.dfa-lmB .dfa-footer strong { color: #0f172a; }
+@media (max-width: 1080px) {
+  .dfa-lmB .dfa-grid-5 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 980px) {
+  .dfa-lmB .dfa-hero-grid, .dfa-lmB .dfa-grid-3 { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .dfa-lmB .dfa-wrap { padding: 0 18px; }
+  .dfa-lmB .dfa-hero { padding: 64px 0 40px; }
+  .dfa-lmB .dfa-grid-5, .dfa-lmB .dfa-grid-3 { grid-template-columns: 1fr; }
+  .dfa-lmB h1 { font-size: 38px; }
+  .dfa-lmB .dfa-heading { font-size: 28px; }
+}
+</style>
+
+<div class="dfa-lmB">
+  <div class="dfa-topbar">Free Download &mdash; Instant Access</div>
+
+  <section class="dfa-hero">
+    <div class="dfa-wrap">
+      <div class="dfa-hero-grid">
+        <div>
+          <div class="dfa-kicker">Free Prompt Pack</div>
+          <h1>5 AI Prompts That Replace Your VA This Week</h1>
+          <p class="dfa-subheadline">Download five copy-paste-ready prompts built for real estate operators who need faster output, cleaner communication, and fewer repetitive tasks on their plate.</p>
+          <a class="dfa-cta" href="#dfa-lmB-form">Download Free &mdash; No Fluff</a>
+        </div>
+        <div class="dfa-side-card">
+          <h3>What you get instantly</h3>
+          <p style="margin:0;color:#dbeafe;line-height:1.7;">A concise PDF with five ready-to-run prompts you can drop into ChatGPT or your preferred AI tool today.</p>
+          <div class="dfa-mini-list">
+            <div>Listing descriptions in minutes</div>
+            <div>Seller outreach without blank-page friction</div>
+            <div>Offer letters that sound polished and professional</div>
+            <div>Follow-up sequences that keep leads moving</div>
+            <div>Market updates your clients will actually read</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dfa-section">
+    <div class="dfa-wrap">
+      <h2 class="dfa-heading">What's inside</h2>
+      <p class="dfa-intro">Five prompt frameworks written specifically for real estate workflows, with enough structure to save time and enough flexibility to fit your market.</p>
+      <div class="dfa-grid-5">
+        <div class="dfa-card"><h3>Listing Description Generator</h3><p>Turn basic property details into polished, MLS-ready copy with positioning, highlights, and buyer-facing language.</p></div>
+        <div class="dfa-card"><h3>Seller Outreach Email Writer</h3><p>Create personalized seller emails based on lead motivation, timing, and property context without sounding robotic.</p></div>
+        <div class="dfa-card"><h3>Offer Letter Generator</h3><p>Produce a clean professional letter that explains your offer terms clearly and builds trust with the recipient.</p></div>
+        <div class="dfa-card"><h3>Lead Follow-Up Sequence Writer</h3><p>Generate a three-touch follow-up sequence that feels intentional, persistent, and useful instead of pushy.</p></div>
+        <div class="dfa-card"><h3>Market Update Generator</h3><p>Convert local stats into a client-ready market summary that sounds informed, relevant, and easy to share.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dfa-section" style="background:#ffffff;">
+    <div class="dfa-wrap">
+      <h2 class="dfa-heading">These prompts will save you...</h2>
+      <p class="dfa-intro">Less manual writing. Less back-and-forth. More speed where your pipeline needs it most.</p>
+      <div class="dfa-grid-3">
+        <div class="dfa-time-card"><strong>45 min &rarr; 3 min</strong><span>Writing listing descriptions with the right tone, flow, and feature positioning.</span></div>
+        <div class="dfa-time-card"><strong>30 min &rarr; 5 min</strong><span>Drafting personalized seller outreach emails that do not sound generic or overproduced.</span></div>
+        <div class="dfa-time-card"><strong>25 min &rarr; 4 min</strong><span>Building lead follow-up messages and client-facing updates from scratch.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dfa-section" style="background:#f8fafc;">
+    <div class="dfa-wrap">
+      <h2 class="dfa-heading">Who this is for</h2>
+      <div class="dfa-audience">
+        Agents, investors, wholesalers, title professionals, property managers, and mortgage brokers who want to move faster without hiring more admin help just to keep up.
+      </div>
+    </div>
+  </section>
+
+  <section class="dfa-section">
+    <div class="dfa-wrap">
+      <div class="dfa-proof">Join X real estate professionals using these prompts<small>Social proof placeholder for GHL or testimonial block</small></div>
+    </div>
+  </section>
+
+  <section class="dfa-section" id="dfa-lmB-form" style="background:#ffffff;">
+    <div class="dfa-wrap">
+      <div class="dfa-form-shell">
+        <h3>Get the free prompt pack</h3>
+        <p>Enter your email below and get instant access to the PDF so you can start using these prompts right away.</p>
+        <div class="dfa-form-placeholder">
+          <!-- GHL Form Element Goes Here -->
+          GHL form placeholder
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="dfa-footer">
+    <div class="dfa-wrap">
+      <strong>Deal Flow AI</strong> &middot; AI systems and training for modern real estate operators<br>
+      Prompt pack by The Deal Flow AI Team
+    </div>
+  </footer>
+</div>
+
+---
+
+# 5 AI Prompts That Replace Your VA This Week
+### By The Deal Flow AI Team
+
+## How to use this guide
+Copy the prompt you need, replace the bracketed inputs with your details, and run it inside ChatGPT or your preferred AI writing assistant. For best results, be specific with property details, market context, and desired tone.
+
+---
+
+## Prompt 1: Listing Description Generator
+**Use this for:** MLS remarks, listing pages, email blasts, and flyer copy.
+
+**Prompt:**
+
+```text
+You are an expert real estate copywriter.
+
+Write an MLS-ready listing description for the following property:
+- Address: [INSERT ADDRESS]
+- Beds/Baths: [INSERT BEDS/BATHS]
+- Square Footage: [INSERT SQ FT]
+- Property Type: [INSERT PROPERTY TYPE]
+- Key Features: [INSERT FEATURES]
+- Neighborhood or Area Highlights: [INSERT AREA DETAILS]
+- Ideal Buyer: [INSERT TARGET BUYER]
+- Tone: [professional / luxury / family-friendly / investor-focused]
+
+Requirements:
+1. Keep the description between 120 and 180 words.
+2. Lead with the strongest selling angle.
+3. Highlight the most valuable features naturally.
+4. Avoid fair housing issues or prohibited language.
+5. End with a compelling call to action.
+
+Output:
+- Headline option
+- MLS description
+- 3 alternate feature bullets for marketing use
+```
+
+**Why it works:** It gives the AI the structure, tone, and compliance guardrails it needs to produce usable copy fast.
+
+---
+
+## Prompt 2: Seller Outreach Email Writer
+**Use this for:** Cold outreach, warm follow-up, probate leads, absentee owners, or distressed property leads.
+
+**Prompt:**
+
+```text
+You are writing a personalized real estate seller outreach email.
+
+Use the following lead information:
+- Seller Name: [INSERT NAME]
+- Property Address: [INSERT ADDRESS]
+- Lead Type: [absentee owner / inherited property / tired landlord / FSBO / pre-foreclosure / other]
+- Motivation Clues: [INSERT DETAILS]
+- Timeframe: [INSERT TIMEFRAME]
+- My Offer or Value Proposition: [INSERT VALUE PROP]
+- Tone: [professional / warm / direct]
+
+Write an outreach email that:
+1. Feels personal, not mass produced.
+2. Acknowledges the seller's likely situation without sounding invasive.
+3. Explains how I can help in a clear and low-pressure way.
+4. Includes a strong but simple call to action.
+5. Stays under 180 words.
+
+Output:
+- Subject line options (3)
+- Main email draft
+- Short follow-up variation if they do not reply
+```
+
+**Why it works:** It blends personalization with speed, which is exactly where most seller outreach breaks down.
+
+---
+
+## Prompt 3: Offer Letter Generator
+**Use this for:** Investor offers, wholesale offers, buyer representation communication, or any professional summary of terms.
+
+**Prompt:**
+
+```text
+You are writing a professional real estate offer letter.
+
+Property and offer details:
+- Recipient Name: [INSERT NAME]
+- Property Address: [INSERT ADDRESS]
+- Purchase Price: [INSERT PRICE]
+- Earnest Money: [INSERT EMD]
+- Financing Type: [cash / conventional / hard money / other]
+- Inspection Period: [INSERT TERMS]
+- Closing Timeline: [INSERT TIMELINE]
+- Special Terms or Conditions: [INSERT TERMS]
+- Buyer Positioning Notes: [why this offer is strong]
+- Tone: [professional / confident / relationship-focused]
+
+Write a concise and polished offer letter that:
+1. Clearly summarizes the key terms.
+2. Sounds credible and professional.
+3. Reduces confusion or friction.
+4. Ends with a courteous call to discuss or accept.
+
+Output:
+- Offer letter
+- Short version for email body
+- 3 subject line options
+```
+
+**Why it works:** It helps you communicate clearly and professionally without rewriting the same structure every time.
+
+---
+
+## Prompt 4: Lead Follow-Up Sequence Writer
+**Use this for:** New inquiries, warm leads, old leads, website leads, or unresponsive prospects.
+
+**Prompt:**
+
+```text
+You are building a 3-touch follow-up sequence for a real estate lead.
+
+Lead details:
+- Lead Name: [INSERT NAME]
+- Lead Source: [website / Zillow / referral / Facebook / open house / other]
+- Last Contact Date: [INSERT DATE]
+- Lead Interest: [buying / selling / investing / renting / financing]
+- Known Context: [INSERT NOTES]
+- Desired Tone: [helpful / direct / consultative]
+
+Create a 3-message follow-up sequence:
+1. Message 1 should re-open the conversation.
+2. Message 2 should add value or clarity.
+3. Message 3 should create urgency or offer an easy next step.
+
+Requirements:
+- Keep each message under 90 words.
+- Make the language natural and human.
+- Do not sound desperate or generic.
+- Include suggested send timing for each message.
+
+Output:
+- Touch 1
+- Touch 2
+- Touch 3
+- Optional subject lines or text variations
+```
+
+**Why it works:** Most leads die from inconsistent follow-up, not lack of interest. This prompt fixes that fast.
+
+---
+
+## Prompt 5: Market Update Generator
+**Use this for:** Client emails, monthly newsletters, investor updates, listing presentations, and social content drafts.
+
+**Prompt:**
+
+```text
+You are a real estate market analyst writing a client-ready local market update.
+
+Use these local stats:
+- Market Area: [INSERT AREA]
+- Median Sale Price: [INSERT PRICE]
+- Average Days on Market: [INSERT DOM]
+- Inventory Level: [INSERT INVENTORY]
+- Month-over-Month Change: [INSERT CHANGE]
+- Year-over-Year Change: [INSERT CHANGE]
+- Buyer or Seller Trend Notes: [INSERT NOTES]
+- Audience: [buyers / sellers / investors / general audience]
+- Tone: [professional / educational / concise]
+
+Write a market update that:
+1. Explains the data in plain English.
+2. Highlights what changed and why it matters.
+3. Gives the audience 2 or 3 practical takeaways.
+4. Ends with a clear invitation to connect.
+
+Output:
+- Email version
+- Short newsletter summary
+- 3 social post hooks based on the update
+```
+
+**Why it works:** It turns raw numbers into useful communication your audience can actually act on.
+
+---
+
+## Final note
+These prompts are designed to save time immediately, but the bigger win is consistency. Once your messaging, outreach, and content workflows are systemized, you stop relying on memory, mood, or spare time to keep deals moving.
+
+If you want the next layer beyond prompts, build the workflow behind them.
+</body></html>

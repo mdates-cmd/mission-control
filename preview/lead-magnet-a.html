@@ -1,0 +1,362 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Deal Flow AI — Lead Magnet Preview</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></head><body style="margin:0;padding:0;">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+.dfa-lmA {
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  width: 100vw;
+  margin-top: -20px;
+  font-family: 'Inter', Arial, sans-serif;
+  background: linear-gradient(180deg, #eff6ff 0%, #ffffff 30%, #f8fafc 100%);
+  color: #0f172a;
+}
+.dfa-lmA * { box-sizing: border-box; }
+.dfa-lmA .dfa-wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+.dfa-lmA .dfa-topbar {
+  background: #0f172a;
+  color: #ffffff;
+  text-align: center;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.dfa-lmA .dfa-hero {
+  padding: 84px 0 48px;
+  background: radial-gradient(circle at top right, rgba(59,130,246,0.22), transparent 28%), linear-gradient(135deg, #0f172a 0%, #172554 55%, #1e293b 100%);
+  color: #ffffff;
+}
+.dfa-lmA .dfa-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 34px;
+  align-items: center;
+}
+.dfa-lmA .dfa-kicker {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  color: #bfdbfe;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.dfa-lmA h1 {
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.04;
+  margin: 0 0 18px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.dfa-lmA .dfa-subheadline {
+  max-width: 680px;
+  font-size: 19px;
+  line-height: 1.7;
+  color: #dbeafe;
+  margin: 0 0 28px;
+}
+.dfa-lmA .dfa-cta {
+  display: inline-block;
+  text-decoration: none;
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+  color: #0f172a;
+  padding: 16px 28px;
+  border-radius: 14px;
+  font-size: 17px;
+  font-weight: 800;
+  box-shadow: 0 18px 40px rgba(245,158,11,0.22);
+}
+.dfa-lmA .dfa-proof-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 24px;
+  padding: 28px;
+  backdrop-filter: blur(8px);
+}
+.dfa-lmA .dfa-proof-card h3 {
+  margin: 0 0 14px;
+  font-size: 22px;
+  color: #ffffff;
+}
+.dfa-lmA .dfa-score-bars { display: grid; gap: 14px; margin-top: 20px; }
+.dfa-lmA .dfa-score-item { display: grid; gap: 8px; }
+.dfa-lmA .dfa-score-item span { font-size: 14px; color: #e2e8f0; font-weight: 600; }
+.dfa-lmA .dfa-bar { background: rgba(255,255,255,0.12); border-radius: 999px; height: 10px; overflow: hidden; }
+.dfa-lmA .dfa-bar i { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, #3b82f6, #f59e0b); }
+.dfa-lmA .dfa-section { padding: 72px 0; }
+.dfa-lmA .dfa-section-alt { background: #ffffff; }
+.dfa-lmA .dfa-section-dark { background: #f8fafc; }
+.dfa-lmA .dfa-heading {
+  font-size: 34px;
+  line-height: 1.15;
+  margin: 0 0 12px;
+  color: #0f172a;
+  font-weight: 800;
+  text-align: center;
+}
+.dfa-lmA .dfa-intro {
+  max-width: 760px;
+  margin: 0 auto 36px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #475569;
+}
+.dfa-lmA .dfa-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.dfa-lmA .dfa-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.dfa-lmA .dfa-grid-6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.dfa-lmA .dfa-card {
+  background: #ffffff;
+  border: 1px solid #dbeafe;
+  border-radius: 22px;
+  padding: 26px;
+  box-shadow: 0 16px 40px rgba(15,23,42,0.06);
+}
+.dfa-lmA .dfa-card h3, .dfa-lmA .dfa-card h4 { margin: 0 0 12px; font-size: 20px; color: #0f172a; }
+.dfa-lmA .dfa-card p { margin: 0; font-size: 16px; line-height: 1.7; color: #475569; }
+.dfa-lmA .dfa-check { color: #2563eb; font-weight: 700; margin-right: 8px; }
+.dfa-lmA .dfa-role {
+  padding: 22px;
+  border-radius: 18px;
+  border: 1px solid #cbd5e1;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+}
+.dfa-lmA .dfa-step {
+  position: relative;
+  padding: 30px 28px 26px;
+  border-radius: 24px;
+  background: #0f172a;
+  color: #ffffff;
+  overflow: hidden;
+}
+.dfa-lmA .dfa-step:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(59,130,246,0.22), transparent 55%);
+}
+.dfa-lmA .dfa-step > * { position: relative; }
+.dfa-lmA .dfa-step-num {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f59e0b;
+  color: #0f172a;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+.dfa-lmA .dfa-step h3 { margin: 0 0 12px; font-size: 22px; }
+.dfa-lmA .dfa-step p { margin: 0; color: #dbeafe; line-height: 1.7; }
+.dfa-lmA .dfa-trust {
+  background: linear-gradient(90deg, #0f172a 0%, #1d4ed8 100%);
+  color: #ffffff;
+  text-align: center;
+  padding: 20px 24px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.dfa-lmA .dfa-form-shell {
+  max-width: 840px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #dbeafe;
+  border-radius: 28px;
+  padding: 34px;
+  box-shadow: 0 24px 50px rgba(15,23,42,0.08);
+  text-align: center;
+}
+.dfa-lmA .dfa-form-shell h3 { margin: 0 0 10px; font-size: 28px; }
+.dfa-lmA .dfa-form-shell p { margin: 0 0 20px; color: #475569; font-size: 17px; line-height: 1.7; }
+.dfa-lmA .dfa-form-placeholder {
+  border: 2px dashed #93c5fd;
+  border-radius: 18px;
+  padding: 34px 20px;
+  background: #eff6ff;
+  color: #1e3a8a;
+  font-weight: 700;
+}
+.dfa-lmA .dfa-footer {
+  padding: 28px 0 48px;
+  text-align: center;
+  color: #64748b;
+  font-size: 14px;
+}
+.dfa-lmA .dfa-footer strong { color: #0f172a; }
+@media (max-width: 980px) {
+  .dfa-lmA .dfa-hero-grid,
+  .dfa-lmA .dfa-grid-4,
+  .dfa-lmA .dfa-grid-3,
+  .dfa-lmA .dfa-grid-6 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  .dfa-lmA .dfa-wrap { padding: 0 18px; }
+  .dfa-lmA .dfa-hero { padding: 64px 0 40px; }
+  .dfa-lmA .dfa-hero-grid,
+  .dfa-lmA .dfa-grid-4,
+  .dfa-lmA .dfa-grid-3,
+  .dfa-lmA .dfa-grid-6 { grid-template-columns: 1fr; }
+  .dfa-lmA h1 { font-size: 38px; }
+  .dfa-lmA .dfa-heading { font-size: 28px; }
+}
+</style>
+
+<div class="dfa-lmA">
+  <div class="dfa-topbar">Free Assessment &mdash; Takes 2 Minutes</div>
+
+  <section class="dfa-hero">
+    <div class="dfa-wrap">
+      <div class="dfa-hero-grid">
+        <div>
+          <div class="dfa-kicker">Deal Flow AI Assessment</div>
+          <h1>Find Out If You're Ahead of the Curve &mdash; or About to Be Left Behind</h1>
+          <p class="dfa-subheadline">Take the free AI Speed Test and see exactly how ready your real estate business is for the next wave of automation, lead response, marketing, and daily operations.</p>
+          <a class="dfa-cta" href="#dfa-lmA-form">Take the Free Assessment</a>
+        </div>
+        <div class="dfa-proof-card">
+          <h3>Your score reveals more than curiosity</h3>
+          <p style="margin:0;color:#dbeafe;line-height:1.7;">In less than two minutes, you will see where you stand, what is slowing you down, and what to fix first if you want faster lead response, better follow-up, and less manual work.</p>
+          <div class="dfa-score-bars">
+            <div class="dfa-score-item"><span>AI Curious</span><div class="dfa-bar"><i style="width:28%;"></i></div></div>
+            <div class="dfa-score-item"><span>AI Aware</span><div class="dfa-bar"><i style="width:52%;"></i></div></div>
+            <div class="dfa-score-item"><span>AI Active</span><div class="dfa-bar"><i style="width:78%;"></i></div></div>
+            <div class="dfa-score-item"><span>AI Native</span><div class="dfa-bar"><i style="width:94%;"></i></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dfa-section dfa-section-alt">
+    <div class="dfa-wrap">
+      <h2 class="dfa-heading">What you'll discover</h2>
+      <p class="dfa-intro">This is not another vague quiz. It is a practical snapshot of how ready you are to use AI where it actually counts.</p>
+      <div class="dfa-grid-4">
+        <div class="dfa-card"><h3><span class="dfa-check">&#10003;</span>Your current AI readiness level</h3><p>See whether you are operating as AI Curious, AI Aware, AI Active, or AI Native based on real-world workflows.</p></div>
+        <div class="dfa-card"><h3><span class="dfa-check">&#10003;</span>The #1 gap holding you back</h3><p>Pinpoint the biggest bottleneck between where you are now and what top operators are already doing.</p></div>
+        <div class="dfa-card"><h3><span class="dfa-check">&#10003;</span>Which tools to prioritize</h3><p>Stop guessing which AI tools matter most for outreach, follow-up, content, qualification, and admin work.</p></div>
+        <div class="dfa-card"><h3><span class="dfa-check">&#10003;</span>Your personalized action plan</h3><p>Get the next best steps to improve speed, consistency, and output without overcomplicating your stack.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dfa-section dfa-section-dark">
+    <div class="dfa-wrap">
+      <h2 class="dfa-heading">Built for every corner of real estate</h2>
+      <p class="dfa-intro">If you generate leads, manage communication, move deals forward, or coordinate transactions, this score matters.</p>
+      <div class="dfa-grid-6">
+        <div class="dfa-role">Real Estate Agents</div>
+        <div class="dfa-role">Investors</div>
+        <div class="dfa-role">Wholesalers</div>
+        <div class="dfa-role">Title Professionals</div>
+        <div class="dfa-role">Property Managers</div>
+        <div class="dfa-role">Mortgage Brokers</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dfa-section dfa-section-alt">
+    <div class="dfa-wrap">
+      <h2 class="dfa-heading">How it works</h2>
+      <p class="dfa-intro">Three simple steps. Clear answer. Practical next move.</p>
+      <div class="dfa-grid-3">
+        <div class="dfa-step">
+          <div class="dfa-step-num">1</div>
+          <h3>Answer 5 questions</h3>
+          <p>Respond to five fast questions about your current workflows, tools, lead handling, and automation habits.</p>
+        </div>
+        <div class="dfa-step">
+          <div class="dfa-step-num">2</div>
+          <h3>Get your score</h3>
+          <p>See your AI readiness score from 0 to 100 and instantly understand how your current setup compares.</p>
+        </div>
+        <div class="dfa-step">
+          <div class="dfa-step-num">3</div>
+          <h3>Get your action plan</h3>
+          <p>Enter your email to receive the full report, your readiness level, and the next upgrades to focus on first.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dfa-section">
+    <div class="dfa-wrap">
+      <div class="dfa-trust">Free &mdash; No credit card &mdash; Results in 2 minutes</div>
+    </div>
+  </section>
+
+  <section class="dfa-section dfa-section-alt" id="dfa-lmA-form">
+    <div class="dfa-wrap">
+      <div class="dfa-form-shell">
+        <h3>Get your full AI readiness report</h3>
+        <p>Drop in your email to unlock your score breakdown, readiness level, and your next recommended moves.</p>
+        <div class="dfa-form-placeholder">
+          <!-- GHL Form Element Goes Here -->
+          GHL form placeholder
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="dfa-footer">
+    <div class="dfa-wrap">
+      <strong>Deal Flow AI</strong> &middot; Practical AI systems for modern real estate teams<br>
+      Assessment content by The Deal Flow AI Team
+    </div>
+  </footer>
+</div>
+
+---
+
+# The AI Speed Test &mdash; Quiz Questions
+
+## Scoring Guide
+- **0&ndash;5:** Beginner (AI Curious)
+- **6&ndash;10:** Developing (AI Aware)
+- **11&ndash;13:** Proficient (AI Active)
+- **14&ndash;15:** Advanced (AI Native)
+
+## 1) How are you currently using AI in your real estate business?
+- **0 points:** I am not using AI at all right now.
+- **1 point:** I have tried ChatGPT or another tool a few times, but there is no consistent use.
+- **2 points:** I use AI weekly for content, writing, or admin tasks.
+- **3 points:** AI is part of my daily workflow across multiple tasks.
+
+## 2) How quickly can your business respond to a new lead?
+- **0 points:** Usually hours later or the next day.
+- **1 point:** Within a few hours during business hours.
+- **2 points:** Usually within 15&ndash;30 minutes.
+- **3 points:** In under 5 minutes, often automatically.
+
+## 3) Which statement best describes your follow-up system?
+- **0 points:** Follow-up is manual and inconsistent.
+- **1 point:** I use templates, but I still write or send most messages myself.
+- **2 points:** I have some automation for email or text follow-up.
+- **3 points:** AI and automation handle follow-up sequences with minimal manual work.
+
+## 4) How do you create marketing or deal-related content?
+- **0 points:** I write everything from scratch.
+- **1 point:** I reuse old material and make edits manually.
+- **2 points:** I use AI to draft listings, emails, or social posts.
+- **3 points:** AI creates first drafts and my team mainly reviews, edits, and approves.
+
+## 5) How confident are you in knowing what AI tools to implement next?
+- **0 points:** I have no idea where to start.
+- **1 point:** I know a few tools, but I am not sure what actually fits my business.
+- **2 points:** I have identified useful tools for at least one workflow.
+- **3 points:** I have a clear roadmap for which tools to deploy and why.
+</body></html>
