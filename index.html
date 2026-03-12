@@ -1235,12 +1235,17 @@
 <script>
   // ── COUNTDOWN ──
   (function() {
-    const deadline = new Date('2026-04-10T00:00:00Z');
-    const start    = new Date('2026-03-10T00:00:00Z');
-    const now      = new Date();
-    const msDay    = 86400000;
-    const remaining = Math.max(0, Math.ceil((deadline - now) / msDay));
-    const elapsed   = Math.max(1, Math.ceil((now - start) / msDay));
+    // All dates anchored to Eastern Time (UTC-5 EST / UTC-4 EDT)
+    const estOffset = 5 * 60 * 60 * 1000; // EST = UTC-5
+    const nowUTC    = new Date();
+    const nowEST    = new Date(nowUTC.getTime() - estOffset);
+    // Start: March 10, 2026 midnight EST
+    const startEST  = new Date('2026-03-10T05:00:00Z'); // midnight EST = 05:00 UTC
+    // Deadline: April 10, 2026 midnight EST
+    const deadlineEST = new Date('2026-04-11T04:00:00Z'); // midnight EST Apr 10 = 04:00 UTC (EDT)
+    const msDay     = 86400000;
+    const remaining = Math.max(0, Math.ceil((deadlineEST - nowUTC) / msDay));
+    const elapsed   = Math.max(1, Math.floor((nowUTC - startEST) / msDay) + 1);
     document.getElementById('countdown-days').textContent = remaining;
     document.getElementById('day-num').textContent = elapsed;
   })();
