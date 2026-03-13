@@ -154,6 +154,49 @@ def collect():
 
 # ── HTML Patching ─────────────────────────────────────────────────────────────
 
+def update_week_summary(html):
+    """Update the Day N summary line in the mission header."""
+    today = datetime.date.today()
+    mission_start = datetime.date(2026, 3, 5)
+    day_num = (today - mission_start).days  # Day 0 = Mar 5, Day 8 = Mar 13
+    # Read CONTEXT.md for current priority and state
+    context_path = WS / 'CONTEXT.md'
+    priority = ''
+    phase = ''
+    if context_path.exists():
+        ctx = context_path.read_text()
+        m = re.search(r'#1 Priority Right Now\s*\n+(.+?)(?:\n\n|\n#)', ctx, re.DOTALL)
+        if m:
+            priority = m.group(1).strip().replace('\n', ' ')[:120]
+        m2 = re.search(r'Project 1.*?\*\*Phase.*?\*\*(.*?)(?=\n\n|\n###)', ctx, re.DOTALL)
+        if m2:
+            phase = m2.group(1).strip()[:80]
+    
+    # Read git log for recent activity
+    recent = run(f'cd {WS} && git log --oneline --since="48 hours ago" 2>/dev/null')
+    commit_count = len([l for l in recent.splitlines() if l.strip()])
+    
+    # Build the summary line
+    et_month = today.strftime('%b %-d ET')
+    api_rem = 200 - 183  # fallback; ideally read from ledger
+    ledger = (WS / 'life/areas/finances/ledger.md')
+    if ledger.exists():
+        m = re.search(r'AI API Remaining.*?~?\$([0-9.]+)', ledger.read_text())
+        if m:
+            api_rem = float(m.group(1))
+    
+    if priority:
+        summary = f'<strong>Day {day_num} update ({et_month}):</strong> {priority}'
+    else:
+        summary = f'<strong>Day {day_num} update ({et_month}):</strong> {commit_count} commits in last 48h. API budget: ~${int(200-api_rem)}/$200 spent, ~${int(api_rem)} remaining.'
+    
+    html = re.sub(
+        r'(<div class="week-summary">).*?(</div>)',
+        rf'\g<1>{summary}\g<2>',
+        html, flags=re.DOTALL, count=1
+    )
+    return html
+
 def update_timestamp(html, et_str):
     """Update the 'Last Updated' display in the dashboard header."""
     # Pattern: id="last-updated" or similar — try a few common patterns
@@ -189,35 +232,68 @@ def update_system_health(html, d):
     return html
 
 def update_api_costs(html, d):
-    """Update the API cost budget cards."""
-    # Update 'Total Spend' card value
+    """Update the API cost cards using stable id= attributes."""
+    api_spent = d['api_spent']
+    api_rem = d['api_remaining']
+    # Color based on remaining budget
+    rem_color = 'var(--red)' if api_rem < 20 else ('var(--yellow)' if api_rem < 50 else 'var(--green)')
+    
+    updates = {
+        'api-spend-value': f'~${api_spent:.0f}',
+        'api-remaining-value': f'~${api_rem:.0f}',
+        'api-total-cost': f'~${api_spent:.0f}',
+    }
+    for elem_id, new_val in updates.items():
+        html = re.sub(
+            rf'(id="{elem_id}"[^>]*>)[^<]*(</)',
+            rf'\g<1>{new_val}\2', html
+        )
+    # Update total note
     html = re.sub(
-        r'(Total Spend \(Period\).*?card-value[^>]*>)[^<]*(</)',
-        rf'\g<1>~${d["api_spent"]:.0f}\2', html, flags=re.DOTALL
-    )
-    # Update Remaining Budget
-    rem = d['api_remaining']
-    rem_color = 'var(--red)' if rem < 20 else ('var(--yellow)' if rem < 50 else 'var(--green)')
-    html = re.sub(
-        r'(id="budget-remaining"[^>]*>)[^<]*(</)',
-        rf'\g<1>~${rem:.0f}\2', html
+        r'(id="api-total-note"[^>]*>)[^<]*(</)',
+        rf'\g<1>{"&#9888;&#65039;" if api_rem < 20 else ""} ~${api_rem:.0f} remaining this cycle\2', html
     )
     return html
 
+def get_recent_git_activity():
+    """Get git commits since last dashboard update."""
+    try:
+        log = run(f'cd {WS} && git log --oneline --since="6 hours ago" 2>/dev/null')
+        if log.strip():
+            lines = [l.strip() for l in log.strip().splitlines() if l.strip()]
+            # Strip commit hashes, return clean messages
+            msgs = [re.sub(r'^[a-f0-9]+ ', '', l) for l in lines[:5]]
+            return msgs
+    except Exception:
+        pass
+    return []
+
 def prepend_activity_log(html, d, alerts):
-    """Add a new activity log entry at the top."""
+    """Add a new activity log entry at the top — meaningful content from git log."""
     alert_badge = '<span class="badge badge-yellow" style="margin-left:8px;">Alert</span>' if alerts else '<span class="badge badge-green" style="margin-left:8px;">OK</span>'
-    alert_detail = ' &mdash; &#9888;&#65039; ' + '; '.join(alerts) if alerts else ''
+    
+    # Get recent git activity to show something meaningful
+    git_activity = get_recent_git_activity()
+    
+    if git_activity:
+        activity_text = f'New commits: ' + ' &bull; '.join(git_activity[:3])
+    elif alerts:
+        activity_text = '&#9888;&#65039; ' + '; '.join(alerts)
+    else:
+        activity_text = f'System healthy &mdash; mem {d["mem_pct"]}% &bull; disk {d["disk_pct"]}% &bull; load {d["load"]}'
+    
+    if alerts:
+        activity_text += ' &mdash; &#9888;&#65039; ' + '; '.join(alerts)
+    
     new_entry = f'''      <div class="log-entry">
         <div class="log-time">{d["et_str"]}</div>
         <div class="log-agent">AUTO</div>
         <div class="log-action">
-          Dashboard auto-refreshed. System: mem {d["mem_pct"]}% / disk {d["disk_pct"]}% / load {d["load"]} / gateway {"OK" if d["gateway_ok"] else "DOWN"}. API budget: ${d["api_spent"]:.0f} / ${d["api_budget"]:.0f}{alert_detail}
+          Auto-refresh &mdash; API budget: ${d["api_spent"]:.0f} / ${d["api_budget"]:.0f} &bull; {activity_text}
           {alert_badge}
         </div>
       </div>
 '''
-    # Insert after the '<!-- UPDATE: Add new entries at TOP' comment
     html = re.sub(
         r'(<!-- UPDATE: Add new entries at TOP[^\n]*\n)',
         rf'\g<1>{new_entry}',
@@ -269,6 +345,7 @@ def main():
 
     # Apply updates
     html = update_timestamp(html, d['et_str'])
+    html = update_week_summary(html)
     html = update_system_health(html, d)
     html = update_api_costs(html, d)
     html = prepend_activity_log(html, d, d['alerts'])
