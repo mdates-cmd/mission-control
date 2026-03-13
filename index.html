@@ -337,7 +337,7 @@
         <a href="#activity">Activity</a>
         <a href="#health">Health</a>
       </div>
-      <div class="topnav-updated">Updated: <span id="last-updated">Mar 13, 2026  11:28 AM ET</span></div>
+      <div class="topnav-updated">Updated: <span id="last-updated">Mar 13, 2026  11:30 AM ET</span></div>
     </div>
   </div>
 </nav>
@@ -866,7 +866,7 @@
     <div class="grid3" style="margin-bottom:8px;">
       <div class="card card-sm">
         <div class="card-label">AI API Spend — Mar Cycle</div>
-        <div class="card-value" style="color:var(--red);" id="api-spend-value">~$175</div>
+        <div class="card-value" style="color:var(--red);" id="api-spend-value">~$183</div>
         <div class="card-sub" id="api-spend-note">Est. Mar 13 end-of-day &middot; Anthropic only</div>
       </div>
       <div class="card card-sm">
@@ -876,7 +876,7 @@
       </div>
       <div class="card card-sm">
         <div class="card-label">AI API Remaining</div>
-        <div class="card-value" style="color:var(--red);" id="api-remaining-value">~$25</div>
+        <div class="card-value" style="color:var(--red);" id="api-remaining-value">~$17</div>
         <div class="card-sub" id="api-remaining-note">⚠️ Critical — Sonnet for strategy only</div>
       </div>
     </div>
@@ -944,8 +944,8 @@
         </tr>
         <tr style="font-weight:700; border-top: 1px solid var(--border2);">
           <td colspan="3" style="color:var(--text);">TOTAL — Mar 2026 (Anthropic)</td>
-          <td class="mono" style="color:var(--red);" id="api-total-cost">~$175</td>
-          <td colspan="2" style="color:var(--red); font-size:12px;" id="api-total-note"> ~$25 remaining this cycle</td>
+          <td class="mono" style="color:var(--red);" id="api-total-cost">~$183</td>
+          <td colspan="2" style="color:var(--red); font-size:12px;" id="api-total-note">&#9888;&#65039; ~$17 remaining this cycle</td>
         </tr>
         <tr>
           <td colspan="6" style="color:var(--muted); font-size:12px; font-style:italic; padding:12px;">
@@ -978,6 +978,14 @@
     <div class="section-title">📋 Subagent Activity Log</div>
 
     <!-- UPDATE: Add new entries at TOP (reverse chronological). Keep last 20. -->
+      <div class="log-entry">
+        <div class="log-time">Mar 13, 2026  11:30 AM ET</div>
+        <div class="log-agent">AUTO</div>
+        <div class="log-action">
+          Auto-refresh &mdash; API budget: $183 / $200 &bull; New commits: Dashboard: auto-refresh 2026-03-13 16:28 UTC &bull; Dashboard: auto-refresh 2026-03-13 15:13 UTC &bull; Admin panel: all 7 tabs live (agents, health, logs, files, actions, onboarding) &mdash; &#9888;&#65039; API BUDGET LOW: $17.00 remaining
+          <span class="badge badge-yellow" style="margin-left:8px;">Alert</span>
+        </div>
+      </div>
       <div class="log-entry">
         <div class="log-time">Mar 13, 2026  11:28 AM ET</div>
         <div class="log-agent">AUTO</div>
@@ -1183,14 +1191,7 @@
         </div>
       </div>
 
-      <div class="log-entry">
-        <div class="log-time">Mar 11, 2026  9:17 PM ET</div>
-        <div class="log-agent">NEO</div>
-        <div class="log-action">
-          Fixed www.dealflowaiconsulting.com 404 — updated CNAME from sites.ludicrous.cloud to root domain via Cloudflare API. Identified http:// not redirecting to https:// — Boss to enable "Always Use HTTPS" in Cloudflare Edge Certificates.
-          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
-        </div>
-      </div>
+      
 
       
 
@@ -1241,7 +1242,7 @@
       <!-- Auto-updated every 6h by dashboard cron -->
       <div class="health-item">
         <span class="health-label">Memory Usage</span>
-        <span class="health-val health-up" id="health-mem">20.8%</span>
+        <span class="health-val health-up" id="health-mem">21.0%</span>
       </div>
       <div class="health-item">
         <span class="health-label">Disk Usage</span>
@@ -1249,7 +1250,7 @@
       </div>
       <div class="health-item">
         <span class="health-label">Load Avg (1m)</span>
-        <span class="health-val health-up mono" id="health-load">0.07</span>
+        <span class="health-val health-up mono" id="health-load">0.00</span>
       </div>
       <div class="health-item">
         <span class="health-label">OpenClaw Gateway</span>
@@ -1257,7 +1258,7 @@
       </div>
       <div class="health-item">
         <span class="health-label">Uptime</span>
-        <span class="health-val health-up mono" id="health-uptime">14.0h</span>
+        <span class="health-val health-up mono" id="health-uptime">14.1h</span>
       </div>
       <div class="health-item">
         <span class="health-label">Errors (24h)</span>
