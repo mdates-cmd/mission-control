@@ -337,7 +337,7 @@
         <a href="#activity">Activity</a>
         <a href="#health">Health</a>
       </div>
-      <div class="topnav-updated">Updated: <span id="last-updated">Mar 13, 2026  10:13 AM ET</span></div>
+      <div class="topnav-updated">Updated: <span id="last-updated">Mar 13, 2026  11:28 AM ET</span></div>
     </div>
   </div>
 </nav>
@@ -866,18 +866,18 @@
     <div class="grid3" style="margin-bottom:8px;">
       <div class="card card-sm">
         <div class="card-label">AI API Spend — Mar Cycle</div>
-        <div class="card-value" style="color:var(--red);">~$175</div>
-        <div class="card-sub">Confirmed by Boss &middot; Mar 13</div>
+        <div class="card-value" style="color:var(--red);" id="api-spend-value">~$175</div>
+        <div class="card-sub" id="api-spend-note">Est. Mar 13 end-of-day &middot; Anthropic only</div>
       </div>
       <div class="card card-sm">
         <div class="card-label">AI API Monthly Budget</div>
-        <div class="card-value" style="color:var(--blue);">$200</div>
+        <div class="card-value" style="color:var(--blue);" id="api-budget-value">$200</div>
         <div class="card-sub">Confirmed by Boss &middot; Mar 12</div>
       </div>
       <div class="card card-sm">
         <div class="card-label">AI API Remaining</div>
-        <div class="card-value" style="color:var(--yellow);">~$25</div>
-        <div class="card-sub">⚠️ Low — delegating aggressively</div>
+        <div class="card-value" style="color:var(--red);" id="api-remaining-value">~$25</div>
+        <div class="card-sub" id="api-remaining-note">⚠️ Critical — Sonnet for strategy only</div>
       </div>
     </div>
     <div class="grid3" style="margin-bottom:24px; margin-top:12px;">
@@ -913,17 +913,17 @@
         <tr>
           <td>Neo — Claude Sonnet 4.6</td>
           <td class="mono">anthropic</td>
-          <td class="mono">~6M+</td>
-          <td class="mono" style="color:var(--red);">~$175</td>
-          <td>Primary CEO model (fixed). High due to long context + frequent compaction.</td>
-          <td class="mono">2026-03-13</td>
+          <td class="mono" id="neo-tokens">~7M+</td>
+          <td class="mono" style="color:var(--red);" id="neo-cost">~$183</td>
+          <td>Primary CEO model. Mar 5&ndash;13: funnel build, order form, admin panel, credential vault, all orchestration. High context = high cost. Delegation enforced from Mar 13.</td>
+          <td class="mono" id="neo-last-run">2026-03-13</td>
         </tr>
         <tr>
           <td>ChatGPT Manager — GPT-5.4</td>
           <td class="mono">openai-codex</td>
-          <td class="mono">~34k</td>
-          <td class="mono">~$0.30</td>
-          <td>Email copy, order page HTML, subagent tasks. OAuth billing.</td>
+          <td class="mono">~250k</td>
+          <td class="mono">OAuth</td>
+          <td>Handles all HTML, code, copy generation. 8 subagent runs Mar 13: MIND/RULES/CONTEXT, credvault (730&rarr;1646 lines), admin panel tabs, post-purchase emails. OAuth = no API budget impact.</td>
           <td class="mono">2026-03-13</td>
         </tr>
         <tr>
@@ -931,25 +931,25 @@
           <td class="mono">openrouter</td>
           <td class="mono">~12k</td>
           <td class="mono">~$0.00</td>
-          <td>Bonus track draft subagent.</td>
-          <td class="mono">2026-03-11</td>
+          <td>Credvault watchdog cron. Minimal usage.</td>
+          <td class="mono">2026-03-13</td>
         </tr>
         <tr>
-          <td>DeepSeek V3</td>
-          <td class="mono">openrouter</td>
-          <td class="mono">0</td>
-          <td class="mono">$0.00</td>
-          <td>Failed — model ID issue. Retried task via exec.</td>
+          <td>Dashboard Refresh Cron</td>
+          <td class="mono">openai-codex</td>
+          <td class="mono">~24k/run</td>
+          <td class="mono">OAuth</td>
+          <td>Runs every 6h via isolated GPT-5.4 session. 2 runs completed. OAuth = no API budget impact.</td>
           <td class="mono">2026-03-13</td>
         </tr>
         <tr style="font-weight:700; border-top: 1px solid var(--border2);">
-          <td colspan="3" style="color:var(--text);">TOTAL — Mar 2026</td>
-          <td class="mono" style="color:var(--red);">~$175.30</td>
-          <td colspan="2" style="color:var(--yellow); font-size:12px;">⚠️ $25 remaining this cycle</td>
+          <td colspan="3" style="color:var(--text);">TOTAL — Mar 2026 (Anthropic)</td>
+          <td class="mono" style="color:var(--red);" id="api-total-cost">~$175</td>
+          <td colspan="2" style="color:var(--red); font-size:12px;" id="api-total-note"> ~$25 remaining this cycle</td>
         </tr>
         <tr>
           <td colspan="6" style="color:var(--muted); font-size:12px; font-style:italic; padding:12px;">
-            Going forward: Neo handles strategy + review only. All content, code, and copy generation delegated to ChatGPT Manager (OAuth) or MiniMax/DeepSeek. Target: &lt;$50/month API cost from Apr cycle.
+            Note: API costs are manually estimated (no billing API access). ChatGPT Manager (OAuth) and cron runs use Boss&apos;s ChatGPT subscription, not the $200 Anthropic budget. Apr target: &lt;$50 Anthropic by delegating all generation tasks.
           </td>
         </tr>
         <tr>
@@ -978,6 +978,54 @@
     <div class="section-title">📋 Subagent Activity Log</div>
 
     <!-- UPDATE: Add new entries at TOP (reverse chronological). Keep last 20. -->
+      <div class="log-entry">
+        <div class="log-time">Mar 13, 2026  11:28 AM ET</div>
+        <div class="log-agent">AUTO</div>
+        <div class="log-action">
+          Auto-refresh &mdash; API budget: $175 / $200 &bull; New commits: Dashboard: auto-refresh 2026-03-13 15:13 UTC &bull; Admin panel: all 7 tabs live (agents, health, logs, files, actions, onboarding)
+          <span class="badge badge-green" style="margin-left:8px;">OK</span>
+        </div>
+      </div>
+      <div class="log-entry">
+        <div class="log-time">Mar 13, 2026 12:24 PM ET</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          Dashboard fixed: added stable IDs to API cost cards, updated spend to ~$183, fixed auto-refresh script regex, activity log now shows git commits. API budget critical: ~$17 remaining.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
+      <div class="log-entry">
+        <div class="log-time">Mar 13, 2026 11:55 AM ET</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          Admin Control Panel live at :18795 &mdash; 7 tabs: Credentials, Agent Manager, System Health, Log Viewer, File Manager, Quick Actions, Onboarding (stub). 1646-line Express app. Syntax error fixed and deployed.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
+      <div class="log-entry">
+        <div class="log-time">Mar 13, 2026 11:19 AM ET</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          Credential Vault deployed at :18795 &mdash; PBKDF2 auth, session management, masked credentials, reveal modal, backup-before-delete. 15-min lockout, access logging, env-var detection, watchdog cron.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
+      <div class="log-entry">
+        <div class="log-time">Mar 13, 2026 11:17 AM ET</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          MIND.md, RULES.md, CONTEXT.md created in workspace root. Decision framework, 22 non-negotiable rules, full current-session state. Drafted by ChatGPT Manager.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
+      <div class="log-entry">
+        <div class="log-time">Mar 13, 2026  9:13 AM ET</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          Dashboard auto-refresh cron active (ID: a3da37ae, every 6h, GPT-5.4 OAuth). Scripts: dashboard-update.py, dashboard-collect.py, dashboard-push.py. Telegram alerts wired for memory/disk/gateway/budget.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
       <div class="log-entry">
         <div class="log-time">Mar 13, 2026  10:13 AM ET</div>
         <div class="log-agent">AUTO</div>
@@ -1144,59 +1192,17 @@
         </div>
       </div>
 
-      <div class="log-entry">
-        <div class="log-time">Mar 11, 2026  9:03 PM ET</div>
-        <div class="log-agent">NEO</div>
-        <div class="log-action">
-          Built order form header HTML for GHL Order Form page (order-form-header-ghl.html) — "Step 2 of 2" header, order summary, trust badges. To be placed above native GHL Order Form element.
-          <span class="badge badge-yellow" style="margin-left:8px;">Pending Install</span>
-        </div>
-      </div>
+      
 
-      <div class="log-entry">
-        <div class="log-time">Mar 11, 2026  8:30 PM ET</div>
-        <div class="log-agent">NEO</div>
-        <div class="log-action">
-          Rebuilt sales page HTML from scratch (sales-page-ghl.html) — all emojis removed, replaced with HTML entities to fix GHL UTF-8 encoding failure. Fixed bottom CTA subtext contrast (dark text on dark bg). Confirmed live in GHL.
-          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
-        </div>
-      </div>
+      
 
-      <div class="log-entry">
-        <div class="log-time">Mar 11, 2026  7:03 PM ET</div>
-        <div class="log-agent">NEO</div>
-        <div class="log-action">
-          Diagnosed WordPress showing /sales as homepage. Identified static page redirect in WP Settings → Reading. Enabled Cloudflare proxy on A record to fix SSL "Not Secure" on main domain.
-          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
-        </div>
-      </div>
+      
 
-      <div class="log-entry">
-        <div class="log-time">Mar 11, 2026  5:00 PM ET</div>
-        <div class="log-agent">NEO</div>
-        <div class="log-action">
-          Bonus track subagent respawned (MiniMax M2.5) — original timed out after 10min. Writing 4 specialty tracks: Wholesalers, Title &amp; Escrow, Property Managers, Buy &amp; Hold Investors (400–500 words each).
-          <span class="badge badge-yellow" style="margin-left:8px;">In Progress</span>
-        </div>
-      </div>
+      
 
-      <div class="log-entry">
-        <div class="log-time">Mar 11, 2026  4:15 PM ET</div>
-        <div class="log-agent">NEO</div>
-        <div class="log-action">
-          GHL sales page HTML deployed (sales-page-ghl.html) — full-width CSS breakout, hero, pain/promise grid, modules, offer table, guarantee, FAQ, final CTA. All buy buttons pointing to go.dealflowaiconsulting.com/order. Confirmed live.
-          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
-        </div>
-      </div>
+      
 
-      <div class="log-entry">
-        <div class="log-time">Mar 11, 2026  3:30 PM ET</div>
-        <div class="log-agent">NEO</div>
-        <div class="log-action">
-          DNS updated via Cloudflare API: A record → 66.96.147.106 (WordPress/iPage), go CNAME → sites.ludicrous.cloud (GHL), checkout CNAME added. Boss manually added go.dealflowaiconsulting.com to GHL domains.
-          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
-        </div>
-      </div>
+      
 
       
 
@@ -1235,7 +1241,7 @@
       <!-- Auto-updated every 6h by dashboard cron -->
       <div class="health-item">
         <span class="health-label">Memory Usage</span>
-        <span class="health-val health-up" id="health-mem">19.8%</span>
+        <span class="health-val health-up" id="health-mem">20.8%</span>
       </div>
       <div class="health-item">
         <span class="health-label">Disk Usage</span>
@@ -1243,7 +1249,7 @@
       </div>
       <div class="health-item">
         <span class="health-label">Load Avg (1m)</span>
-        <span class="health-val health-up mono" id="health-load">0.00</span>
+        <span class="health-val health-up mono" id="health-load">0.07</span>
       </div>
       <div class="health-item">
         <span class="health-label">OpenClaw Gateway</span>
@@ -1251,7 +1257,7 @@
       </div>
       <div class="health-item">
         <span class="health-label">Uptime</span>
-        <span class="health-val health-up mono" id="health-uptime">12.8h</span>
+        <span class="health-val health-up mono" id="health-uptime">14.0h</span>
       </div>
       <div class="health-item">
         <span class="health-label">Errors (24h)</span>
