@@ -337,7 +337,7 @@
         <a href="#activity">Activity</a>
         <a href="#health">Health</a>
       </div>
-      <div class="topnav-updated">Updated: <span id="last-updated">2026-03-12</span></div>
+      <div class="topnav-updated">Updated: <span id="last-updated">Mar 12, 2026  10:12 PM ET</span></div>
     </div>
   </div>
 </nav>
@@ -979,6 +979,14 @@
 
     <!-- UPDATE: Add new entries at TOP (reverse chronological). Keep last 20. -->
       <div class="log-entry">
+        <div class="log-time">Mar 12, 2026  10:12 PM ET</div>
+        <div class="log-agent">AUTO</div>
+        <div class="log-action">
+          Dashboard auto-refreshed. System: mem 18.5% / disk 8% / load 0.04 / gateway OK. API budget: $175 / $200 &mdash; &#9888;&#65039; ELEVATED ERRORS: 145 error events in today's log
+          <span class="badge badge-yellow" style="margin-left:8px;">Alert</span>
+        </div>
+      </div>
+      <div class="log-entry">
         <div class="log-time">Mar 13, 2026 10:58 PM ET</div>
         <div class="log-agent">NEO</div>
         <div class="log-action">
@@ -1194,68 +1202,19 @@
         </div>
       </div>
 
-      <div class="log-entry">
-        <div class="log-time">Mar 11, 2026  12:54 PM ET</div>
-        <div class="log-agent">NEO</div>
-        <div class="log-action">
-          Built WordPress theme (deal-flow-ai-theme.zip) for dealflowaiconsulting.com — custom homepage, nav CTA "Get the Playbook", proof bar, hero section. Uploaded to iPage. Site live.
-          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
-        </div>
-      </div>
+      
 
-      <div class="log-entry">
-        <div class="log-time">Mar 11, 2026  11:17 AM ET</div>
-        <div class="log-agent">NEO</div>
-        <div class="log-action">
-          PayPal business review triggered during GHL integration — pivoting to Stripe as primary processor. hello@ and info@dealflowaiconsulting.com created; forwarding configured to Gmail.
-          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
-        </div>
-      </div>
+      
 
-      <div class="log-entry">
-        <div class="log-time">Mar 11, 2026  12:48 AM ET</div>
-        <div class="log-agent">NEO</div>
-        <div class="log-action">
-          Diagnosed PayPal OAuth issue — GHL partner flow routing to new account. Guided Boss through business upgrade on existing PayPal account.
-          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
-        </div>
-      </div>
+      
 
-      <div class="log-entry">
-        <div class="log-time">Mar 10, 2026  ET</div>
-        <div class="log-agent">NEO</div>
-        <div class="log-action">
-          Strategic pivot session. Mission redirected from REI system build to Deal Flow AI digital product launch. Projects 1–5 scoped. GHL account authenticated. Funnel created: "Deal Flow AI Playbook - Sales Funnel" (3 steps). Cloudflare set up. SOUL.md + MEMORY.md rewritten for new mission.
-          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
-        </div>
-      </div>
+      
 
-      <div class="log-entry">
-        <div class="log-time">Mar 8, 2026  ET</div>
-        <div class="log-agent">NEO</div>
-        <div class="log-action">
-          Deep build session. Josh High deal calculators analyzed (flip + landlord). DIY Twilio + OpenAI Realtime chosen over Retell AI for call agent. Podio siloed workspace architecture planned. Build timeline recalibrated to AI-led speed (full system in &lt;1 week vs 6 weeks).
-          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
-        </div>
-      </div>
+      
 
-      <div class="log-entry">
-        <div class="log-time">Mar 7, 2026  ET</div>
-        <div class="log-agent">NEO</div>
-        <div class="log-action">
-          Boss sent 8 ChatGPT/Claude conversation exports. Web scraper architecture documented (Volusia County court records). VA repurposing plan created (replace manual data work with scraper → redirect to FSBO outreach). Nick Perry PPC masterclass analyzed. Motivation scoring system mapped.
-          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
-        </div>
-      </div>
+      
 
-      <div class="log-entry">
-        <div class="log-time">Mar 5, 2026  ET</div>
-        <div class="log-agent">NEO</div>
-        <div class="log-action">
-          Day 0 — Mission begins. Neo identity established. SOUL.md written. REI business audit: Agape Home Buyers + Florida Home Buyer Direct. CRM stack mapped (Podio/Globiflow, smrtPhone, AWS SES). 2 Filipino VAs documented. Priority order set. FHBD website rebuild started.
-          <span class="badge badge-blue" style="margin-left:8px;">Mission Start</span>
-        </div>
-      </div>
+      
 
     </div>
   </div>
@@ -1269,31 +1228,30 @@
     <div class="section-title">🖥️ System Health</div>
 
     <div class="health-grid" style="margin-bottom:20px;">
-      <!-- UPDATE: Check server status and update these manually or via Neo -->
+      <!-- Auto-updated every 6h by dashboard cron -->
       <div class="health-item">
-        <span class="health-label">Hetzner VPS</span>
-        <span class="health-val health-up">● UP</span>
+        <span class="health-label">Memory Usage</span>
+        <span class="health-val health-up" id="health-mem">18.5%</span>
+      </div>
+      <div class="health-item">
+        <span class="health-label">Disk Usage</span>
+        <span class="health-val health-up" id="health-disk">8%</span>
+      </div>
+      <div class="health-item">
+        <span class="health-label">Load Avg (1m)</span>
+        <span class="health-val health-up mono" id="health-load">0.04</span>
       </div>
       <div class="health-item">
         <span class="health-label">OpenClaw Gateway</span>
-        <span class="health-val health-up">● RUNNING</span>
+        <span class="health-val health-up" id="health-gateway">Running</span>
       </div>
       <div class="health-item">
-        <span class="health-label">Tailscale</span>
-        <!-- UPDATE: Change to health-up CONNECTED when confirmed -->
-        <span class="health-val health-unknown">○ UNKNOWN</span>
-      </div>
-      <div class="health-item">
-        <span class="health-label">Last Neo Response</span>
-        <span class="health-val health-up mono">2026-03-11</span>
-      </div>
-      <div class="health-item">
-        <span class="health-label">Last Subagent Task</span>
-        <span class="health-val mono">2026-03-11 17:08</span>
+        <span class="health-label">Uptime</span>
+        <span class="health-val health-up mono" id="health-uptime">0.8h</span>
       </div>
       <div class="health-item">
         <span class="health-label">Errors (24h)</span>
-        <span class="health-val health-up">0</span>
+        <span class="health-val health-up" id="health-errors">145</span>
       </div>
     </div>
 
