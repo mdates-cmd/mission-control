@@ -862,77 +862,95 @@
   <div class="container">
     <div class="section-title">💳 API Usage & Cost Tracking</div>
 
-    <div class="grid3" style="margin-bottom:24px;">
+    <!-- Budget grid: AI API + Operational -->
+    <div class="grid3" style="margin-bottom:8px;">
       <div class="card card-sm">
-        <div class="card-label">Total Spend (Period)</div>
-        <!-- UPDATE: Update as API costs accumulate -->
-        <div class="card-value" style="color:var(--yellow);">$0.00</div>
-        <div class="card-sub">March 2026 billing period</div>
+        <div class="card-label">AI API Spend — Mar Cycle</div>
+        <div class="card-value" style="color:var(--red);">~$175</div>
+        <div class="card-sub">Confirmed by Boss &middot; Mar 13</div>
       </div>
       <div class="card card-sm">
-        <div class="card-label">Monthly AI Budget</div>
+        <div class="card-label">AI API Monthly Budget</div>
         <div class="card-value" style="color:var(--blue);">$200</div>
-        <div class="card-sub">Confirmed by Boss · Mar 12</div>
+        <div class="card-sub">Confirmed by Boss &middot; Mar 12</div>
       </div>
       <div class="card card-sm">
-        <div class="card-label">Remaining Budget</div>
-        <div class="card-value" style="color:var(--green);" id="budget-remaining">$200</div>
-        <div class="card-sub">Updates as spend is logged</div>
+        <div class="card-label">AI API Remaining</div>
+        <div class="card-value" style="color:var(--yellow);">~$25</div>
+        <div class="card-sub">⚠️ Low — delegating aggressively</div>
+      </div>
+    </div>
+    <div class="grid3" style="margin-bottom:24px; margin-top:12px;">
+      <div class="card card-sm">
+        <div class="card-label">Operational Card (Deal Flow AI)</div>
+        <div class="card-value" style="color:var(--green);">$250</div>
+        <div class="card-sub">Available &mdash; $0 spent</div>
+      </div>
+      <div class="card card-sm">
+        <div class="card-label">Ops Spend Rule</div>
+        <div class="card-value" style="color:var(--muted); font-size:14px;">Earn First</div>
+        <div class="card-sub">Zero spend until first dollar earned</div>
+      </div>
+      <div class="card card-sm">
+        <div class="card-label">First Spend Unlock</div>
+        <div class="card-value" style="color:var(--muted); font-size:14px;">$47 sale</div>
+        <div class="card-sub">Then: $50&ndash;100 on paid ads</div>
       </div>
     </div>
 
-    <!-- UPDATE: Fill in token counts and costs from API logs -->
     <table class="cost-table">
       <thead>
         <tr>
-          <th>Project / Use</th>
-          <th>Model</th>
-          <th>Input Tokens</th>
-          <th>Output Tokens</th>
+          <th>Model / Use</th>
+          <th>Provider</th>
+          <th>Est. Tokens</th>
           <th>Est. Cost</th>
+          <th>Notes</th>
           <th>Last Run</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Neo (overhead)</td>
-          <td class="mono">sonnet-4-6</td>
-          <td class="mono">—</td>
-          <td class="mono">—</td>
-          <td class="mono">$0.00</td>
-          <td class="mono">2026-03-11</td>
+          <td>Neo — Claude Sonnet 4.6</td>
+          <td class="mono">anthropic</td>
+          <td class="mono">~6M+</td>
+          <td class="mono" style="color:var(--red);">~$175</td>
+          <td>Primary CEO model (fixed). High due to long context + frequent compaction.</td>
+          <td class="mono">2026-03-13</td>
         </tr>
         <tr>
-          <td>ChatGPT Manager (QC)</td>
-          <td class="mono">gpt-5.4</td>
-          <td class="mono">—</td>
-          <td class="mono">—</td>
-          <td class="mono">$0.00</td>
-          <td class="mono">—</td>
+          <td>ChatGPT Manager — GPT-5.4</td>
+          <td class="mono">openai-codex</td>
+          <td class="mono">~34k</td>
+          <td class="mono">~$0.30</td>
+          <td>Email copy, order page HTML, subagent tasks. OAuth billing.</td>
+          <td class="mono">2026-03-13</td>
         </tr>
         <tr>
-          <td>Apex Agent</td>
-          <td class="mono">minimax-m2.5</td>
-          <td class="mono">12,000</td>
-          <td class="mono">361</td>
+          <td>MiniMax M2.5</td>
+          <td class="mono">openrouter</td>
+          <td class="mono">~12k</td>
           <td class="mono">~$0.00</td>
+          <td>Bonus track draft subagent.</td>
           <td class="mono">2026-03-11</td>
         </tr>
         <tr>
-          <td>Content Agent</td>
-          <td class="mono">gemini-2.5-flash</td>
-          <td class="mono">—</td>
-          <td class="mono">—</td>
+          <td>DeepSeek V3</td>
+          <td class="mono">openrouter</td>
+          <td class="mono">0</td>
           <td class="mono">$0.00</td>
-          <td class="mono">—</td>
+          <td>Failed — model ID issue. Retried task via exec.</td>
+          <td class="mono">2026-03-13</td>
+        </tr>
+        <tr style="font-weight:700; border-top: 1px solid var(--border2);">
+          <td colspan="3" style="color:var(--text);">TOTAL — Mar 2026</td>
+          <td class="mono" style="color:var(--red);">~$175.30</td>
+          <td colspan="2" style="color:var(--yellow); font-size:12px;">⚠️ $25 remaining this cycle</td>
         </tr>
         <tr>
-          <td>RE Agent</td>
-          <td class="mono">minimax-m2.5</td>
-          <td class="mono">—</td>
-          <td class="mono">—</td>
-          <td class="mono">$0.00</td>
-          <td class="mono">—</td>
+          <td colspan="6" style="color:var(--muted); font-size:12px; font-style:italic; padding:12px;">
+            Going forward: Neo handles strategy + review only. All content, code, and copy generation delegated to ChatGPT Manager (OAuth) or MiniMax/DeepSeek. Target: &lt;$50/month API cost from Apr cycle.
+          </td>
         </tr>
         <tr>
           <td>Publishing Agent</td>
@@ -960,6 +978,30 @@
     <div class="section-title">📋 Subagent Activity Log</div>
 
     <!-- UPDATE: Add new entries at TOP (reverse chronological). Keep last 20. -->
+      <div class="log-entry">
+        <div class="log-time">Mar 13, 2026 10:58 PM ET</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          Dashboard updated: API cost section populated &mdash; ~$175 spent Mar cycle, ~$25 remaining, $250 operational card untouched. Delegation policy enforced going forward.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
+      <div class="log-entry">
+        <div class="log-time">Mar 13, 2026 10:55 PM ET</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          Order page LIVE at go.dealflowaiconsulting.com/order &mdash; dark theme, 2-col layout, trust badges, &ldquo;Continue to Payment&rdquo; CTA, no shipping, order bump wired. PDFs rebuilt clean (no file:// artifacts): ebook 491KB, swipe file 111KB, blueprint 168KB.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
+      <div class="log-entry">
+        <div class="log-time">Mar 13, 2026  9:17 PM ET</div>
+        <div class="log-agent">NEO</div>
+        <div class="log-action">
+          Post-purchase email sequence drafted (3 emails: instant delivery, day 2 check-in, day 5 course upsell). GHL workflow setup guide written. PDF download links live on GitHub Pages.
+          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
+        </div>
+      </div>
       <div class="log-entry">
         <div class="log-time">Mar 12, 2026  6:30 PM ET</div>
         <div class="log-agent">NEO</div>
