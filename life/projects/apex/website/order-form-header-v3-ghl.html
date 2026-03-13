@@ -1,0 +1,391 @@
+<style>
+.dfa-ord-wrapper {
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  width: 100vw;
+  margin-top: 0;
+  background: #0f172a;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.dfa-ord-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px 56px;
+  box-sizing: border-box;
+}
+
+.dfa-ord-urgency {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #f59e0b;
+  color: #0f172a;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  padding: 14px 18px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.dfa-ord-hero {
+  padding: 48px 0 28px;
+  text-align: center;
+}
+
+.dfa-ord-kicker {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 8px 14px;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.08);
+  color: #fbbf24;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.dfa-ord-headline {
+  margin: 0;
+  font-size: 42px;
+  line-height: 1.15;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.dfa-ord-subheadline {
+  max-width: 760px;
+  margin: 18px auto 0;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #cbd5e1;
+}
+
+.dfa-ord-card {
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.92) 0%, rgba(15, 23, 42, 0.98) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+}
+
+.dfa-ord-section {
+  margin-top: 28px;
+}
+
+.dfa-ord-includes {
+  padding: 32px 28px;
+}
+
+.dfa-ord-section-title {
+  margin: 0 0 10px;
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.dfa-ord-section-copy {
+  margin: 0 0 22px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #cbd5e1;
+}
+
+.dfa-ord-checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dfa-ord-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+  font-size: 16px;
+  line-height: 1.65;
+  color: #f8fafc;
+}
+
+.dfa-ord-checklist li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.dfa-ord-check {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  margin-top: 2px;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.16);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #f59e0b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.dfa-ord-bonus {
+  color: #fbbf24;
+  font-weight: 700;
+}
+
+.dfa-ord-guarantee {
+  padding: 28px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  background: linear-gradient(180deg, rgba(245, 158, 11, 0.1) 0%, rgba(15, 23, 42, 0.98) 100%);
+}
+
+.dfa-ord-guarantee-badge {
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.14);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #f59e0b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.dfa-ord-guarantee-title {
+  margin: 0 0 8px;
+  font-size: 26px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.dfa-ord-guarantee-copy {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #e2e8f0;
+}
+
+.dfa-ord-testimonials-wrap {
+  margin-top: 34px;
+}
+
+.dfa-ord-testimonials-label {
+  margin: 0 0 16px;
+  font-size: 14px;
+  color: #fbbf24;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.dfa-ord-testimonials {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.dfa-ord-testimonial {
+  padding: 24px;
+}
+
+.dfa-ord-stars {
+  margin-bottom: 14px;
+  color: #f59e0b;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+.dfa-ord-quote {
+  margin: 0 0 16px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #f8fafc;
+}
+
+.dfa-ord-author {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+.dfa-ord-trust {
+  margin-top: 32px;
+  padding: 18px 22px;
+  border-radius: 16px;
+  background: rgba(2, 6, 23, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #cbd5e1;
+}
+
+.dfa-ord-trust strong {
+  color: #ffffff;
+}
+
+.dfa-ord-divider {
+  color: rgba(245, 158, 11, 0.7);
+  padding: 0 10px;
+}
+
+@media (max-width: 767px) {
+  .dfa-ord-container {
+    padding: 0 16px 42px;
+  }
+
+  .dfa-ord-urgency {
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+
+  .dfa-ord-hero {
+    padding: 34px 0 22px;
+  }
+
+  .dfa-ord-headline {
+    font-size: 30px;
+  }
+
+  .dfa-ord-subheadline {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .dfa-ord-includes,
+  .dfa-ord-guarantee,
+  .dfa-ord-testimonial {
+    padding: 22px 18px;
+  }
+
+  .dfa-ord-section-title,
+  .dfa-ord-guarantee-title {
+    font-size: 24px;
+  }
+
+  .dfa-ord-testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .dfa-ord-guarantee {
+    flex-direction: column;
+  }
+
+  .dfa-ord-guarantee-badge {
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+  }
+
+  .dfa-ord-trust {
+    font-size: 14px;
+    padding: 16px 14px;
+  }
+
+  .dfa-ord-divider {
+    display: inline-block;
+    padding: 0 6px;
+  }
+}
+</style>
+
+<div class="dfa-ord-wrapper">
+  <div class="dfa-ord-urgency">&#9889; Founding Member Price: $47 &mdash; This price goes up soon</div>
+
+  <div class="dfa-ord-container">
+    <div class="dfa-ord-hero">
+      <div class="dfa-ord-kicker">Complete Your Order</div>
+      <h1 class="dfa-ord-headline">You're One Step Away From Your Complete AI Lead Generation System</h1>
+      <p class="dfa-ord-subheadline">
+        Get the exact playbook built for real estate investors who want to use AI to find motivated sellers, automate follow-up, and analyze deals faster without drowning in tech overwhelm.
+      </p>
+    </div>
+
+    <div class="dfa-ord-section dfa-ord-card dfa-ord-includes">
+      <h2 class="dfa-ord-section-title">What&rsquo;s Included In Your Order</h2>
+      <p class="dfa-ord-section-copy">
+        Everything inside is designed to help you move from scattered ideas to a simple, repeatable AI-assisted lead generation workflow.
+      </p>
+
+      <ul class="dfa-ord-checklist">
+        <li>
+          <span class="dfa-ord-check">&#10003;</span>
+          <span>The 5-chapter AI playbook covering how to find motivated sellers, automate follow-up, analyze deals, close faster, and build simple systems that save time</span>
+        </li>
+        <li>
+          <span class="dfa-ord-check">&#10003;</span>
+          <span>Step-by-step AI prompt templates you can plug into ChatGPT and similar tools right away</span>
+        </li>
+        <li>
+          <span class="dfa-ord-check">&#10003;</span>
+          <span>The 30-Day AI Launch Plan quick-start checklist so you know exactly what to do first</span>
+        </li>
+        <li>
+          <span class="dfa-ord-check">&#10003;</span>
+          <span>Lifetime access plus free updates as the Deal Flow AI system evolves</span>
+        </li>
+        <li>
+          <span class="dfa-ord-check">&#10003;</span>
+          <span>Deal Flow AI community access for support, ideas, and implementation momentum</span>
+        </li>
+        <li>
+          <span class="dfa-ord-check">&#10003;</span>
+          <span><span class="dfa-ord-bonus">BONUS:</span> AI Prompt Swipe File &mdash; 30 done-for-you prompts for REI, a $27 value, included FREE with your order bump</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="dfa-ord-section dfa-ord-card dfa-ord-guarantee">
+      <div class="dfa-ord-guarantee-badge">&#128274;</div>
+      <div>
+        <h2 class="dfa-ord-guarantee-title">30-Day Use It Or Lose It Guarantee</h2>
+        <p class="dfa-ord-guarantee-copy">
+          Put the system to work for 30 days. If you implement the playbook, use the prompts, and do not generate at least one qualified lead, you&rsquo;ll get a full refund. No questions asked.
+        </p>
+      </div>
+    </div>
+
+    <div class="dfa-ord-testimonials-wrap">
+      <div class="dfa-ord-testimonials-label">Early Reader Feedback</div>
+      <div class="dfa-ord-testimonials">
+        <div class="dfa-ord-card dfa-ord-testimonial">
+          <div class="dfa-ord-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+          <p class="dfa-ord-quote">
+            &ldquo;This finally made AI feel practical for my REI business. Instead of guessing what to ask, I had prompts and a real system I could use to tighten up follow-up and move leads faster through my pipeline.&rdquo;
+          </p>
+          <div class="dfa-ord-author">Jason M. &mdash; Real Estate Investor</div>
+        </div>
+
+        <div class="dfa-ord-card dfa-ord-testimonial">
+          <div class="dfa-ord-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+          <p class="dfa-ord-quote">
+            &ldquo;I liked that it was written for investors, not marketers. The playbook gave me a cleaner way to organize lead gen, evaluate conversations, and stop wasting time on tasks AI can help handle in minutes.&rdquo;
+          </p>
+          <div class="dfa-ord-author">Danielle R. &mdash; REI Buyer &amp; Wholesaler</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dfa-ord-trust">
+      <strong>&#128274; Secure Checkout</strong>
+      <span class="dfa-ord-divider">&bull;</span>
+      SSL Encrypted
+      <span class="dfa-ord-divider">&bull;</span>
+      Stripe Payments
+      <span class="dfa-ord-divider">&bull;</span>
+      30-Day Guarantee
+    </div>
+  </div>
+</div>
