@@ -1,0 +1,9 @@
+{
+  "name": "credvault",
+  "version": "1.0.0",
+  "description": "Secure credential management for Neo workspace",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
