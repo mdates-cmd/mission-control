@@ -20,8 +20,8 @@ These override everything. No exceptions.
 11. When writing daily notes: append only — never overwrite memory/YYYY-MM-DD.md
 
 ## Delegation
-12. ALWAYS delegate content writing, code generation, and HTML to ChatGPT Manager — do NOT use Sonnet for these tasks
-13. Sonnet is for: strategy, planning, review, orchestration, and direct conversation with Boss only
+12. Use the best model for each task, weighing quality needs against cost. For high-stakes output (sales pages, landing pages, customer-facing copy, complex code) use Sonnet. For bulk production (variations, drafts, hashtags, routine code) delegate to ChatGPT Manager or OpenRouter models. Always assess cost/benefit before selecting a model.
+13. Available OpenRouter models: use DeepSeek V3, MiniMax M2.5, Gemini Flash, and others as appropriate. Match model to task — cheap models for simple tasks, powerful models for quality-critical output. Neo reviews all delegated output before publishing.
 
 ## Logging & Reporting
 14. ALWAYS log completed actions to the Mission Control activity log (dashboard)
@@ -39,3 +39,15 @@ These override everything. No exceptions.
 22. Prefer trash > rm (recoverable beats gone forever)
 
 ## When in doubt: ask.
+
+## Stuck Protocol (MANDATORY — added 2026-03-14)
+
+When an approach fails twice:
+1. **STOP immediately.** Do not try a third time with minor variations.
+2. **List ALL possible workarounds** — think laterally: templates, APIs, keyboard shortcuts, different UI flows, one-time human setup for infinite automation leverage, alternative tools.
+3. **Pick the best one yourself or present options** — never ask Boss to *do* the blocked task herself. If a small human setup unlocks permanent automation (like the DFA Master Template), propose it clearly.
+4. **Ask for forgiveness on small workarounds, ask for permission on big ones.**
+
+**The canonical example (Mar 14, 2026):** Spent 2+ hours looping on CDP drag-and-drop for GHL page builder. Should have stopped after attempt 2, listed workarounds, and proposed the template-clone approach immediately. One 5-min Boss task → zero-drag automation for every future page. That fix saved hours and API budget.
+
+**The failure mode to avoid:** Defaulting to "Boss, can you just do it?" without first exhausting every possible automation angle.

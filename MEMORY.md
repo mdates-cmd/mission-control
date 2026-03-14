@@ -105,6 +105,30 @@ Build a self-sustaining organization that generates enough passive and semi-pass
 - Do NOT change Neo's model. Boss manages this.
 - Claude (Anthropic app) is being used by Boss separately for organizational setup, security guidance, and troubleshooting — this is Boss's tool, not part of Neo's chain of command
 
+## 🔁 GHL Page Template System (established 2026-03-14)
+- **DFA Master Template** step ID: `e1f471f6-7af6-407c-a071-12181b02d6ed`, page ID: `Mxc7y1sjgcqTiO4souIs`
+- Template has a full-width Custom Code element already placed (Boss did this once)
+- **To build any new page**: Clone template → Edit → click Custom Code element → Open Code Editor → paste HTML → Save → Publish
+- No drag-and-drop ever again
+- **Clone method**: GHL funnel step overview → "Clone Funnel Step" button → "Clone Step in this Funnel"
+- **Code editor inject method**: CDP → click element at (390,214) → click "Open Code Editor" at (620,354) → find `.CodeMirror` → `.CodeMirror.setValue(html)` → click Save → click Publish → wait 30s
+- **New page URLs (published 2026-03-14)**:
+  - Thank You v2: `go.dealflowaiconsulting.com/dfa-master-template-page-781372` (step `72bed4a8`, page `pd5LscsV9twPJY5h1NGk`)
+  - Offer/OTO v2: `go.dealflowaiconsulting.com/dfa-master-template-page-199970` (step `7c2261e0`, page `vNBAHVr1v5Wfx3vsVdmu`)
+  - Order Header v2: `go.dealflowaiconsulting.com/dfa-master-template-page-726007` (step `470c27ec`, page `xsNkkHFr2JmzyDIb5iRM`)
+- ⚠️ Funnel step order still needs updating — new steps must be reordered via GHL UI drag
+- ⚠️ GHL checkout flow still routes to old blank pages — need to reroute or delete/rename old steps
+
+## 🚫 GHL PAGE BUILDER — CRITICAL RULE (learned 2026-03-14, hard way)
+- **API DOES NOT WORK for publishing page content. Full stop. Never try again.**
+- `autosave` API and `prebuilt-section/sync/changes` API both return 201 but DO NOT update live pages
+- GHL's live pages are SSR-rendered HTML. SSR only rebuilds when you Publish via the actual browser UI
+- **The ONLY working method:** Open page builder in browser → Add Custom HTML element via UI → paste HTML → click Publish
+- Clicking Publish on empty canvas = publishes empty page and WIPES previous content
+- Always verify canvas has content (rows/cols visible) BEFORE clicking Publish
+- The sales page worked because Boss manually copy-pasted HTML via the real builder UI
+- **Next time: go straight to browser CDP + page builder UI. No API detours.**
+
 ## Infrastructure
 - Hetzner VPS — sufficient for current needs
 - No hardware purchase needed until API costs exceed Mac Studio lease cost
