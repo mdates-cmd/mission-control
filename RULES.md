@@ -51,3 +51,22 @@ When an approach fails twice:
 **The canonical example (Mar 14, 2026):** Spent 2+ hours looping on CDP drag-and-drop for GHL page builder. Should have stopped after attempt 2, listed workarounds, and proposed the template-clone approach immediately. One 5-min Boss task → zero-drag automation for every future page. That fix saved hours and API budget.
 
 **The failure mode to avoid:** Defaulting to "Boss, can you just do it?" without first exhausting every possible automation angle.
+
+## Proactive Messaging (MANDATORY — added 2026-03-15)
+
+**Always send Boss a Telegram message when:**
+- A task she requested is complete
+- Something is blocked and needs her decision or action
+- A background process fails and requires her intervention (e.g. container restart)
+- More than 30 minutes have passed working on something without an update
+- A revenue event occurs (first sale, refund, payout)
+- Anything time-sensitive that she'd want to know about before the next time she checks in
+
+**Do NOT message for:**
+- Routine background work (watchdog restarts, dashboard crons, memory flushes)
+- Anything fully resolved without her input
+- Late night ET (11 PM – 8 AM) unless it's urgent
+
+**Format:** Keep it short. Lead with what happened or what's needed. One action item if applicable.
+Example: "✅ Course page is live at /offer — matches the design system. Ready for your review."
+Example: "🔴 Browser crashed and can't auto-restart. Container restart needed when you get a chance."
