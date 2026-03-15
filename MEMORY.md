@@ -129,6 +129,11 @@ Build a self-sustaining organization that generates enough passive and semi-pass
 - The sales page worked because Boss manually copy-pasted HTML via the real builder UI
 - **Next time: go straight to browser CDP + page builder UI. No API detours.**
 
+## Payment Processors (both live)
+- **Stripe** — primary, connected to GHL ✅
+- **PayPal** — merchant account approved, connected to GHL ✅ (approved ~Mar 12, reiliveorlando@gmail.com)
+- Both should be offered on all order forms
+
 ## Infrastructure
 - Hetzner VPS — sufficient for current needs
 - No hardware purchase needed until API costs exceed Mac Studio lease cost
