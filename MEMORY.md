@@ -139,3 +139,11 @@ Build a self-sustaining organization that generates enough passive and semi-pass
 - GHL/Apex buildout ongoing with an agency called Apex
 - Boss was on OpenRouter Auto before; switched to Claude Sonnet 4.6 (Anthropic API)
 - Prior session context exists but wasn't fully downloaded at setup
+
+## ⚠️ Credvault — INTERNAL ONLY (corrected 2026-03-15)
+- Credvault runs inside the Docker container at `127.0.0.1:18795`
+- It is **NOT accessible** from `100.122.249.12` or any external browser
+- `100.122.249.12` is the Tailscale IP of the HOST machine — traffic on that IP does NOT reach the container without explicit host-level port forwarding
+- **Never tell Boss to open Credvault in her browser** until host port forwarding is configured on the Hetzner VPS
+- To fix: SSH into Hetzner host and run: `iptables -t nat -A PREROUTING -p tcp --dport 18795 -j DNAT --to-destination 172.17.0.2:18795`
+- Until fixed: credentials must be passed via Telegram (delete after) and written directly into credentials.md from inside the container
