@@ -337,7 +337,7 @@
         <a href="#activity">Activity</a>
         <a href="#health">Health</a>
       </div>
-      <div class="topnav-updated">Updated: <span id="last-updated">Mar 15, 2026  10:13 AM ET</span></div>
+      <div class="topnav-updated">Updated: <span id="last-updated">Mar 15, 2026  4:13 PM ET</span></div>
     </div>
   </div>
 </nav>
@@ -864,7 +864,7 @@
     <div class="grid3" style="margin-bottom:8px;">
       <div class="card card-sm">
         <div class="card-label">AI API Spend — Mar Cycle</div>
-        <div class="card-value" style="color:var(--red);" id="api-spend-value">~$275</div>
+        <div class="card-value" style="color:var(--red);" id="api-spend-value">~$183</div>
         <div class="card-sub" id="api-spend-note">Est. Mar 13 end-of-day &middot; Anthropic only</div>
       </div>
       <div class="card card-sm">
@@ -874,7 +874,7 @@
       </div>
       <div class="card card-sm">
         <div class="card-label">AI API Remaining</div>
-        <div class="card-value" style="color:var(--red);" id="api-remaining-value">OVER BUDGET</div>
+        <div class="card-value" style="color:var(--red);" id="api-remaining-value">~$17</div>
         <div class="card-sub" id="api-remaining-note">⚠️ $275 spent vs $200 budget — delegation mode</div>
       </div>
     </div>
@@ -943,7 +943,7 @@
         <tr style="font-weight:700; border-top: 1px solid var(--border2);">
           <td colspan="3" style="color:var(--text);">TOTAL — Mar 2026 (Anthropic)</td>
           <td class="mono" style="color:var(--red);" id="api-total-cost">~$183</td>
-          <td colspan="2" style="color:var(--red); font-size:12px;" id="api-total-note">&#9888;&#65039; OVER BUDGET: $275 spent vs $200 limit</td>
+          <td colspan="2" style="color:var(--red); font-size:12px;" id="api-total-note">&#9888;&#65039; ~$17 remaining this cycle</td>
         </tr>
         <tr>
           <td colspan="6" style="color:var(--muted); font-size:12px; font-style:italic; padding:12px;">
@@ -976,6 +976,14 @@
     <div class="section-title">📋 Subagent Activity Log</div>
 
     <!-- UPDATE: Add new entries at TOP (reverse chronological). Keep last 20. -->
+      <div class="log-entry">
+        <div class="log-time">Mar 15, 2026  4:13 PM ET</div>
+        <div class="log-agent">AUTO</div>
+        <div class="log-action">
+          Auto-refresh &mdash; API budget: $183 / $200 &bull; New commits: Add PayPal approved status to MEMORY.md — was missing &bull; Dashboard: fix API budget display — $275 spent, over budget &bull; Dashboard: auto-refresh 2026-03-15 15:13 UTC &mdash; &#9888;&#65039; API BUDGET LOW: $17.00 remaining
+          <span class="badge badge-yellow" style="margin-left:8px;">Alert</span>
+        </div>
+      </div>
       <div class="log-entry">
         <div class="log-time">Mar 15, 2026  10:13 AM ET</div>
         <div class="log-agent">AUTO</div>
@@ -1168,14 +1176,7 @@
           <span class="badge badge-yellow" style="margin-left:8px;">Alert</span>
         </div>
       </div>
-      <div class="log-entry">
-        <div class="log-time">Mar 13, 2026 10:58 PM ET</div>
-        <div class="log-agent">NEO</div>
-        <div class="log-action">
-          Dashboard updated: API cost section populated &mdash; ~$175 spent Mar cycle, ~$25 remaining, $250 operational card untouched. Delegation policy enforced going forward.
-          <span class="badge badge-green" style="margin-left:8px;">Completed</span>
-        </div>
-      </div>
+      
       
       
       
@@ -1252,7 +1253,7 @@
       <!-- Auto-updated every 6h by dashboard cron -->
       <div class="health-item">
         <span class="health-label">Memory Usage</span>
-        <span class="health-val health-up" id="health-mem">26.5%</span>
+        <span class="health-val health-up" id="health-mem">26.3%</span>
       </div>
       <div class="health-item">
         <span class="health-label">Disk Usage</span>
@@ -1260,7 +1261,7 @@
       </div>
       <div class="health-item">
         <span class="health-label">Load Avg (1m)</span>
-        <span class="health-val health-up mono" id="health-load">0.02</span>
+        <span class="health-val health-up mono" id="health-load">0.00</span>
       </div>
       <div class="health-item">
         <span class="health-label">OpenClaw Gateway</span>
@@ -1268,7 +1269,7 @@
       </div>
       <div class="health-item">
         <span class="health-label">Uptime</span>
-        <span class="health-val health-up mono" id="health-uptime">60.8h</span>
+        <span class="health-val health-up mono" id="health-uptime">66.8h</span>
       </div>
       <div class="health-item">
         <span class="health-label">Errors (24h)</span>
