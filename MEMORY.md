@@ -92,7 +92,7 @@ Build a self-sustaining organization that generates enough passive and semi-pass
 ## Budget (updated 2026-03-13)
 - **Operational seed budget (Deal Flow AI card):** $250 — zero spent, untouched
 - **Rule:** No spend until first dollar earned (Apex mandate)
-- **AI API budget:** $200/month — ~$183 spent Mar cycle, ~$17 remaining (CRITICAL)
+- **AI API budget:** $200/month — ~$274.90 spent Mar cycle per gateway usage-cost (30-day rolling), OVER BUDGET. Today alone: $10.64. Budget exceeded by ~$75. Awaiting Boss guidance on whether to pause non-essential crons/subagents.
 - **First spend unlocked by:** first sale → then $50-100 on paid ads to proven offer
 
 ## Model Policy (locked 2026-03-10, updated 2026-03-11)
